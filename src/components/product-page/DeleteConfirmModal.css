@@ -1,0 +1,80 @@
+.confirmModalBackground{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 2;
+}
+.confirmModalContent{
+    display: flex;
+    height:150px;
+    width: 250px;
+    border-radius: 0.5em;
+    background-color:white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    max-height: 100%;
+    margin:10px;
+    color: #1d2228;
+}
+.confirmModalHeader{
+    flex:1 1 50%;
+    margin-top: 1.55em;
+    height: 5em;
+    text-align: center;
+    display:flex;
+    align-items: center;
+}
+/* .confirmModalTitle{
+
+} */
+.closeConfirmModalButton{
+    background-color: transparent;
+    position: absolute;
+    font-size: 1.5em;
+    right:7px;
+    top:5px;
+    color: #1d2228;
+    border: none;
+    border-radius: 10px;
+    width:1em;
+    text-align: center;
+    vertical-align:middle
+}
+.closeConfirmModalButton:hover{
+    background: rgba(0,0,0,0.1);
+}
+.confirmModalButtons{
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: space-around;
+}
+.confirmModalConfirm{
+    max-height: 2.5em;
+    max-width: 7em;
+    margin-top: 1em;
+    background: #666666;
+    border-radius: 20px;
+    color: #EEEEEE;
+    cursor: pointer;
+    font-weight: 600px;
+    height: 3em;
+    justify-self: center;
+    width: 75%;
+}
+.confirmModalCancel{
+    max-height: 2.5em;
+    max-width: 7em;
+    margin-top: 1em;
+    background: #666666;
+    border-radius: 20px;
+    color: #EEEEEE;
+    cursor: pointer;
+    font-weight: 600px;
+    height: 3em;
+    justify-self: center;
+    width: 75%;
+}

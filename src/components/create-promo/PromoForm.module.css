@@ -1,0 +1,141 @@
+.promoModalBackground{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 2;
+}
+
+.promoModal{
+    display: flex;
+    height:500px;
+    width: 500px;
+    border-radius: 0.5em;
+    background-color:white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.promoModalContent{
+    display:flex;
+    flex:1;
+    flex-direction: column;
+    max-height: 100%;
+    margin:10px;
+    color: #1d2228;
+}
+
+.promoModalHeader {
+    flex:1 1 5%;
+    height: 5%;
+    text-align: center;
+    display: flex;
+}
+
+.promoModalBody{
+    flex: 1 1 60%;
+    display: flex;
+    height: 60%;
+    flex-direction: column;
+    text-align: center;
+}
+
+/***************************
+Input Styling
+*/
+
+.input {
+    margin-top: .5em;
+    width: 100%;
+    height: 30px;
+    padding: .5em;
+    box-sizing: border-box;
+}
+
+.promoLabel {
+    font-weight: 700;
+    color: #666666;
+    margin-left: 10px;
+    margin-bottom: .5em;
+}
+
+.promoTitle {
+    font-weight: 700;
+    color: #222222;
+    margin-left: 10px;
+    margin-bottom: .5em;
+}
+
+.calendar {
+    margin-top: .5em;
+    width: 100%;
+    box-sizing: border-box;
+    background: white;
+}
+
+.calendar > {
+    background: white;
+}
+
+.paragraph {
+    margin:22px 0px 0px 0px;
+}
+
+.discount, .promoDates {
+    display: flex;
+    width: 100%;
+}
+
+.valueInput, .nameInput, .dateInput {
+    width: 100%;
+    text-align: left;
+}
+
+.typeDropdown {
+    width: 75px;
+    text-align: left;
+}
+
+.submitButton {
+    background: #666666;
+    border-radius: 20px;
+    color: #EEEEEE;
+    cursor: pointer;
+    font-weight: 600px;
+    height: 3em;
+    justify-self: center;
+    width: 10em;
+    position: static;
+    margin-top: 50px;
+}
+
+/******************************
+Errors
+*/
+
+.inputError {
+    margin-top: .5em;
+    width: 100%;
+    height: 30px;
+    padding: .5em;
+    box-sizing: border-box;
+    border: 1px solid red;
+}
+
+.inputErrorTA {
+    margin-top: .5em;
+    width: 100%;
+    height: 30px;
+    padding: .5em;
+    box-sizing: border-box;
+    border: 1px solid red;
+}
+
+.error_item {
+    color:red;
+    margin:3px 0px 0px 0px;
+    width: 120%;
+}
+

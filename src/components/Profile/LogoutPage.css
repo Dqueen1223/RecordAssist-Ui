@@ -1,0 +1,18 @@
+ .products{
+  font-size: 30px;
+  top:50%;
+  position: relative;
+  flex-direction: row;
+  color: #FB8122;
+  bottom: 100px;
+} 
+.logout{
+    text-align: center;
+    position: relative;
+    top: 200px;
+    margin-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 75px;
+    color: #1D2228;
+}

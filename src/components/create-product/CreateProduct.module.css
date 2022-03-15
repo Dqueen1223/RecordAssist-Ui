@@ -1,0 +1,53 @@
+.productFormContainer {
+    margin: auto;
+    margin-top: 100px;
+    width: auto;
+    display: inherit;
+}
+.productForm {
+    margin: auto;
+    justify-content: space-around;
+    width: auto;
+    display: inherit;
+}
+
+.createProductDetails {
+    margin-right: 10px;
+    width: 260px;
+}
+.createProductTypes {
+    width: 260px;
+}
+.createProductControl {
+    margin-left: 10px;
+    width: 260px;
+}
+
+.react-datetime-picker__inputGroup  {
+    margin: auto;
+    height: 32px;
+    width: 250px;
+} 
+
+.buttons {
+    margin: auto;
+    width: 800px;
+}
+
+.submitButton, .cancelButton {
+    margin: auto;
+    margin-right: 25px;
+    margin-top: 25px;
+    background: #666666;
+    border-radius: 20px;
+    color: #EEEEEE;
+    cursor: pointer;
+    font-weight: 600px;
+    height: 3em;
+    width: 250px;
+}
+
+.description {
+    width: 530px;
+}
+

@@ -1,0 +1,59 @@
+.btnToast{
+  border:1px solid white;
+  font-size:1em;
+  width:80px;
+  height:25px;
+  color:whitesmoke;
+  background-color:gray;
+  margin:10px 0;
+}
+
+.btnToast:hover{
+  opacity: 0.75;;
+}
+
+.success{
+  background-color: #07bc0c;
+}
+
+.info{
+  background-color: #3498db;
+}
+
+.warning{
+  background-color: #f1c40f;
+}
+
+.error{
+  background-color: #e74c3c;
+}
+
+.Toastify__toast--default {
+  --toastify-color-progress-light:linear-gradient(to right,rgb(65, 64, 64),rgb(235, 233, 233))!important;
+  width:300px;
+}
+
+.toastBar{
+  width:70%;
+  padding:0 200px;
+}
+
+.Toastify__toast--info {
+  --toastify-color-progress-info:linear-gradient(to right,#005994,lightblue)!important;
+  width:300px;
+}
+
+.Toastify__toast--warning {
+  --toastify-color-progress-warning:linear-gradient(to right,rgb(219, 219, 0),rgb(255, 255, 164))!important;
+  width:300px;
+}
+
+.Toastify__toast--success {
+  --toastify-color-progress-success:linear-gradient(to right,#026b06,rgb(199, 255, 199))!important;
+  width:300px;
+}
+
+.Toastify__toast--error {
+  --toastify-color-progress-error:linear-gradient(to right,#b11201,#ff9393)!important;
+  width:300px
+}
