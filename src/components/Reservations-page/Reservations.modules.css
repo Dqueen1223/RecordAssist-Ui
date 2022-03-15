@@ -73,6 +73,8 @@ tbody {
   padding: 5px 10px 5px 10px;
   width: 15%;
 }
-.reservationsCells{
-  padding: 8px 8px 8px 8px;
+
+.tableCells{
+    padding: 12px 18px 12px 18px;
+    text-align: center;
 }

@@ -8,9 +8,8 @@ const ReservationsTable = ({ reservation }) => {
   const [apiError, setApiError] = useState(false);
   return (
     <>
-      {apiError && <p>Constants.apiError</p>}
       <tr>
-        <td className="ProductCells">
+        <td className="tableCells">
           <button
             type="button"
             onClick={<Link to={`/reservations/edit/${reservation.id}`} />}
@@ -19,7 +18,7 @@ const ReservationsTable = ({ reservation }) => {
             Edit
           </button>
         </td>
-        <td className="ProductCells">
+        <td className="tableCells">
           <button
             type="button"
             className="Delete"
@@ -29,11 +28,11 @@ const ReservationsTable = ({ reservation }) => {
           </button>
           {apiError && <p>{constants.API_ERROR}</p>}
         </td>
-        <td className="reservationsCells">{reservation.user}</td>
-        <td className="reservationsCells">{reservation.guestEmail}</td>
-        <td className="reservationsCells">{reservation.checkInDate}</td>
-        <td className="reservationsCells">{reservation.numberOfNights}</td>
-        <td className="reservationsCells">roomType</td>
+        <td className="tableCells">{reservation.user}</td>
+        <td className="tableCells">{reservation.guestEmail}</td>
+        <td className="tableCells">{reservation.checkInDate}</td>
+        <td className="tableCells">{reservation.numberOfNights}</td>
+        <td className="tableCells">roomType</td>
       </tr>
     </>
   );

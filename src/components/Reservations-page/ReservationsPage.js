@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import fetchReservations from './reservationsService';
 import ReservationsTable from './reservationsTable';
-import constants from '../../utils/constants';
-// import fetchRoomPrice from './fetchRoomPriceService';
 // import fetchRoomPrice from './fetchRoomPriceService';
 
 /**
@@ -33,7 +31,7 @@ const Reservations = () => {
       <tr id="reservationsTable">
         {reservations.map((reservation) => (
           <div key={reservation.id}>
-            {apiError && <p>{constants.API_ERROR}</p>}
+            {apiError}
             <ReservationsTable
               reservation={reservation}
               // deleteSelectedReservation={deleteSelectedReservation}

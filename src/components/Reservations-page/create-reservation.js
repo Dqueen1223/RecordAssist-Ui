@@ -17,8 +17,10 @@ const CreateReservation = () => {
   const [errors, setErrors] = useState({});
 
   const handleReservation = () => {
-    makeReservation(reservationData).then(() => history.push('/confirmation'));
-    setErrors(ReservationFormValidator(reservationData).then(() => history.push('/confirmation')));
+    if (Object.keys(ReservationFormValidator(reservationData)).length === 0) {
+      makeReservation(reservationData).then(() => history.push('/reservations'));
+    }
+    setErrors(ReservationFormValidator(reservationData));
   };
   const onReservationChange = (e) => {
     setReservationData({ ...reservationData, [e.target.id]: e.target.value });

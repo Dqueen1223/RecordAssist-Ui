@@ -1,27 +1,23 @@
 import HttpHelper from '../../utils/HttpHelper';
-import Constants from '../../utils/constants';
 
 /**
  *
- * @name DeleteReservations
+ * @name fetchRoom
  * @description Utilizes HttpHelper to make a get request to an API
- * @param {*} reservation to be deleted
+ * @param {*} setReservations sets state for reviews
  * @param {*} setApiError sets error if response other than 200 is returned
  * @returns sets state for products if 200 response, else sets state for apiError
  */
-export default async function deleteReservation(
-  reservation,
-  setApiError
-) {
-  await HttpHelper(
-    `${Constants.RESERVATIONS_ENDPOINT}/${reservation.id}`,
-    'DELETE'
-  )
+export default async function fetchRoomType(setRoomType, setApiError) {
+  await HttpHelper('room-types', 'GET')
     .then((response) => {
       if (response.ok) {
         return response.json();
       }
+      throw new Error('room-types');
+    })
+    .then(setRoomType)
+    .catch(() => {
       setApiError(true);
-      throw new Error(Constants.RESERVATIONS_ENDPOINT);
     });
 }

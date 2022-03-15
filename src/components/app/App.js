@@ -5,7 +5,7 @@ import {
   BrowserRouter, Route, Switch
 } from 'react-router-dom';
 import ProductPage from '../product-page/ProductPage';
-import CheckoutPage from '../checkout-page/CheckoutPage';
+// import CheckoutPage from '../checkout-page/CheckoutPage';
 import ConfirmationPage from '../confirmation-page/ConfirmationPage';
 import Reservations from '../Reservations-page/ReservationsPage';
 import CreateReservation from '../Reservations-page/create-reservation';
@@ -15,6 +15,8 @@ import Header from '../header/Header';
 import LogoutPage from '../Profile/Logoutpage';
 import CreateProduct from '../create-product/CreateProduct';
 import MaintenancePage from '../maintenance-page/MaintenancePage';
+import EditReservation from '../Reservations-page/editReservationPage';
+import RoomTypes from '../room-types/Room-types';
 
 toast.configure();
 /**
@@ -34,8 +36,9 @@ const App = () => (
     <Switch>
       <Route exact path="/" render={() => <ProductPage />} />
       <Route exact path="/reservations" render={() => <Reservations />} />
-      <Route exact path="/room-types" render={() => <CheckoutPage />} />
+      <Route exact path="/room-types" render={() => <RoomTypes />} />
       <Route exact path="/reservations/create" render={() => <CreateReservation />} />
+      <Route exact path="/reservations/edit" render={() => <EditReservation />} />
       <Route exact path="/confirmation" render={() => <ConfirmationPage />} />
       <Route exact path="/profilepage" render={() => <ProfilePage />} />
       <Route

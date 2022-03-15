@@ -1,15 +1,14 @@
 import HttpHelper from '../../utils/HttpHelper';
-import Constants from '../../utils/constants';
 
 export default async function makeReservation(
   reservationData
 ) {
-  await HttpHelper(Constants.RESERVATIONS_ENDPOINT, 'POST', {
-    reservation: {
-      guestEmail: reservationData.email,
-      checkInDate: reservationData.checkIn,
-      numberOfNights: reservationData.nights
-    }
+  await HttpHelper('reservations', 'POST', {
+    user: 'employee@hotelapi.com',
+    guestEmail: reservationData.email,
+    roomTypeId: 3,
+    checkInDate: reservationData.checkIn,
+    numberOfNights: reservationData.nights
   })
     .then((response) => response.json())
     .catch(() => {
