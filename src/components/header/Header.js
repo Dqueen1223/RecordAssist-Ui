@@ -85,7 +85,7 @@ const Header = () => {
   return (
     <div className="header">
       <header>Hotel Bookings</header>
-      <Link to="room-types">
+      <Link to="/room-types">
         <p>Room Types</p>
       </Link>
       <Link to="/reservations">

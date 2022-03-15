@@ -12,6 +12,7 @@ import { getSubtotal } from './ReviewOrderWidgetService';
 import getBillingRate from './BillingRateService';
 import { useProfile } from '../Profile/ProfileContext';
 import updateUserByEmail from '../header/UpdateActivityService';
+import FormItem from '../create-review/forms/FormItem';
 
 /**
  * @name CheckoutPage
@@ -67,57 +68,48 @@ const CheckoutPage = () => {
   };
   const [errors, setErrors] = React.useState({});
 
-  const handlePay = () => {
-    if (products.length === 0) {
-      toast.error('Purchase could not be completed. You currently have no items in your cart.');
-    } else if (Object.keys(validateForm(deliveryData, billingData, checked)).length === 0) {
-      const productData = products.map(({ id, quantity }) => ({ id, quantity }));
-      const productDataSend = [];
-      for (let i = 0; i < productData.length; i += 1) {
-        productDataSend.push({});
-        productDataSend[i].productId = productData[i].id;
-        productDataSend[i].quantity = productData[i].quantity;
-      }
-      const deliveryAddress = {
-        firstName: deliveryData.firstName,
-        lastName: deliveryData.lastName,
-        street: deliveryData.street,
-        street2: deliveryData.street2,
-        city: deliveryData.city,
-        state: deliveryData.state,
-        zip: deliveryData.zip
-      };
-      const billingAddress = {};
-      if (checked) {
-        billingAddress.street = deliveryAddress.street;
-        billingAddress.street2 = deliveryAddress.street2;
-        billingAddress.city = deliveryAddress.city;
-        billingAddress.state = deliveryAddress.state;
-        billingAddress.zip = deliveryAddress.zip;
-      } else {
-        billingAddress.street = billingData.billingStreet;
-        billingAddress.street2 = billingData.billingStreet2;
-        billingAddress.city = billingData.billingCity;
-        billingAddress.state = billingData.billingState;
-        billingAddress.zip = billingData.billingZip;
-      }
-      billingAddress.email = billingData.email;
-      billingAddress.phone = billingData.phone;
-
-      const creditCard = {
-        cardNumber: billingData.creditCard,
-        cvv: billingData.cvv,
-        expiration: billingData.expiration,
-        cardholder: billingData.cardholder
-      };
-      makePurchase(productDataSend, deliveryAddress, billingAddress, creditCard, totalPrice).then(() => history.push('/confirmation'));
-      if (userProfile[1]) {
-        updateUserByEmail(userProfile[1].email);
-      }
-    } else {
-      toast.error('Some fields contain invalid inputs. You have not been charged');
-      setErrors(validateForm(deliveryData, billingData, checked));
+  const handlePay = () => { 
+    const productData = products.map(({ id, quantity }) => ({ id, quantity }));
+    const productDataSend = [];
+    for (let i = 0; i < productData.length; i += 1) {
+      productDataSend.push({});
+      productDataSend[i].productId = productData[i].id;
+      productDataSend[i].quantity = productData[i].quantity;
     }
+    const deliveryAddress = {
+      firstName: deliveryData.firstName,
+      lastName: deliveryData.lastName,
+      street: deliveryData.street,
+      street2: deliveryData.street2,
+      city: deliveryData.city,
+      state: deliveryData.state,
+      zip: deliveryData.zip
+    };
+    const billingAddress = {};
+    if (checked) {
+      billingAddress.street = deliveryAddress.street;
+      billingAddress.street2 = deliveryAddress.street2;
+      billingAddress.city = deliveryAddress.city;
+      billingAddress.state = deliveryAddress.state;
+      billingAddress.zip = deliveryAddress.zip;
+    } else {
+      billingAddress.street = billingData.billingStreet;
+      billingAddress.street2 = billingData.billingStreet2;
+      billingAddress.city = billingData.billingCity;
+      billingAddress.state = billingData.billingState;
+      billingAddress.zip = billingData.billingZip;
+    }
+    billingAddress.email = billingData.email;
+    billingAddress.phone = billingData.phone;
+
+    const creditCard = {
+      cardNumber: billingData.creditCard,
+      cvv: billingData.cvv,
+      expiration: billingData.expiration,
+      cardholder: billingData.cardholder
+    };
+      // makePurchase(productDataSend, deliveryAddress, billingAddress, creditCard, totalPrice).then(() => history.push('/confirmation'));
+    setErrors(validateForm(deliveryData, billingData, checked)).then(() => history.push('/confirmation'));
   };
 
   return (

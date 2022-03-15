@@ -1,4 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
 /**
  * takes in all user inputs in checkout page, and makes an object error messages named errors
  * @param {*} deliveryData
