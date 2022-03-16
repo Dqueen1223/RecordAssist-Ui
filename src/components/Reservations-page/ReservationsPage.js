@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import fetchReservations from './reservationsService';
 import ReservationsTable from './reservationsTable';
-// import fetchRoomPrice from './fetchRoomPriceService';
 
 /**
  * @name Reservations
@@ -13,16 +12,11 @@ import ReservationsTable from './reservationsTable';
 const Reservations = () => {
   const [reservations, setReservations] = useState([]);
   const [apiError, setApiError] = useState(false);
-  // const [roomType, setRoomType] = useState([]);
 
   useEffect(() => {
     fetchReservations(setReservations, setApiError);
   }, []);
 
-  //     const deleteSelectedReservation = async () => {
-  //       await deletepr
-  //     fetchReservations(setReservations, setApiError);
-  //   };
   return (
     <div className="main">
       <p id="Reservations" style={{ color: 'blue' }}>
@@ -34,7 +28,6 @@ const Reservations = () => {
             {apiError}
             <ReservationsTable
               reservation={reservation}
-              // deleteSelectedReservation={deleteSelectedReservation}
               setApiError={setApiError}
             />
           </div>

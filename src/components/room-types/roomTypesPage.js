@@ -18,7 +18,7 @@ const RoomTypes = () => {
 
   return (
     <div className="main">
-      <p id="room-types" style={{ color: 'blue' }}>
+      <p id="reservations" style={{ color: 'blue' }}>
         roomType Page
       </p>
       <tr id="reservationsTable">
@@ -27,7 +27,9 @@ const RoomTypes = () => {
             {apiError}
             <RoomTypesTable
               roomType={roomType}
-              active={roomType.active.toString() === 'true' ? 'Active' : 'Inactive'}
+              active={
+                roomType.active.toString() === 'true' ? 'Active' : 'Inactive'
+              }
               apiError={apiError}
             />
           </div>

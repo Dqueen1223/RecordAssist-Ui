@@ -29,25 +29,25 @@ const CreateReservation = () => {
     <div className="createRoomInput">
       <FormItem
         type="email"
-        id="email"
+        id="guestEmail"
         onChange={onReservationChange}
         label="guest email address"
       />
-      {errors.email}
+      {errors.guestEmail}
       <FormItem
         type="text"
-        id="checkIn"
+        id="checkInDate"
         label="check-in date"
         onChange={onReservationChange}
       />
-      {errors.checkIn}
+      {errors.checkInDate}
       <FormItem
         type="number"
-        id="nights"
+        id="numberOfNights"
         label="number of nights"
         onChange={onReservationChange}
       />
-      {errors.nights}
+      {errors.numberOfNights}
       <select onChange={onReservationChange}>
         <option>King</option>
         <option>King Double</option>

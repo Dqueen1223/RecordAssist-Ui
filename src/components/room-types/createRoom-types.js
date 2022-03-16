@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import FormItem from '../create-review/forms/FormItem';
-import makeReservation from './create-reservationService';
-import ReservationFormValidator from './reservationFormValidator';
+// import makeReservation from './create-reservationService';
+// import ReservationFormValidator from './reservationFormValidator';
 
 /**
  * @name CreateRoomType
@@ -10,26 +10,20 @@ import ReservationFormValidator from './reservationFormValidator';
  * @return component
  */
 const CreateRoomType = () => {
-  const history = useHistory();
+  // const history = useHistory();
 
-  const [checked, setChecked] = React.useState(false);
-  const handleCheck = () => {
-    if (checked === true) {
-      setChecked(false);
-    } else {
-      setChecked(true);
-    }
-  };
+  // const [checked, setChecked] = React.useState(false);
+  // const handleCheck = () => {
+  //   if (checked === true) {
+  //     setChecked(false);
+  //   } else {
+  //     setChecked(true);
+  //   }
+  // };
   const [roomTypeData, setRoomTypeData] = useState([]);
 
-  const [errors, setErrors] = useState({});
+  // const [errors, setErrors] = useState({});
 
-  //   const handleRoomType = () => {
-  //     if (Object.keys(roomTypeFormValidator(roomTypeData)).length === 0) {
-  //       makeRoomType(roomTypeData).then(() => history.push('/reservations'));
-  //     }
-  //     setErrors(roomTypeFormValidator(roomTypeData));
-  //   };
   const onRoomTypeChange = (e) => {
     setRoomTypeData({ ...roomTypeData, [e.target.id]: e.target.value });
   };
@@ -41,32 +35,32 @@ const CreateRoomType = () => {
         onChange={onRoomTypeChange}
         label="Room type"
       />
-      {errors.roomtype}
+      {/* {errors.roomtype} */}
       <FormItem
         type="textarea"
         id="description"
         onChange={onRoomTypeChange}
         label="description"
       />
-      {errors.description}
+      {/* {errors.description} */}
       <FormItem
         type="number"
         id="rate"
         onChange={onRoomTypeChange}
         label="rate"
       />
-      {errors.rate}
-      <div>
+      {/* {errors.rate} */}
+      {/* <div>
         <input
           id="Active"
           onChange={onRoomTypeChange}
           type="checkbox"
           value={handleCheck}
         />
-      </div>
-      {/* <button onClick={handleReservation} type="submit">
+      </div> */}
+      <button onClick={onRoomTypeChange} type="submit">
         Create
-      </button> */}
+      </button>
     </div>
   );
 };
