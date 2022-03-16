@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import fetchRoomType from './roomService';
 import RoomTypesTable from './room-typesTable';
-
+import Constants from '../../utils/constants';
 /**
  * @name RoomTypesPage
  * @description displays RoomTypes page content
@@ -21,10 +21,14 @@ const RoomTypesPage = () => {
       <p id="reservations" style={{ color: 'blue' }}>
         roomType Page
       </p>
+      {apiError && (
+        <p className="errors" data-testid="errors">
+          {Constants.API_ERROR}
+        </p>
+      )}
       <tr id="reservationsTable">
         {roomTypes.map((roomType) => (
           <div key={roomType.id}>
-            {apiError}
             <RoomTypesTable
               roomType={roomType}
               active={

@@ -10,9 +10,11 @@ import HttpHelper from '../../utils/HttpHelper';
  * @returns sets state for products if 200 response, else sets state for apiError
  */
 export default async function fetchRoomTypeById(roomTypeId, setRoomType, setApiError) {
+  let checkValid = 'invalid';
   await HttpHelper(`room-types/${roomTypeId}`, 'GET')
     .then((response) => {
       if (response.ok) {
+        checkValid = 'valid';
         return response.json();
       }
       throw new Error(`room-types/${roomTypeId}`);
@@ -21,4 +23,5 @@ export default async function fetchRoomTypeById(roomTypeId, setRoomType, setApiE
     .catch(() => {
       setApiError(true);
     });
+  return checkValid;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FormItem from '../create-review/forms/FormItem';
-import editReservation from './reservationUpdateService';
+import updateRoomType from './reservationUpdateService';
 import ReservationFormValidator from './reservationFormValidator';
 import fetchReservationById from './reservationByIdService';
 import Constants from '../../utils/constants';
@@ -23,9 +23,11 @@ const EditReservationPage = () => {
     fetchReservationById(setReservation, id, setApiError);
   }, [id]);
 
-  const handleReservation = () => {
+  const handleReservation = async () => {
     if (Object.keys(ReservationFormValidator(reservationData)).length === 0) {
-      editReservation(reservationData).then(() => history.push('/reservations'));
+      if ((await updateRoomType(reservationData, setApiError)) === 'valid') {
+        history.push('/reservations');
+      }
     }
     setErrors(ReservationFormValidator(reservationData));
   };

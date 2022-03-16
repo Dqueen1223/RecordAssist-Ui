@@ -36,7 +36,7 @@ const EditRoomTypesPage = () => {
     roomTypeData.active = checked.toString();
     if (Object.keys(RoomTypeFormValidator(roomTypeData)).length === 0) {
       if ((await updateRoomType(roomTypeData, setApiError)) === 'valid') {
-        history.push('/maintenance');
+        history.push('/room-types');
       }
     }
     setErrors(RoomTypeFormValidator(roomTypeData));

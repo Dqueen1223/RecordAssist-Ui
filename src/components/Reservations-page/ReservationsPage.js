@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import fetchReservations from './reservationsService';
 import ReservationsTable from './reservationsTable';
-
+import Constants from '../../utils/constants';
 /**
  * @name ReservationsPage
  * @description displays reservations page content
@@ -19,6 +19,11 @@ const ReservationsPage = () => {
   }, [deletedReservation]);
   return (
     <div className="main">
+      {apiError && (
+        <p className="errors" data-testid="errors">
+          {Constants.API_ERROR}
+        </p>
+      )}
       <p id="Reservations" style={{ color: 'blue' }}>
         Reservations Page
       </p>
@@ -29,9 +34,6 @@ const ReservationsPage = () => {
             {apiError}
             <ReservationsTable
               reservation={reservation}
-              // roomType={
-              //     roomTypes
-              //   }
               setDeletedReservation={setDeletedReservation}
               setApiError={setApiError}
             />

@@ -3,6 +3,7 @@ import HttpHelper from '../../utils/HttpHelper';
 export default async function makeReservation(
   reservation, setApiError
 ) {
+  let checkValid = 'invalid';
   await HttpHelper('reservations', 'POST', {
     user: 'employee@hotelapi.com',
     guestEmail: reservation.email,
@@ -10,6 +11,16 @@ export default async function makeReservation(
     checkInDate: reservation.checkIn,
     numberOfNights: reservation.nights
   })
-    .then((response) => response.json())
-    .catch(() => { setApiError(true); });
+    .then((response) => {
+      if (response.ok) {
+        checkValid = 'valid';
+        response.json();
+      } else {
+        throw new Error(response.statusText);
+      }
+    })
+    .catch(() => {
+      setApiError(true);
+    });
+  return checkValid;
 }

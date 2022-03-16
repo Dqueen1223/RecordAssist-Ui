@@ -5,7 +5,6 @@ import {
   BrowserRouter, Route, Switch
 } from 'react-router-dom';
 import ProductPage from '../product-page/ProductPage';
-// import CheckoutPage from '../checkout-page/CheckoutPage';
 import ConfirmationPage from '../confirmation-page/ConfirmationPage';
 import ReservationsPage from '../Reservations-page/ReservationsPage';
 import CreateReservationPage from '../Reservations-page/createReservationPage';
@@ -16,7 +15,7 @@ import LogoutPage from '../Profile/Logoutpage';
 import CreateProduct from '../create-product/CreateProduct';
 import MaintenancePage from '../maintenance-page/MaintenancePage';
 import EditReservationPage from '../Reservations-page/editReservationPage';
-import EditRoomTypesPage from '../room-types/editRoom-types';
+import EditRoomTypesPage from '../room-types/editRoom-typesPage';
 import RoomTypesPage from '../room-types/roomTypesPage';
 import CreateRoomTypePage from '../room-types/createRoom-typesPage';
 

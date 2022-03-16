@@ -17,9 +17,11 @@ const CreateReservationPage = () => {
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState(false);
 
-  const handleReservation = () => {
+  const handleReservation = async () => {
     if (Object.keys(ReservationFormValidator(reservationData)).length === 0) {
-      makeReservation(reservationData, setApiError).then(() => history.push('/reservations'));
+      if ((await makeReservation(reservationData, setApiError)) === 'valid') {
+        history.push('/reservations');
+      }
     }
     setErrors(ReservationFormValidator(reservationData));
   };
