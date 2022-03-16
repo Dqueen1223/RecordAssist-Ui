@@ -3,22 +3,19 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import fetchReservations from './reservationsService';
 import ReservationsTable from './reservationsTable';
-// import fetchRoomTypeById from './fetchRoomTypeService';
 
 /**
- * @name Reservations
+ * @name ReservationsPage
  * @description displays reservations page content
  * @return component
  */
-const Reservations = () => {
+const ReservationsPage = () => {
   const [reservations, setReservations] = useState([]);
   const [apiError, setApiError] = useState(false);
-  // const [roomTypes, setRoomTypes] = useState([]);
   const [deletedReservation, setDeletedReservation] = useState([]);
 
   useEffect(() => {
     fetchReservations(setReservations, setApiError);
-    // fetchRoomType(setRoomTypes, setApiError);
   }, [deletedReservation]);
   return (
     <div className="main">
@@ -52,4 +49,4 @@ const Reservations = () => {
   );
 };
 
-export default Reservations;
+export default ReservationsPage;

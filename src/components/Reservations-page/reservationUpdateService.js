@@ -7,13 +7,14 @@ import Constants from '../../utils/constants';
  * @param {*} setApiError sets error if response other than 200 is returned
  * @returns update for products if 200 response, else throws an apiError
  */
-export default async function updateRoomType(roomType, setApiError) {
+export default async function updateRoomType(reservation, setApiError) {
   let checkValid = 'invalid';
-  await HttpHelper(Constants.ROOMTYPES_ENDPOINT, 'PUT', {
-    name: roomType.name,
-    description: roomType.description,
-    rate: roomType.rate,
-    active: roomType.active
+  await HttpHelper(Constants.RESERVATIONS_ENDPOINT, 'PUT', {
+    user: 'employee@hotelapi.com',
+    guestEmail: reservation.email,
+    roomTypeId: reservation.roomTypeId,
+    checkInDate: reservation.checkIn,
+    numberOfNights: reservation.nights
   })
     .then((response) => {
       if (response.ok) {
@@ -22,6 +23,8 @@ export default async function updateRoomType(roomType, setApiError) {
       }
       throw new Error(Constants.API_ERROR);
     })
-    .catch(() => { setApiError(true); });
+    .catch(() => {
+      setApiError(true);
+    });
   return checkValid;
 }

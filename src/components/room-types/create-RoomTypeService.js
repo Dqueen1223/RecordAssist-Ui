@@ -1,7 +1,7 @@
 import HttpHelper from '../../utils/HttpHelper';
 import Constants from '../../utils/constants';
 
-export default async function makeRoomType(roomTypeData) {
+export default async function makeRoomType(roomTypeData, setApiError) {
   let checkValid = 'invalid';
   await HttpHelper(Constants.ROOMTYPES_ENDPOINT, 'POST', {
     name: roomTypeData.name,
@@ -17,6 +17,6 @@ export default async function makeRoomType(roomTypeData) {
         throw new Error(response.statusText);
       }
     })
-    .catch(() => { });
+    .catch(() => { setApiError(true); });
   return checkValid;
 }

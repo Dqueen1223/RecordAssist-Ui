@@ -4,11 +4,11 @@ import fetchRoomType from './roomService';
 import RoomTypesTable from './room-typesTable';
 
 /**
- * @name RoomTypes
+ * @name RoomTypesPage
  * @description displays RoomTypes page content
  * @return component
  */
-const RoomTypes = () => {
+const RoomTypesPage = () => {
   const [roomTypes, setRoomTypes] = useState([]);
   const [apiError, setApiError] = useState(false);
 
@@ -46,4 +46,4 @@ const RoomTypes = () => {
   );
 };
 
-export default RoomTypes;
+export default RoomTypesPage;

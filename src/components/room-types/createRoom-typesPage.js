@@ -3,15 +3,19 @@ import { useHistory } from 'react-router-dom';
 import FormItem from '../create-review/forms/FormItem';
 import makeRoomType from './create-RoomTypeService';
 import RoomTypeFormValidator from './roomTypesFormValidator';
+import Constants from '../../utils/constants';
+
 /**
- * @name CreateRoomType
+ * @name CreateRoomTypePage
  * @description displays CreateRoomType page content
  * @return component
  */
-const CreateRoomType = () => {
+const CreateRoomTypePage = () => {
   const history = useHistory();
 
   const [checked, setChecked] = useState(false);
+  const [apiError, setApiError] = useState(false);
+
   const handleCheck = () => {
     if (checked === true) {
       setChecked(false);
@@ -26,7 +30,7 @@ const CreateRoomType = () => {
   const handleRoomType = async () => {
     roomTypeData.active = checked.toString();
     if (Object.keys(RoomTypeFormValidator(roomTypeData)).length === 0) {
-      if ((await makeRoomType(roomTypeData)) === 'valid') {
+      if ((await makeRoomType(roomTypeData, setApiError)) === 'valid') {
         history.push('/maintenance');
       }
     }
@@ -38,6 +42,11 @@ const CreateRoomType = () => {
   };
   return (
     <div className="createRoomInput">
+      {apiError && (
+        <p className="errors" data-testid="errors">
+          {Constants.API_ERROR}
+        </p>
+      )}
       <FormItem
         type="text"
         id="name"
@@ -74,4 +83,4 @@ const CreateRoomType = () => {
     </div>
   );
 };
-export default CreateRoomType;
+export default CreateRoomTypePage;

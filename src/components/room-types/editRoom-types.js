@@ -5,13 +5,14 @@ import updateRoomType from './editRoomTypeUpdateService';
 import RoomTypeFormValidator from './roomTypesFormValidator';
 import fetchRoomTypeById from './editRoomTypeService';
 import '../Reservations-page/Reservations.modules.css';
+import Constants from '../../utils/constants';
 
 /**
- * @name EditRoomTypes
+ * @name EditRoomTypesPage
  * @description displays EditRoomTypes page content
  * @return component
  */
-const EditRoomTypes = () => {
+const EditRoomTypesPage = () => {
   const history = useHistory();
   const { id } = useParams();
   const [roomTypeData, setRoomTypeData] = useState([]);
@@ -34,7 +35,7 @@ const EditRoomTypes = () => {
   const handleRoomType = async () => {
     roomTypeData.active = checked.toString();
     if (Object.keys(RoomTypeFormValidator(roomTypeData)).length === 0) {
-      if ((await updateRoomType(roomTypeData)) === 'valid') {
+      if ((await updateRoomType(roomTypeData, setApiError)) === 'valid') {
         history.push('/maintenance');
       }
     }
@@ -45,7 +46,11 @@ const EditRoomTypes = () => {
   };
   return (
     <div className="createRoomInput">
-      {apiError}
+      {apiError && (
+        <p className="errors" data-testid="errors">
+          {Constants.API_ERROR}
+        </p>
+      )}
       <FormItem
         type="text"
         placeholder={roomType.name}
@@ -86,4 +91,4 @@ const EditRoomTypes = () => {
   );
 };
 
-export default EditRoomTypes;
+export default EditRoomTypesPage;

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FormItem from '../create-review/forms/FormItem';
-import makeReservation from './create-reservationService';
+import editReservation from './reservationUpdateService';
 import ReservationFormValidator from './reservationFormValidator';
 import fetchReservationById from './reservationByIdService';
+import Constants from '../../utils/constants';
 import './Reservations.modules.css';
 /**
- * @name EditReservation
+ * @name EditReservationPage
  * @description displays EditReservation page content
  * @return component
  */
-const EditReservation = () => {
+const EditReservationPage = () => {
   const history = useHistory();
   const { id } = useParams();
   const [reservationData, setReservationData] = useState([]);
@@ -24,7 +25,7 @@ const EditReservation = () => {
 
   const handleReservation = () => {
     if (Object.keys(ReservationFormValidator(reservationData)).length === 0) {
-      makeReservation(reservationData).then(() => history.push('/reservations'));
+      editReservation(reservationData).then(() => history.push('/reservations'));
     }
     setErrors(ReservationFormValidator(reservationData));
   };
@@ -33,7 +34,11 @@ const EditReservation = () => {
   };
   return (
     <div className="createRoomInput">
-      {apiError}
+      {apiError && (
+        <p className="errors" data-testid="errors">
+          {Constants.API_ERROR}
+        </p>
+      )}
       <FormItem
         placeholder={reservation.guestEmail}
         type="email"
@@ -74,4 +79,4 @@ const EditReservation = () => {
   );
 };
 
-export default EditReservation;
+export default EditReservationPage;

@@ -7,18 +7,18 @@ import {
 import ProductPage from '../product-page/ProductPage';
 // import CheckoutPage from '../checkout-page/CheckoutPage';
 import ConfirmationPage from '../confirmation-page/ConfirmationPage';
-import Reservations from '../Reservations-page/ReservationsPage';
-import CreateReservation from '../Reservations-page/create-reservation';
+import ReservationsPage from '../Reservations-page/ReservationsPage';
+import CreateReservationPage from '../Reservations-page/createReservationPage';
 import ProfilePage from '../Profile/Profilepage';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import LogoutPage from '../Profile/Logoutpage';
 import CreateProduct from '../create-product/CreateProduct';
 import MaintenancePage from '../maintenance-page/MaintenancePage';
-import EditReservation from '../Reservations-page/editReservationPage';
-import EditRoomTypes from '../room-types/editRoom-types';
-import RoomTypes from '../room-types/roomTypesPage';
-import CreateRoomType from '../room-types/createRoom-types';
+import EditReservationPage from '../Reservations-page/editReservationPage';
+import EditRoomTypesPage from '../room-types/editRoom-types';
+import RoomTypesPage from '../room-types/roomTypesPage';
+import CreateRoomTypePage from '../room-types/createRoom-typesPage';
 
 toast.configure();
 /**
@@ -37,15 +37,15 @@ const App = () => (
     </div>
     <Switch>
       <Route exact path="/" render={() => <ProductPage />} />
-      <Route exact path="/reservations" render={() => <Reservations />} />
-      <Route exact path="/room-types/create" render={() => <CreateRoomType />} />
-      <Route exact path="/room-types" render={() => <RoomTypes />} />
-      <Route exact path="/reservations/create" render={() => <CreateReservation />} />
+      <Route exact path="/reservations" render={() => <ReservationsPage />} />
+      <Route exact path="/room-types/create" render={() => <CreateRoomTypePage />} />
+      <Route exact path="/room-types" render={() => <RoomTypesPage />} />
+      <Route exact path="/reservations/create" render={() => <CreateReservationPage />} />
       <Route path="/reservations/edit/:id">
-        <EditReservation />
+        <EditReservationPage />
       </Route>
       <Route path="/room-types/edit/:id">
-        <EditRoomTypes />
+        <EditRoomTypesPage />
       </Route>
       <Route exact path="/confirmation" render={() => <ConfirmationPage />} />
       <Route exact path="/profilepage" render={() => <ProfilePage />} />

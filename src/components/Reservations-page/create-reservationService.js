@@ -1,15 +1,15 @@
 import HttpHelper from '../../utils/HttpHelper';
 
 export default async function makeReservation(
-  reservationData
+  reservation, setApiError
 ) {
   await HttpHelper('reservations', 'POST', {
     user: 'employee@hotelapi.com',
-    guestEmail: reservationData.email,
+    guestEmail: reservation.email,
     roomTypeId: 3,
-    checkInDate: reservationData.checkIn,
-    numberOfNights: reservationData.nights
+    checkInDate: reservation.checkIn,
+    numberOfNights: reservation.nights
   })
     .then((response) => response.json())
-    .catch(() => {});
+    .catch(() => { setApiError(true); });
 }
