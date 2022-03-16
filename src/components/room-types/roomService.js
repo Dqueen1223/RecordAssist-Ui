@@ -1,5 +1,5 @@
 import HttpHelper from '../../utils/HttpHelper';
-
+import Constants from '../../utils/constants';
 /**
  *
  * @name fetchRoom
@@ -14,7 +14,7 @@ export default async function fetchRoomType(setRoomType, setApiError) {
       if (response.ok) {
         return response.json();
       }
-      throw new Error('room-types');
+      throw new Error(Constants.API_ERROR);
     })
     .then(setRoomType)
     .catch(() => {

@@ -23,9 +23,12 @@ const CreateRoomType = () => {
 
   const [errors, setErrors] = useState({});
 
-  const handleRoomType = () => {
+  const handleRoomType = async () => {
+    roomTypeData.active = checked.toString();
     if (Object.keys(RoomTypeFormValidator(roomTypeData)).length === 0) {
-      makeRoomType(roomTypeData).then(() => history.push('/room-types'));
+      if ((await makeRoomType(roomTypeData)) === 'valid') {
+        history.push('/maintenance');
+      }
     }
     setErrors(RoomTypeFormValidator(roomTypeData));
   };
@@ -58,7 +61,7 @@ const CreateRoomType = () => {
       <div>
         <p>Active</p>
         <input
-          id="Active"
+          id="active"
           onChange={handleCheck}
           type="checkbox"
           label="Active"
