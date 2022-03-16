@@ -11,9 +11,5 @@ export default async function makeReservation(
     numberOfNights: reservationData.nights
   })
     .then((response) => response.json())
-    .catch(() => {
-      /* eslint-disable no-console */
-      console.log('Failed to purchase');
-      /* eslint-enable no-console */
-    });
+    .catch(() => {});
 }

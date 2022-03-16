@@ -32,7 +32,7 @@ export default function ReservationFormValidator(reservationData) {
   ) {
     errors.numberOfNights = 'The nights field is required';
   } else if (reservationData.numberOfNights <= 0) {
-    errors.numberOfNights = 'Must be greater than zero';
+    errors.numberOfNights = 'Must be number greater than zero';
   }
   return errors;
 }

@@ -68,7 +68,7 @@ const EditReservation = () => {
         <option>Extended Stay</option>
       </select>
       <button onClick={handleReservation} type="submit">
-        Create
+        Update
       </button>
     </div>
   );

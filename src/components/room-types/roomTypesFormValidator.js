@@ -4,36 +4,24 @@
  * @param {*} RoomTypeData
  * @returns errors
  */
-export default function ReservationFormValidator(RoomTypeData) {
+export default function RoomTypeFormValidator(RoomTypeData) {
   // const history = useHistory();
   const errors = {};
   if (
-    RoomTypeData.email === undefined
-    || RoomTypeData.email.trim() === ''
+    RoomTypeData.name === undefined
+    || RoomTypeData.name.trim() === ''
   ) {
-    errors.email = 'The email field is required';
-  } else if (
-    !/[a-z0-9]+([_a-z0-9.-]*[a-z0-9]+)?@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]+$)/iy.test(
-      RoomTypeData.email
-    )
-  ) {
-    errors.email = 'Must be a valid email';
+    errors.name = 'The name field is required';
+  } else if (RoomTypeData.name.length < 3) {
+    errors.name = 'Must be at least 3 characters';
   }
   if (
-    RoomTypeData.checkIn === undefined
-    || RoomTypeData.checkIn.trim() === ''
+    RoomTypeData.rate === undefined
+    || RoomTypeData.rate.trim() === ''
   ) {
-    errors.checkIn = 'The check in field is required';
-  } else if (!/\d{2}-(\d{2})-(\d{4})$/.test(RoomTypeData.checkIn)) {
-    errors.checkIn = 'Date must be mm-dd-yyyy';
-  }
-  if (
-    RoomTypeData.nights === undefined
-    || RoomTypeData.nights.trim() === ''
-  ) {
-    errors.nights = 'The nights field is required';
-  } else if (RoomTypeData.nights <= 0) {
-    errors.nights = 'Must be greater than zero';
+    errors.rate = 'The rate field is required';
+  } else if (RoomTypeData.rate <= 0) {
+    errors.rate = 'Must be number greater than zero ';
   }
   return errors;
 }

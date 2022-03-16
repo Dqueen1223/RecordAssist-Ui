@@ -4,7 +4,11 @@ import './Reservations.modules.css';
 import deleteReservation from './reservationDeleteService';
 import constants from '../../utils/constants';
 
-const ReservationsTable = ({ reservation, roomType }) => {
+const ReservationsTable = ({
+  reservation,
+  roomType,
+  setDeletedReservation
+}) => {
   const [apiError, setApiError] = useState(false);
   return (
     <>
@@ -20,7 +24,10 @@ const ReservationsTable = ({ reservation, roomType }) => {
           <button
             type="button"
             className="Delete"
-            onClick={() => deleteReservation(reservation, setApiError)}
+            onClick={() => {
+              deleteReservation(reservation, setApiError);
+              setDeletedReservation(reservation);
+            }}
           >
             Delete
           </button>

@@ -7,13 +7,14 @@ const RoomTypesTable = ({ roomType, active, apiError }) => (
   <>
     <tr>
       <td className="tableCells">
-        <button
-          type="button"
-          onClick={<Link to={`/reservations/edit/${roomType.id}`} />}
-          className="Edit"
-        >
-          Edit
-        </button>
+        <Link to={`/room-types/edit/${roomType.id}`}>
+          <button
+            type="button"
+            className="Edit"
+          >
+            Edit
+          </button>
+        </Link>
         {apiError && <p>{constants.API_ERROR}</p>}
       </td>
       <td className="tableCells">{roomType.name}</td>

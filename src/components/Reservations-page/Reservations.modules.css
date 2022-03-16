@@ -58,6 +58,7 @@ tbody {
   font-size: 50px;
   text-align: center;
   position: absolute;
+  left: 1020px;
   top: 150px;
   width: 15%;
   padding: 10px;
@@ -65,8 +66,8 @@ tbody {
 }
 
 #reservationsTable{
-  position: absolute;
-  top: 450px;
+  position: relative;
+  top: 125px;
   left: 25px;
   margin-left: auto;
   margin-right: auto;

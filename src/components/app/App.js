@@ -16,6 +16,7 @@ import LogoutPage from '../Profile/Logoutpage';
 import CreateProduct from '../create-product/CreateProduct';
 import MaintenancePage from '../maintenance-page/MaintenancePage';
 import EditReservation from '../Reservations-page/editReservationPage';
+import EditRoomTypes from '../room-types/editRoom-types';
 import RoomTypes from '../room-types/roomTypesPage';
 import CreateRoomType from '../room-types/createRoom-types';
 
@@ -40,9 +41,11 @@ const App = () => (
       <Route exact path="/room-types/create" render={() => <CreateRoomType />} />
       <Route exact path="/room-types" render={() => <RoomTypes />} />
       <Route exact path="/reservations/create" render={() => <CreateReservation />} />
-      {/* <Route path="/reservations/edit/:id" render={() => <EditReservation />} /> */}
       <Route path="/reservations/edit/:id">
         <EditReservation />
+      </Route>
+      <Route path="/room-types/edit/:id">
+        <EditRoomTypes />
       </Route>
       <Route exact path="/confirmation" render={() => <ConfirmationPage />} />
       <Route exact path="/profilepage" render={() => <ProfilePage />} />

@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import FormItem from '../create-review/forms/FormItem';
 import makeRoomType from './create-RoomTypeService';
 import RoomTypeFormValidator from './roomTypesFormValidator';
+import fetchRoomTypeById from './editRoomTypeService';
+import '../Reservations-page/Reservations.modules.css';
+
 /**
- * @name CreateRoomType
- * @description displays CreateRoomType page content
+ * @name EditRoomTypes
+ * @description displays EditRoomTypes page content
  * @return component
  */
-const CreateRoomType = () => {
+const EditRoomTypes = () => {
   const history = useHistory();
-
-  const [checked, setChecked] = useState(false);
-  const handleCheck = () => {
-    if (checked === true) {
-      setChecked(false);
-    } else {
-      setChecked(true);
-    }
-  };
+  const { id } = useParams();
   const [roomTypeData, setRoomTypeData] = useState([]);
-
+  const [roomType, setRoomType] = useState({});
+  const [apiError, setApiError] = useState(false);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    fetchRoomTypeById(setRoomType, id, setApiError);
+  }, [id]);
 
   const handleRoomType = () => {
     if (Object.keys(RoomTypeFormValidator(roomTypeData)).length === 0) {
@@ -29,14 +29,15 @@ const CreateRoomType = () => {
     }
     setErrors(RoomTypeFormValidator(roomTypeData));
   };
-
   const onRoomTypeChange = (e) => {
     setRoomTypeData({ ...roomTypeData, [e.target.id]: e.target.value });
   };
   return (
     <div className="createRoomInput">
+      {apiError}
       <FormItem
         type="text"
+        placeholder={roomType.name}
         id="name"
         onChange={onRoomTypeChange}
         label="Room Type Name"
@@ -44,31 +45,24 @@ const CreateRoomType = () => {
       <div className="errors">{errors.name}</div>
       <FormItem
         type="textarea"
+        placeholder={roomType.description}
         id="description"
         onChange={onRoomTypeChange}
-        label="Description"
+        label="description"
       />
       <FormItem
         type="number"
+        placeholder={roomType.rate}
         id="rate"
         onChange={onRoomTypeChange}
-        label="Rate"
+        label="rate"
       />
       <div className="errors">{errors.rate}</div>
-      <div>
-        <p>Active</p>
-        <input
-          id="Active"
-          onChange={handleCheck}
-          type="checkbox"
-          label="Active"
-          value={checked}
-        />
-      </div>
       <button onClick={handleRoomType} type="submit">
-        Create
+        Update
       </button>
     </div>
   );
 };
-export default CreateRoomType;
+
+export default EditRoomTypes;
