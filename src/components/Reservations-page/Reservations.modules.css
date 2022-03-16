@@ -51,7 +51,9 @@ tbody {
   padding: 10px;
   color: blue;
 }
-
+.errors{
+  color: red;
+}
 #Reservationsbutton{
   font-size: 50px;
   text-align: center;

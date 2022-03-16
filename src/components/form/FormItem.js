@@ -17,7 +17,6 @@ const FormItem = ({
         <input
           className={styles.input}
           id={id}
-          // onBlur={handleErrors}
           onChange={onChange}
           placeholder={placeholder}
           type={type}

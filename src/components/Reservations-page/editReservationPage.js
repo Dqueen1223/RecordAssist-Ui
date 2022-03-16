@@ -4,6 +4,7 @@ import FormItem from '../create-review/forms/FormItem';
 import makeReservation from './create-reservationService';
 import ReservationFormValidator from './reservationFormValidator';
 import fetchReservationById from './reservationByIdService';
+import './Reservations.modules.css';
 /**
  * @name EditReservation
  * @description displays EditReservation page content
@@ -17,7 +18,6 @@ const EditReservation = () => {
   const [apiError, setApiError] = useState(false);
   const [errors, setErrors] = useState({});
 
-  console.log(id);
   useEffect(() => {
     fetchReservationById(setReservation, id, setApiError);
   }, [id]);
@@ -31,9 +31,9 @@ const EditReservation = () => {
   const onReservationChange = (e) => {
     setReservationData({ ...reservationData, [e.target.id]: e.target.value });
   };
-  console.log(reservation);
   return (
     <div className="createRoomInput">
+      {apiError}
       <FormItem
         placeholder={reservation.guestEmail}
         type="email"
@@ -41,7 +41,7 @@ const EditReservation = () => {
         onChange={onReservationChange}
         label="guest email address"
       />
-      {errors.guestEmail}
+      <div className="errors">{errors.guestEmail}</div>
       <FormItem
         placeholder={reservation.checkInDate}
         type="text"
@@ -49,7 +49,7 @@ const EditReservation = () => {
         label="check-in date"
         onChange={onReservationChange}
       />
-      {errors.checkInDate}
+      <div className="errors">{errors.checkInDate}</div>
       <FormItem
         placeholder={reservation.numberOfNights}
         type="number"
@@ -57,7 +57,7 @@ const EditReservation = () => {
         label="number of nights"
         onChange={onReservationChange}
       />
-      {errors.numberOfNights}
+      <div className="errors">{errors.numberOfNights}</div>
       <select onChange={onReservationChange}>
         <option>King</option>
         <option>King Double</option>

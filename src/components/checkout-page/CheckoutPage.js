@@ -68,7 +68,7 @@ const CheckoutPage = () => {
   };
   const [errors, setErrors] = React.useState({});
 
-  const handlePay = () => { 
+  const handlePay = () => {
     const productData = products.map(({ id, quantity }) => ({ id, quantity }));
     const productDataSend = [];
     for (let i = 0; i < productData.length; i += 1) {

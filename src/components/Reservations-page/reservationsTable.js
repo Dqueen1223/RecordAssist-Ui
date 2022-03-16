@@ -4,19 +4,17 @@ import './Reservations.modules.css';
 import deleteReservation from './reservationDeleteService';
 import constants from '../../utils/constants';
 
-const ReservationsTable = ({ reservation }) => {
+const ReservationsTable = ({ reservation, roomType }) => {
   const [apiError, setApiError] = useState(false);
   return (
     <>
       <tr>
         <td className="tableCells">
-          <button
-            type="button"
-            onClick={<Link to={`/reservations/edit/${reservation.id}`} />}
-            className="Edit"
-          >
-            Edit
-          </button>
+          <Link to={`reservations/edit/${reservation.id}`}>
+            <button type="button" className="Edit">
+              Edit
+            </button>
+          </Link>
         </td>
         <td className="tableCells">
           <button
@@ -32,7 +30,7 @@ const ReservationsTable = ({ reservation }) => {
         <td className="tableCells">{reservation.guestEmail}</td>
         <td className="tableCells">{reservation.checkInDate}</td>
         <td className="tableCells">{reservation.numberOfNights}</td>
-        <td className="tableCells">roomType</td>
+        <td className="tableCells">{roomType}</td>
       </tr>
     </>
   );
