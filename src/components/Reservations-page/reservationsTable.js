@@ -34,10 +34,10 @@ const ReservationsTable = ({
           {apiError && <p>{constants.API_ERROR}</p>}
         </td>
         <td className="tableCells">{reservation.guestEmail}</td>
-        <td className="tableCells">{reservation.roomType}</td>
+        {/* Should display the room type instead of room type id  */}
+        <td className="tableCells">{roomType}</td>
         <td className="tableCells">{reservation.checkInDate}</td>
         <td className="tableCells">{reservation.numberOfNights}</td>
-        <td className="tableCells">{roomType}</td>
       </tr>
     </>
   );

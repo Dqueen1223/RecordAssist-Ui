@@ -64,16 +64,19 @@ const CreateReservationPage = () => {
         onChange={onReservationChange}
       />
       <div className="errors">{errors.numberOfNights}</div>
-      {console.log(roomTypes.name)}
       <select
-        id="roomType"
+        id="roomTypeId"
         label="roomType"
         onChange={onReservationChange}
         value={reservationData.roomType}
       >
-        {roomTypes.map((roomType) => (
-          <option value={roomType.name}>{roomType.name}</option>
-        ))}
+        <option />
+        {roomTypes.map((roomType) => {
+          if (roomType.active) {
+            return (<option value={roomType.id}>{roomType.name}</option>);
+          }
+          return null;
+        })}
       </select>
       <button onClick={handleReservation} type="submit">
         Create
@@ -84,9 +87,5 @@ const CreateReservationPage = () => {
 // 17.Given a user clicks the button and no room type has been selected, the error
 // message Must select a room type appears near the room type select and any
 // values entered in an input are preserved.
-// 18.Given a user is selecting a room type, only room types that are active should be
-// displayed as options.
-// 19.Given a user clicks the button and successfully creates a reservation, they should
-// be redirected to the reservations page.
 
 export default CreateReservationPage;

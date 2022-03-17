@@ -7,10 +7,9 @@ export default async function makeReservation(
   await HttpHelper('reservations', 'POST', {
     user: 'employee@hotelapi.com',
     guestEmail: reservation.guestEmail,
-    roomTypeId: 3,
     checkInDate: reservation.checkInDate,
-    numberOfNights: reservation.numberOfNights
-    // roomTypeId: reservation.roomTypeId
+    numberOfNights: reservation.numberOfNights,
+    roomTypeId: reservation.roomTypeId
   })
     .then((response) => {
       if (response.ok) {

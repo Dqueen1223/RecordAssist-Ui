@@ -25,10 +25,12 @@ export default function ReservationFormValidator(reservationData) {
     errors.checkInDate = 'The check in field is required';
   } else if (!/\d{2}-(\d{2})-(\d{4})$/.test(reservationData.checkInDate)) {
     errors.checkInDate = 'Date must be mm-dd-yyyy';
+  } else if (!/^(0[1-9]|1[0-2])-(0[1-9]|1\d|2\d|3[01])-\d{4}$/.test(reservationData.checkInDate)) {
+    errors.checkInDate = 'Must be a valid date';
   }
   if (
     reservationData.numberOfNights === undefined
-    || reservationData.numberOfNights.trim() === ''
+      || reservationData.numberOfNights.trim() === ''
   ) {
     errors.numberOfNights = 'The nights field is required';
   } else if (reservationData.numberOfNights <= 0) {

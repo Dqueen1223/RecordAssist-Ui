@@ -5,7 +5,7 @@ import fetchReservations from './reservationsService';
 import ReservationsTable from './reservationsTable';
 import Constants from '../../utils/constants';
 import fetchRoomType from './fetchRoomTypeService';
-import fetchRoomTypeById from '../room-types/editRoomTypeService';
+
 /**
  * @name ReservationsPage
  * @description displays reservations page content
@@ -15,9 +15,11 @@ const ReservationsPage = () => {
   const [reservations, setReservations] = useState([]);
   const [apiError, setApiError] = useState(false);
   const [deletedReservation, setDeletedReservation] = useState([]);
+  const [roomTypes, setRoomTypes] = useState([]);
 
   useEffect(() => {
     fetchReservations(setReservations, setApiError);
+    fetchRoomType(setRoomTypes, setApiError);
   }, [deletedReservation]);
 
   return (
@@ -31,13 +33,11 @@ const ReservationsPage = () => {
         Reservations Page
       </p>
       <tr id="reservationsTable">
-        {}
         {reservations.map((reservation) => (
           <div key={reservation.id}>
-            {apiError}
             <ReservationsTable
               reservation={reservation}
-              roomType={fetchRoomTypeById(reservation)}
+              roomType={roomTypes.name}
               setDeletedReservation={setDeletedReservation}
               setApiError={setApiError}
             />

@@ -6,6 +6,8 @@ import ReservationFormValidator from './reservationFormValidator';
 import fetchReservationById from './reservationByIdService';
 import Constants from '../../utils/constants';
 import './Reservations.modules.css';
+import fetchRoomType from './fetchRoomTypeService';
+
 /**
  * @name EditReservationPage
  * @description displays EditReservation page content
@@ -18,14 +20,16 @@ const EditReservationPage = () => {
   const [reservation, setReservation] = useState({});
   const [apiError, setApiError] = useState(false);
   const [errors, setErrors] = useState({});
+  const [roomTypes, setRoomTypes] = useState([]);
 
   useEffect(() => {
     fetchReservationById(setReservation, id, setApiError);
+    fetchRoomType(setRoomTypes, setApiError);
   }, [id]);
 
   const handleReservation = async () => {
     if (Object.keys(ReservationFormValidator(reservationData)).length === 0) {
-      if ((await updateRoomType(reservationData, setApiError)) === 'valid') {
+      if ((await updateRoomType(reservationData, id, setApiError)) === 'valid') {
         history.push('/reservations');
       }
     }
@@ -65,14 +69,18 @@ const EditReservationPage = () => {
         onChange={onReservationChange}
       />
       <div className="errors">{errors.numberOfNights}</div>
-      <select onChange={onReservationChange}>
-        <option>King</option>
-        <option>King Double</option>
-        <option>Executive Suite</option>
-        <option>Honeymoon Suite</option>
-        <option>Queen</option>
-        <option>QueenDouble</option>
-        <option>Extended Stay</option>
+      <select
+        id="roomTypeId"
+        label="roomType"
+        onChange={onReservationChange}
+        value={reservationData.roomType}
+      >
+        {roomTypes.map((roomType) => {
+          if (roomType.active) {
+            return <option value={roomType.id}>{roomType.name}</option>;
+          }
+          return null;
+        })}
       </select>
       <button onClick={handleReservation} type="submit">
         Update
