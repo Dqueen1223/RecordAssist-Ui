@@ -73,6 +73,8 @@ tbody {
   margin-right: auto;
 }
 .createRoomInput{
+  position: relative;
+  top: 200px;
   padding: 5px 10px 5px 10px;
   width: 15%;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FormItem from '../form/FormItem';
+import FormItemTextArea from '../form/FormItemTextArea';
 import makeRoomType from './create-RoomTypeService';
 import RoomTypeFormValidator from './roomTypesFormValidator';
 import Constants from '../../utils/constants';
@@ -54,7 +55,7 @@ const CreateRoomTypePage = () => {
         label="Room Type Name"
       />
       <div className="errors">{errors.name}</div>
-      <FormItem
+      <FormItemTextArea
         type="textarea"
         id="description"
         onChange={onRoomTypeChange}
