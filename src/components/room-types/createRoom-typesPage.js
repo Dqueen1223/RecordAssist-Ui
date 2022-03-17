@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import FormItem from '../create-review/forms/FormItem';
+import FormItem from '../form/FormItem';
 import makeRoomType from './create-RoomTypeService';
 import RoomTypeFormValidator from './roomTypesFormValidator';
 import Constants from '../../utils/constants';

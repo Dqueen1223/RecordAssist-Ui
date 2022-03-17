@@ -48,8 +48,7 @@ const ReservationsPage = () => {
                   return (roomType.rate * reservation.numberOfNights);
                 }
                 return null;
-              })
-              }
+              })}
               setDeletedReservation={setDeletedReservation}
               setApiError={setApiError}
             />

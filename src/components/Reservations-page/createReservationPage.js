@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import FormItem from '../create-review/forms/FormItem';
+import FormItem from '../form/FormItem';
 import makeReservation from './create-reservationService';
 import ReservationFormValidator from './reservationFormValidator';
 import Constants from '../../utils/constants';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import FormItem from '../create-review/forms/FormItem';
+import FormItem from '../form/FormItem';
 import updateRoomType from './editRoomTypeUpdateService';
 import RoomTypeFormValidator from './roomTypesFormValidator';
 import fetchRoomTypeById from './editRoomTypeService';

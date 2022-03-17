@@ -7,7 +7,7 @@ import styles from './Footer.module.css';
  */
 const Footer = () => (
   <div className={styles.footer}>
-    <span>&copy; 2022 Sports Apparel, Inc.</span>
+    <span>&copy; HotelBookings.</span>
   </div>
 );
 
