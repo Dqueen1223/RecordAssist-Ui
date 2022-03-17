@@ -37,7 +37,19 @@ const ReservationsPage = () => {
           <div key={reservation.id}>
             <ReservationsTable
               reservation={reservation}
-              roomType={roomTypes.name}
+              roomType={roomTypes.map((roomType) => {
+                if (reservation.roomTypeId === roomType.id) {
+                  return roomType.name;
+                }
+                return null;
+              })}
+              roomPrice={roomTypes.map((roomType) => {
+                if (roomType.id === reservation.roomTypeId) {
+                  return (roomType.rate * reservation.numberOfNights);
+                }
+                return null;
+              })
+              }
               setDeletedReservation={setDeletedReservation}
               setApiError={setApiError}
             />
