@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import fetchReservations from './reservationsService';
 import ReservationsTable from './reservationsTable';
 import Constants from '../../utils/constants';
+import fetchRoomType from './fetchRoomTypeService';
+import fetchRoomTypeById from '../room-types/editRoomTypeService';
 /**
  * @name ReservationsPage
  * @description displays reservations page content
@@ -17,6 +19,7 @@ const ReservationsPage = () => {
   useEffect(() => {
     fetchReservations(setReservations, setApiError);
   }, [deletedReservation]);
+
   return (
     <div className="main">
       {apiError && (
@@ -34,6 +37,7 @@ const ReservationsPage = () => {
             {apiError}
             <ReservationsTable
               reservation={reservation}
+              roomType={fetchRoomTypeById(reservation)}
               setDeletedReservation={setDeletedReservation}
               setApiError={setApiError}
             />

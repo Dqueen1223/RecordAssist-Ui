@@ -21,7 +21,7 @@ export default async function updateRoomType(reservation, setApiError) {
         checkValid = 'valid';
         return response.json();
       }
-      throw new Error(Constants.API_ERROR);
+      throw new Error(Constants.RESERVATIONS_ENDPOINT);
     })
     .catch(() => {
       setApiError(true);

@@ -1,24 +1,27 @@
 import HttpHelper from '../../utils/HttpHelper';
-import Constants from '../../utils/constants';
 
 /**
  *
- * @name fetchRoomType
+ * @name fetchRoomTypeById
  * @description Utilizes HttpHelper to make a get request to an API
- * @param {*} setReservations sets state for reviews
+ * @param {*} roomTypeId the room types id
+ * @param {*} setRoomType sets state for room
  * @param {*} setApiError sets error if response other than 200 is returned
  * @returns sets state for products if 200 response, else sets state for apiError
  */
-export default async function fetchRoomType(setRoomType, setApiError) {
-  await HttpHelper(Constants.ROOMTYPES_ENDPOINT, 'GET')
+export default async function fetchRoomTypeById(roomTypeId, setRoomType, setApiError) {
+  let checkValid = 'invalid';
+  await HttpHelper(`room-types/${roomTypeId}`, 'GET')
     .then((response) => {
       if (response.ok) {
+        checkValid = 'valid';
         return response.json();
       }
-      throw new Error(Constants.ROOMTYPES_ENDPOINT);
+      throw new Error(`room-types/${roomTypeId}`);
     })
     .then(setRoomType)
     .catch(() => {
       setApiError(true);
     });
+  return checkValid;
 }

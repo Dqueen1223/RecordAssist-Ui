@@ -22,14 +22,15 @@ const FormItemDropdown = ({
           onBlur={onChange}
           value={value}
         >
-          {options.map((optionText) => (
-            <option
-              value={optionText}
-              key={optionText}
-            >
-              {optionText}
-            </option>
-          ))}
+            {options !== null || options !== undefined
+              ? options.map((optionText) => (
+                <option
+                  value={optionText}
+                  key={optionText}
+                >
+                  {optionText}
+                </option>
+              )) : null}
         </select>
         )}
         {error && (
@@ -40,14 +41,15 @@ const FormItemDropdown = ({
           onBlur={onChange}
           value={value}
         >
-          {options.map((optionText) => (
-            <option
-              value={optionText}
-              key={optionText}
-            >
-              {optionText}
-            </option>
-          ))}
+          {options !== null || options !== undefined
+            ? options.map((optionText) => (
+              <option
+                value={optionText}
+                key={optionText}
+              >
+                {optionText}
+              </option>
+            )) : null}
         </select>
         )}
         {!error && (<p className={styles.paragraph} />)}

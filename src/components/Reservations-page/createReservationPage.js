@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import FormItem from '../create-review/forms/FormItem';
 import makeReservation from './create-reservationService';
 import ReservationFormValidator from './reservationFormValidator';
 import Constants from '../../utils/constants';
+import fetchRoomType from './fetchRoomTypeService';
+// Code wont reach '../room-types/roomService.js' so a copy file was created
+
 /**
  * @name CreateReservationPage
  * @description displays CreateReservation page content
@@ -13,9 +16,13 @@ const CreateReservationPage = () => {
   const history = useHistory();
 
   const [reservationData, setReservationData] = useState([]);
-
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState(false);
+  const [roomTypes, setRoomType] = useState([]);
+
+  useEffect(() => {
+    fetchRoomType(setRoomType, setApiError);
+  }, []);
 
   const handleReservation = async () => {
     if (Object.keys(ReservationFormValidator(reservationData)).length === 0) {
@@ -25,6 +32,7 @@ const CreateReservationPage = () => {
     }
     setErrors(ReservationFormValidator(reservationData));
   };
+
   const onReservationChange = (e) => {
     setReservationData({ ...reservationData, [e.target.id]: e.target.value });
   };
@@ -56,14 +64,16 @@ const CreateReservationPage = () => {
         onChange={onReservationChange}
       />
       <div className="errors">{errors.numberOfNights}</div>
-      <select onChange={onReservationChange}>
-        <option>King</option>
-        <option>King Double</option>
-        <option>Executive Suite</option>
-        <option>Honeymoon Suite</option>
-        <option>Queen</option>
-        <option>QueenDouble</option>
-        <option>Extended Stay</option>
+      {console.log(roomTypes.name)}
+      <select
+        id="roomType"
+        label="roomType"
+        onChange={onReservationChange}
+        value={reservationData.roomType}
+      >
+        {roomTypes.map((roomType) => (
+          <option value={roomType.name}>{roomType.name}</option>
+        ))}
       </select>
       <button onClick={handleReservation} type="submit">
         Create

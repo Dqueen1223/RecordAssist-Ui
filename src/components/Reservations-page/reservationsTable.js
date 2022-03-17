@@ -33,8 +33,8 @@ const ReservationsTable = ({
           </button>
           {apiError && <p>{constants.API_ERROR}</p>}
         </td>
-        <td className="tableCells">{reservation.user}</td>
         <td className="tableCells">{reservation.guestEmail}</td>
+        <td className="tableCells">{reservation.roomType}</td>
         <td className="tableCells">{reservation.checkInDate}</td>
         <td className="tableCells">{reservation.numberOfNights}</td>
         <td className="tableCells">{roomType}</td>

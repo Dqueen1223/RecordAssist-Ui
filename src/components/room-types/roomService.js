@@ -2,7 +2,7 @@ import HttpHelper from '../../utils/HttpHelper';
 import Constants from '../../utils/constants';
 /**
  *
- * @name fetchRoom
+ * @name fetchRoomType
  * @description Utilizes HttpHelper to make a get request to an API
  * @param {*} setReservations sets state for reviews
  * @param {*} setApiError sets error if response other than 200 is returned

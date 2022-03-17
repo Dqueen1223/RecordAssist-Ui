@@ -18,6 +18,7 @@ import EditReservationPage from '../Reservations-page/editReservationPage';
 import EditRoomTypesPage from '../room-types/editRoom-typesPage';
 import RoomTypesPage from '../room-types/roomTypesPage';
 import CreateRoomTypePage from '../room-types/createRoom-typesPage';
+import NotFoundPage from '../notFound';
 
 toast.configure();
 /**
@@ -37,9 +38,17 @@ const App = () => (
     <Switch>
       <Route exact path="/" render={() => <ProductPage />} />
       <Route exact path="/reservations" render={() => <ReservationsPage />} />
-      <Route exact path="/room-types/create" render={() => <CreateRoomTypePage />} />
+      <Route
+        exact
+        path="/room-types/create"
+        render={() => <CreateRoomTypePage />}
+      />
       <Route exact path="/room-types" render={() => <RoomTypesPage />} />
-      <Route exact path="/reservations/create" render={() => <CreateReservationPage />} />
+      <Route
+        exact
+        path="/reservations/create"
+        render={() => <CreateReservationPage />}
+      />
       <Route path="/reservations/edit/:id">
         <EditReservationPage />
       </Route>
@@ -60,6 +69,7 @@ const App = () => (
         render={() => <CreateProduct />}
       />
       <Route exact path="/maintenance" render={() => <MaintenancePage />} />
+      <Route path="*" render={NotFoundPage} />
     </Switch>
     <Footer />
   </BrowserRouter>
