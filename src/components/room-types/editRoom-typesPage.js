@@ -19,7 +19,7 @@ const EditRoomTypesPage = () => {
   const [roomType, setRoomType] = useState({});
   const [apiError, setApiError] = useState(false);
   const [errors, setErrors] = useState({});
-  const [checked, setChecked] = useState();
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     fetchRoomTypeById(setRoomType, id, setApiError);
