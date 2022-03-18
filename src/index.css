@@ -15,10 +15,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
+#header{
+  color: black;
+  font-size: large;
+}
 .footer {
   align-items: center;
-  background-color: #1D2228; 
   color: #E1E2E2;
   display: flex;
   flex-direction: column;
@@ -26,7 +28,6 @@ code {
   justify-content:center;
   margin-top:10vh;
   width: 100%; 
-  
 }
 
 .header {
@@ -35,7 +36,6 @@ code {
   z-index: 1;
   margin-bottom: 10px;
   align-items: center;
-  background-color: #1D2228; 
   color: #E1E2E2;
   display: grid;
   grid-row: 50px;
@@ -46,46 +46,6 @@ code {
   width: 100%; ;
 }
 
-.googlebutton{
-  position: absolute;
-  left: 81%;
-  top: 20%;
-  padding-right: 20px;
-  margin-right: 20px;
-  flex-direction: row;
-  z-index: 1;
-}
-
-.carticon{
-height: 90%;
-position: absolute;
-left: 94%;
-bottom: 1%;
-padding-right:3%;
-padding-left: 1%;
-filter:invert(13%) opacity(90%); 
-float: right;
-}
-
-.applogo{
-  height: 75%;
-  position: absolute;
-  right: 95%;
-  bottom: 11%;
-   filter: invert(20%) sepia(56%) saturate(303%) hue-rotate(1deg) brightness(170%) contrast(90%);
-  float: left;
-}
-
-.profileicon{
-  height: 60px;
-  width: 100px;
-  position: absolute;
-  padding-right: 10px;
-  left:74.5%;
-  bottom: 7.5%;
-  flex-direction: row;
-  color: #FB8122;
-}
 #root{
   display:flex;
   flex-direction: column;
@@ -94,22 +54,6 @@ float: right;
   min-height: 100vh;
 }
 
-.cartQty{
-  align-items: center;
-  border-radius:50%;
-  background-color: #fb8122;
-  color:#E1E2E2;
-  display: flex;
-  font-size:.85rem;
-  font-weight: 600;
-  height:20px;
-  justify-content: center;
-  padding-bottom:1px;
-  width:20px;
-  position: absolute;
-  left: 97.1%;
-  top: 13%;
-}
 
 .btnTemp{
   background-color: white;

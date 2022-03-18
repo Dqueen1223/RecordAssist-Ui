@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
  */
 const Header = () => (
   <div className="header">
-    <header>Hotel Bookings</header>
+    <header id="header">Hotel Bookings</header>
     <Link to="/room-types">
       <p>Room Types</p>
     </Link>

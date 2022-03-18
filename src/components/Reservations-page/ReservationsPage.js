@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import fetchReservations from './reservationsService';
 import ReservationsTable from './reservationsTable';
 import Constants from '../../utils/constants';
-import fetchRoomType from './fetchRoomTypeService';
+import fetchRoomType from '../room-types/roomService';
 
 /**
  * @name ReservationsPage
@@ -17,6 +17,7 @@ const ReservationsPage = () => {
   const [deletedReservation, setDeletedReservation] = useState([]);
   const [roomTypes, setRoomTypes] = useState([]);
 
+  // UseEffect isn't Rerendering when a reservation is deleted
   useEffect(() => {
     fetchReservations(setReservations, setApiError);
     fetchRoomType(setRoomTypes, setApiError);
@@ -43,6 +44,7 @@ const ReservationsPage = () => {
             <th>Room name</th>
             <th>Check in Date</th>
             <th>Number of nights</th>
+            <th>Total cost</th>
           </tr>
           {reservations.map((reservation) => (
             <ReservationsTable

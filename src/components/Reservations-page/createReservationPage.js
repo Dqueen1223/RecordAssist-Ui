@@ -4,9 +4,7 @@ import FormItem from '../form/FormItem';
 import makeReservation from './create-reservationService';
 import ReservationFormValidator from './reservationFormValidator';
 import Constants from '../../utils/constants';
-import fetchRoomType from './fetchRoomTypeService';
-// Code wont reach '../room-types/roomService.js' so a copy file was created
-
+import fetchRoomType from '../room-types/roomService';
 /**
  * @name CreateReservationPage
  * @description displays CreateReservation page content

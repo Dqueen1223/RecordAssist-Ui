@@ -6,13 +6,13 @@ import {
 } from 'react-router-dom';
 import ReservationsPage from '../Reservations-page/ReservationsPage';
 import CreateReservationPage from '../Reservations-page/createReservationPage';
-import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import EditReservationPage from '../Reservations-page/editReservationPage';
 import EditRoomTypesPage from '../room-types/editRoom-typesPage';
 import RoomTypesPage from '../room-types/roomTypesPage';
 import CreateRoomTypePage from '../room-types/createRoom-typesPage';
 import NotFoundPage from '../notFound';
+import HomePage from '../Home/HomePage';
 
 toast.configure();
 /**
@@ -23,6 +23,7 @@ const App = () => (
   <BrowserRouter>
     <Header />
     <Switch>
+      <Route exact path="/" render={() => <HomePage />} />
       <Route exact path="/reservations" render={() => <ReservationsPage />} />
       <Route
         exact
@@ -43,7 +44,6 @@ const App = () => (
       </Route>
       <Route path="*" render={NotFoundPage} />
     </Switch>
-    <Footer />
   </BrowserRouter>
 );
 

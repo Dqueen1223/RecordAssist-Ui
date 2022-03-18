@@ -6,7 +6,7 @@ import ReservationFormValidator from './reservationFormValidator';
 import fetchReservationById from './reservationByIdService';
 import Constants from '../../utils/constants';
 import './Reservations.modules.css';
-import fetchRoomType from './fetchRoomTypeService';
+import fetchRoomType from '../room-types/roomService';
 
 /**
  * @name EditReservationPage
@@ -38,6 +38,12 @@ const EditReservationPage = () => {
   const onReservationChange = (e) => {
     setReservationData({ ...reservationData, [e.target.id]: e.target.value });
   };
+  if (reservationData.length === 0) {
+    reservationData.guestEmail = reservation.guestEmail;
+    reservationData.checkInDate = reservation.checkInDate;
+    reservationData.numberOfNights = reservation.numberOfNights;
+    reservationData.roomTypeId = reservation.roomTypeId;
+  }
   return (
     <div className="createRoomInput">
       {apiError && (
@@ -46,7 +52,7 @@ const EditReservationPage = () => {
         </p>
       )}
       <FormItem
-        placeholder={reservation.guestEmail}
+        value={reservationData.guestEmail}
         type="email"
         id="guestEmail"
         onChange={onReservationChange}
@@ -54,7 +60,7 @@ const EditReservationPage = () => {
       />
       <div className="errors">{errors.guestEmail}</div>
       <FormItem
-        placeholder={reservation.checkInDate}
+        value={reservationData.checkInDate}
         type="text"
         id="checkInDate"
         label="check-in date"
@@ -62,7 +68,7 @@ const EditReservationPage = () => {
       />
       <div className="errors">{errors.checkInDate}</div>
       <FormItem
-        placeholder={reservation.numberOfNights}
+        value={reservationData.numberOfNights}
         type="number"
         id="numberOfNights"
         label="number of nights"
@@ -73,8 +79,9 @@ const EditReservationPage = () => {
         id="roomTypeId"
         label="roomType"
         onChange={onReservationChange}
-        value={reservationData.roomType}
+        value={reservationData.roomTypeId}
       >
+        <option />
         {roomTypes.map((roomType) => {
           if (roomType.active) {
             return <option value={roomType.id}>{roomType.name}</option>;
