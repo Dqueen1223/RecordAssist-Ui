@@ -23,18 +23,28 @@ const ReservationsPage = () => {
   }, [deletedReservation]);
 
   return (
-    <div className="main">
+    <div className="table">
       {apiError && (
         <p className="errors" data-testid="errors">
           {Constants.API_ERROR}
         </p>
       )}
-      <p id="Reservations" style={{ color: 'blue' }}>
-        Reservations Page
-      </p>
-      <tr id="reservationsTable">
-        {reservations.map((reservation) => (
-          <div key={reservation.id}>
+      <Link to="reservations/create">
+        <button type="button" id="Reservationsbutton">
+          Create
+        </button>
+      </Link>
+      <div>
+        <table className="resTable">
+          <tr>
+            <th />
+            <th />
+            <th>Guest email</th>
+            <th>Room name</th>
+            <th>Check in Date</th>
+            <th>Number of nights</th>
+          </tr>
+          {reservations.map((reservation) => (
             <ReservationsTable
               reservation={reservation}
               roomType={roomTypes.map((roomType) => {
@@ -45,23 +55,16 @@ const ReservationsPage = () => {
               })}
               roomPrice={roomTypes.map((roomType) => {
                 if (roomType.id === reservation.roomTypeId) {
-                  return (roomType.rate * reservation.numberOfNights);
+                  return roomType.rate * reservation.numberOfNights;
                 }
                 return null;
               })}
               setDeletedReservation={setDeletedReservation}
               setApiError={setApiError}
             />
-          </div>
-        ))}
-      </tr>
-      {' '}
-      <Link to="reservations/create">
-        <button type="button" id="Reservationsbutton">
-          Create
-          {' '}
-        </button>
-      </Link>
+          ))}
+        </table>
+      </div>
     </div>
   );
 };

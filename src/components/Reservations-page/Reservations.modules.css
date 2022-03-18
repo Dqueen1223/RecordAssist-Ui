@@ -9,7 +9,7 @@ table {
 }
 
 thead, th {
-background-color: #fb8122;
+background-color: #22e2fb;
 max-width: 90vw;
 max-height: 40vh;
 position: sticky;
@@ -19,6 +19,7 @@ white-space: nowrap;
 }
 
 td {
+    background-color: aliceblue;
     border-style: solid;
     border-width: 0.5px;
     border-collapse: collapse;
@@ -33,11 +34,12 @@ tbody {
     padding: 10vh, 10vw;
 }
   
-.main{
+.table{
     min-height: 70vh;
-    /* background-color: rgba(221, 170, 103, 0.329); */
+    position: relative;
+    padding: 5px, 5px, 5px, 5px;
+    top: 115px;
   }
-
 #root{
   background-color: antiquewhite;
 }
@@ -57,9 +59,8 @@ tbody {
 #Reservationsbutton{
   font-size: 50px;
   text-align: center;
-  position: absolute;
-  left: 1020px;
-  top: 150px;
+  position: relative;
+  left: 25px;
   width: 15%;
   padding: 10px;
   color: blue;
@@ -67,7 +68,7 @@ tbody {
 
 #reservationsTable{
   position: relative;
-  top: 125px;
+  top: 25px;
   left: 25px;
   margin-left: auto;
   margin-right: auto;

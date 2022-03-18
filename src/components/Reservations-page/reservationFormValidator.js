@@ -8,7 +8,7 @@ export default function ReservationFormValidator(reservationData) {
   const errors = {};
   if (
     reservationData.guestEmail === undefined
-    || reservationData.guestEmail.trim() === ''
+    || reservationData.guestEmail === null
   ) {
     errors.guestEmail = 'The email field is required';
   } else if (
@@ -20,7 +20,7 @@ export default function ReservationFormValidator(reservationData) {
   }
   if (
     reservationData.checkInDate === undefined
-    || reservationData.checkInDate.trim() === ''
+    || reservationData.checkInDate === null
   ) {
     errors.checkInDate = 'The check in field is required';
   } else if (!/\d{2}-(\d{2})-(\d{4})$/.test(reservationData.checkInDate)) {
@@ -30,11 +30,14 @@ export default function ReservationFormValidator(reservationData) {
   }
   if (
     reservationData.numberOfNights === undefined
-      || reservationData.numberOfNights.trim() === ''
+      || reservationData.numberOfNights == null
   ) {
     errors.numberOfNights = 'The nights field is required';
   } else if (reservationData.numberOfNights <= 0) {
     errors.numberOfNights = 'Must be number greater than zero';
+  }
+  if (reservationData.roomTypeId === undefined || null) {
+    errors.roomType = 'Must select a room type';
   }
   return errors;
 }

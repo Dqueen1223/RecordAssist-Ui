@@ -5,24 +5,27 @@ afterEach(cleanup);
 const validForm = {
   guestEmail: 'E@gmail.com',
   checkInDate: '03-31-2222',
-  numberOfNights: 3
+  numberOfNights: 3,
+  roomTypeId: 1
 };
 const invalidForm = {
   guestEmail: 'gmail.com',
   checkInDate: '30-pp-2231',
   numberOfNights: 0
 };
-const SomewhatValidForm = {
+const somewhatValidForm = {
   guestEmail: 'something@gmail.com',
   checkInDate: '33-33-3333',
-  numberOfNights: 9
+  numberOfNights: 9,
+  roomType: 1
 };
-describe('Create and Edit reservation', () => {
+describe('Create and Edit reservation validation', () => {
   test('Empty fields return required error', () => {
     expect(reservationFormValidator({})).toStrictEqual({
       guestEmail: 'The email field is required',
       checkInDate: 'The check in field is required',
-      numberOfNights: 'The nights field is required'
+      numberOfNights: 'The nights field is required',
+      roomType: 'Must select a room type'
     });
   });
   test('Valid fields give no errors', () => {
@@ -39,7 +42,7 @@ describe('Create and Edit reservation', () => {
   });
   test('somewhatValidForm returns error', () => {
     expect(
-      reservationFormValidator(SomewhatValidForm).toStrictEqual({
+      reservationFormValidator(somewhatValidForm).toStrictEqual({
         checkInDate: 'Must be a valid date'
       })
     );

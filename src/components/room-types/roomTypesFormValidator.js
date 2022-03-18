@@ -5,11 +5,10 @@
  * @returns errors
  */
 export default function RoomTypeFormValidator(RoomTypeData) {
-  // const history = useHistory();
   const errors = {};
   if (
     RoomTypeData.name === undefined
-    || RoomTypeData.name.trim() === ''
+    || RoomTypeData.name === null
   ) {
     errors.name = 'The name field is required';
   } else if (RoomTypeData.name.length < 3) {
@@ -17,11 +16,11 @@ export default function RoomTypeFormValidator(RoomTypeData) {
   }
   if (
     RoomTypeData.rate === undefined
-    || RoomTypeData.rate.trim() === ''
+    || RoomTypeData.rate === null
   ) {
     errors.rate = 'The rate field is required';
   } else if (RoomTypeData.rate <= 0) {
-    errors.rate = 'Must be number greater than zero ';
+    errors.rate = 'Must be number greater than zero';
   }
   return errors;
 }

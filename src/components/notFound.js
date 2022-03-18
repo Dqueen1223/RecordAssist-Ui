@@ -1,9 +1,9 @@
 import React from 'react';
+import './notFound.css';
 
 const NotFoundPage = () => (
-  <div>
-    {console.log('ERROR 404')}
-    <p>
+  <div id="notFound">
+    <p id="notFound">
       ERROR:404 Page Not Found
     </p>
   </div>

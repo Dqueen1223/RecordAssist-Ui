@@ -73,19 +73,17 @@ const CreateReservationPage = () => {
         <option />
         {roomTypes.map((roomType) => {
           if (roomType.active) {
-            return (<option value={roomType.id}>{roomType.name}</option>);
+            return <option value={roomType.id}>{roomType.name}</option>;
           }
           return null;
         })}
       </select>
+      <div className="errors">{errors.roomType}</div>
       <button onClick={handleReservation} type="submit">
         Create
       </button>
     </div>
   );
 };
-// 17.Given a user clicks the button and no room type has been selected, the error
-// message Must select a room type appears near the room type select and any
-// values entered in an input are preserved.
 
 export default CreateReservationPage;

@@ -17,18 +17,27 @@ const RoomTypesPage = () => {
   }, []);
 
   return (
-    <div className="main">
-      <p id="reservations" style={{ color: 'blue' }}>
-        roomType Page
-      </p>
+    <div className="table">
       {apiError && (
         <p className="errors" data-testid="errors">
           {Constants.API_ERROR}
         </p>
       )}
-      <tr id="reservationsTable">
-        {roomTypes.map((roomType) => (
-          <div key={roomType.id}>
+      <Link to="room-types/create">
+        <button type="button" id="Reservationsbutton">
+          Create
+        </button>
+      </Link>
+      <div>
+        <table className="resTable">
+          <tr>
+            <th />
+            <th>Room name</th>
+            <th>Description</th>
+            <th>Rate</th>
+            <th>Activity</th>
+          </tr>
+          {roomTypes.map((roomType) => (
             <RoomTypesTable
               roomType={roomType}
               active={
@@ -36,16 +45,9 @@ const RoomTypesPage = () => {
               }
               apiError={apiError}
             />
-          </div>
-        ))}
-      </tr>
-      {' '}
-      <Link to="room-types/create">
-        <button type="button" id="Reservationsbutton">
-          Create
-          {'  '}
-        </button>
-      </Link>
+          ))}
+        </table>
+      </div>
     </div>
   );
 };
