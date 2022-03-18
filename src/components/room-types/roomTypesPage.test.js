@@ -2,12 +2,10 @@ import React from 'react';
 import { unmountComponentAtNode } from 'react-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { RoomService } from '@material-ui/icons';
 import RoomTypesPage from './roomTypesPage';
 import CreateRoomTypePage from './createRoom-typesPage';
 import fetchRoomType from './roomService';
 import RoomTypesTable from './room-typesTable';
-import makeRoomType from './create-RoomTypeService';
 
 jest.mock('./roomService');
 let container = null;

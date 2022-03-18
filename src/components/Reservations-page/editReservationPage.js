@@ -89,6 +89,7 @@ const EditReservationPage = () => {
           return null;
         })}
       </select>
+      <div className="errors">{errors.roomType}</div>
       <button onClick={handleReservation} type="submit">
         Update
       </button>

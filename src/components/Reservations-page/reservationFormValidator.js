@@ -36,7 +36,8 @@ export default function ReservationFormValidator(reservationData) {
   } else if (reservationData.numberOfNights <= 0) {
     errors.numberOfNights = 'Must be number greater than zero';
   }
-  if (reservationData.roomTypeId === undefined || null) {
+  if (reservationData.roomTypeId === undefined || reservationData.roomTypeId === null
+    || reservationData.roomTypeId === '') {
     errors.roomType = 'Must select a room type';
   }
   return errors;

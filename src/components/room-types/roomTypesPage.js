@@ -32,7 +32,7 @@ const RoomTypesPage = () => {
         <table className="resTable">
           <tr>
             <th />
-            <th>Room name</th>
+            <th>Room type</th>
             <th>Description</th>
             <th>Rate</th>
             <th>Activity</th>

@@ -19,12 +19,13 @@ const EditRoomTypesPage = () => {
   const [roomType, setRoomType] = useState({});
   const [apiError, setApiError] = useState(false);
   const [errors, setErrors] = useState({});
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState();
 
   useEffect(() => {
     fetchRoomTypeById(setRoomType, id, setApiError);
   }, [id]);
 
+  // handleCheck needs to return preset active value
   const handleCheck = () => {
     if (checked === true) {
       setChecked(false);
@@ -32,10 +33,11 @@ const EditRoomTypesPage = () => {
       setChecked(true);
     }
   };
+
   const handleRoomType = async () => {
     roomTypeData.active = checked.toString();
     if (Object.keys(RoomTypeFormValidator(roomTypeData)).length === 0) {
-      if ((await updateRoomType(roomTypeData, setApiError)) === 'valid') {
+      if ((await updateRoomType(roomTypeData, id, setApiError)) === 'valid') {
         history.push('/room-types');
       }
     }
@@ -44,6 +46,12 @@ const EditRoomTypesPage = () => {
   const onRoomTypeChange = (e) => {
     setRoomTypeData({ ...roomTypeData, [e.target.id]: e.target.value });
   };
+  if (roomTypeData.length === 0) {
+    roomTypeData.name = roomType.name;
+    roomTypeData.description = roomType.description;
+    roomTypeData.rate = roomType.rate;
+    roomTypeData.active = roomType.active;
+  }
   return (
     <div className="createRoomInput">
       {apiError && (
@@ -53,7 +61,7 @@ const EditRoomTypesPage = () => {
       )}
       <FormItem
         type="text"
-        placeholder={roomType.name}
+        value={roomTypeData.name}
         id="name"
         onChange={onRoomTypeChange}
         label="Room Type Name"
@@ -61,17 +69,17 @@ const EditRoomTypesPage = () => {
       <div className="errors">{errors.name}</div>
       <FormItem
         type="textarea"
-        placeholder={roomType.description}
+        value={roomTypeData.description}
         id="description"
         onChange={onRoomTypeChange}
-        label="description"
+        label="Description"
       />
       <FormItem
         type="number"
-        placeholder={roomType.rate}
+        value={roomTypeData.rate}
         id="rate"
         onChange={onRoomTypeChange}
-        label="rate"
+        label="Rate"
       />
       <div className="errors">{errors.rate}</div>
       <div>
