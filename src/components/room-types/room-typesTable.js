@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../Reservations-page/Reservations.modules.css';
+import '../PatientsPage/Reservations.modules.css';
 import constants from '../../utils/constants';
 
 const RoomTypesTable = ({ roomType, active, apiError }) => (

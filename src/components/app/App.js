@@ -4,15 +4,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import {
   BrowserRouter, Route, Switch
 } from 'react-router-dom';
-import ReservationsPage from '../Reservations-page/ReservationsPage';
-import CreateReservationPage from '../Reservations-page/createReservationPage';
+import PatientsPage from '../PatientsPage/PatientsPage';
+// import CreateReservationPage from '../PatientsPage/createReservationPage';
 import Header from '../header/Header';
-import EditReservationPage from '../Reservations-page/editReservationPage';
+import EditReservationPage from '../PatientsPage/editReservationPage';
 import EditRoomTypesPage from '../room-types/editRoom-typesPage';
 import RoomTypesPage from '../room-types/roomTypesPage';
 import CreateRoomTypePage from '../room-types/createRoom-typesPage';
 import NotFoundPage from '../notFound';
 import HomePage from '../Home/HomePage';
+import CreatePatientPage from '../PatientsPage/createPatientPage';
 
 toast.configure();
 /**
@@ -24,7 +25,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" render={() => <HomePage />} />
-      <Route exact path="/reservations" render={() => <ReservationsPage />} />
+      <Route exact path="/patients" render={() => <PatientsPage />} />
       <Route
         exact
         path="/room-types/create"
@@ -33,8 +34,8 @@ const App = () => (
       <Route exact path="/room-types" render={() => <RoomTypesPage />} />
       <Route
         exact
-        path="/reservations/create"
-        render={() => <CreateReservationPage />}
+        path="/patients/create"
+        render={() => <CreatePatientPage />}
       />
       <Route path="/reservations/edit/:id">
         <EditReservationPage />

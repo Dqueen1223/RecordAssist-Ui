@@ -4,7 +4,7 @@ import FormItem from '../form/FormItem';
 import updateRoomType from './editRoomTypeUpdateService';
 import RoomTypeFormValidator from './roomTypesFormValidator';
 import fetchRoomTypeById from './editRoomTypeService';
-import '../Reservations-page/Reservations.modules.css';
+import '../PatientsPage/Reservations.modules.css';
 import Constants from '../../utils/constants';
 
 /**

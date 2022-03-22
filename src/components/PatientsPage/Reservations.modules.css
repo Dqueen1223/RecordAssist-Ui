@@ -33,7 +33,13 @@ tbody {
     overflow: scroll;
     padding: 10vh, 10vw;
 }
-  
+
+.createPatientInput{
+  position: relative;
+  top: 150px;
+  padding: 5px 10px 5px 10px;
+  width: 15%;
+}
 .table{
     min-height: 70vh;
     position: relative;
