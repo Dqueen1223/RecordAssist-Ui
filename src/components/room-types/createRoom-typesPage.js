@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import FormItem from '../form/FormItem';
 import FormItemTextArea from '../form/FormItemTextArea';
 import makeRoomType from './create-RoomTypeService';
-import RoomTypeFormValidator from './roomTypesFormValidator';
+import RoomTypeFormValidator from './encountersFormValidator';
 import Constants from '../../utils/constants';
 
 /**

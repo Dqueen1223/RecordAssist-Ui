@@ -6,10 +6,10 @@
  */
 export default function PatientsFormValidator(patientData) {
   const errors = {};
-  const isEmpty = (PatientData) => {
-    if (PatientData === undefined
-      || PatientData === null
-      || PatientData === '') { return true; }
+  const isEmpty = (PatientInfo) => {
+    if (PatientInfo === undefined
+      || PatientInfo === null
+      || PatientInfo === '') { return true; }
     return false;
   };
   if (isEmpty(patientData.firstName)) {
@@ -63,7 +63,7 @@ export default function PatientsFormValidator(patientData) {
   }
   if (isEmpty(patientData.postal)) {
     errors.postal = 'Must include a zipCode';
-  } else if (!patientData.postal.match(/\d{5}$/) || !patientData.postal(/\d{5}-\d{4}$/)) {
+  } else if (!patientData.postal.match(/\d{5}$/) || !patientData.postal.match(/\d{5}-\d{4}$/)) {
     errors.postal = 'Must be a valid zip (ex. 12345 or 12345-6789)';
   }
   if (isEmpty(patientData.gender)) {

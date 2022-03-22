@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FormItem from '../form/FormItem';
 import updateRoomType from './editRoomTypeUpdateService';
-import RoomTypeFormValidator from './roomTypesFormValidator';
+import RoomTypeFormValidator from './encountersFormValidator';
 import fetchRoomTypeById from './editRoomTypeService';
 import '../PatientsPage/Reservations.modules.css';
 import Constants from '../../utils/constants';

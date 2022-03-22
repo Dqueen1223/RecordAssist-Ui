@@ -7,7 +7,7 @@ import {
 import PatientsPage from '../PatientsPage/PatientsPage';
 // import CreateReservationPage from '../PatientsPage/createReservationPage';
 import Header from '../header/Header';
-import EditReservationPage from '../PatientsPage/editReservationPage';
+import PatientDetailsPage from '../PatientsPage/patientDetailsPage';
 import EditRoomTypesPage from '../room-types/editRoom-typesPage';
 import RoomTypesPage from '../room-types/roomTypesPage';
 import CreateRoomTypePage from '../room-types/createRoom-typesPage';
@@ -37,8 +37,8 @@ const App = () => (
         path="/patients/create"
         render={() => <CreatePatientPage />}
       />
-      <Route path="/reservations/edit/:id">
-        <EditReservationPage />
+      <Route path="/patients/:id">
+        <PatientDetailsPage />
       </Route>
       <Route path="/room-types/edit/:id">
         <EditRoomTypesPage />
