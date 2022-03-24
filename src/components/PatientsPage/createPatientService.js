@@ -1,10 +1,10 @@
 import HttpHelper from '../../utils/HttpHelper';
+import Constants from '../../utils/constants';
 
 export default async function createPatient(
   patient, setApiError
 ) {
-  let checkValid = 'invalid';
-  await HttpHelper('patients', 'POST', {
+  await HttpHelper(Constants.PATIENTS_ENDPOINT, 'POST', {
     firstName: patient.firstName,
     lastName: patient.lastName,
     ssn: patient.ssn,
@@ -21,7 +21,7 @@ export default async function createPatient(
   })
     .then((response) => {
       if (response.ok) {
-        checkValid = 'valid';
+        // checkValid = 'valid';
         response.json();
       } else {
         throw new Error(response.statusText);
@@ -30,5 +30,5 @@ export default async function createPatient(
     .catch(() => {
       setApiError(true);
     });
-  return checkValid;
+  // return checkValid;
 }

@@ -2,9 +2,8 @@ import './Reservations.modules.css';
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import fetchPatients from './patientsService';
-import ReservationsTable from './reservationsTable';
+import PatientsTable from './patientsTable';
 import Constants from '../../utils/constants';
-// import fetchRoomType from '../room-types/roomService';
 
 /**
  * @name PatientsPage
@@ -14,12 +13,9 @@ import Constants from '../../utils/constants';
 const PatientsPage = () => {
   const [patients, setPatients] = useState([]);
   const [apiError, setApiError] = useState(false);
-  // const [roomTypes, setRoomTypes] = useState([]);
 
-  // UseEffect isn't Rerendering when a reservation is deleted
   useEffect(() => {
     fetchPatients(setPatients, setApiError);
-    // fetchRoomType(setRoomTypes, setApiError);
   }, []);
 
   return (
@@ -50,22 +46,8 @@ const PatientsPage = () => {
           </p>
           )}
           {patients.map((patient) => (
-            <ReservationsTable
+            <PatientsTable
               patient={patient}
-              // roomType={roomTypes.map((roomType) => {
-              //   if (patient.roomTypeId === roomType.id) {
-              //     return roomType.name;
-              //   }
-              //   return null;
-              // })}
-              // roomPrice={roomTypes.map((roomType) => {
-              //   if (roomType.id === patient.roomTypeId) {
-              //     return roomType.rate * patient.numberOfNights;
-              //   }
-              //   return null;
-              // })}
-              // setDeletedReservation={setDeletedReservation}
-              // setApiError={setApiError}
             />
           ))}
         </table>

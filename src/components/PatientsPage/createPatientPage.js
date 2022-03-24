@@ -11,12 +11,12 @@ import Constants from '../../utils/constants';
  */
 const CreatePatientPage = () => {
   const [patientData, setPatientData] = useState([]);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState([]);
   const [apiError, setApiError] = useState(false);
 
   const handlePatient = async () => {
-    if (PatientsFormValidator(patientData)) {
-      (await createPatient(patientData, setApiError));
+    if (Object.keys(PatientsFormValidator(patientData)).length === 0) {
+      await createPatient(patientData, setApiError);
     }
     setErrors(PatientsFormValidator(patientData));
   };
@@ -37,62 +37,105 @@ const CreatePatientPage = () => {
         onChange={onPatientChange}
         label="FirstName"
       />
-      <div className="errors">{errors}</div>
-      <FormItem
-        type="text"
-        id="lastName"
-        onChange={onPatientChange}
-        label="LastName"
-      />
+      <div className="errors">{errors.firstName}</div>
+      <div>
+        <FormItem
+          type="text"
+          id="lastName"
+          onChange={onPatientChange}
+          label="LastName"
+        />
+      </div>
       <div className="errors">{errors.lastName}</div>
-      <FormItem type="ssn" id="ssn" onChange={onPatientChange} label="ssn" />
+      <div>
+        <FormItem type="ssn" id="ssn" onChange={onPatientChange} label="ssn" />
+      </div>
       <div className="errors">{errors.ssn}</div>
-      {/* <FormItem
-        type="email"
-        id="email"
-        onChange={onPatientChange}
-        label="Email"
-      />
+      <div>
+        <FormItem
+          type="email"
+          id="email"
+          onChange={onPatientChange}
+          label="Email"
+        />
+      </div>
       <div className="errors">{errors.email}</div>
-      <FormItem
-        type="text"
-        id="street"
-        onChange={onPatientChange}
-        label="Street"
-      />
+      <div>
+        <FormItem
+          type="text"
+          id="street"
+          onChange={onPatientChange}
+          label="Street"
+        />
+      </div>
       <div className="errors">{errors.street}</div>
-      <FormItem type="text" id="city" onChange={onPatientChange} label="City" />
+      <div>
+        <FormItem
+          type="text"
+          id="city"
+          onChange={onPatientChange}
+          label="City"
+        />
+      </div>
       <div className="errors">{errors.city}</div>
-      <FormItem
-        type="text"
-        id="state"
-        onChange={onPatientChange}
-        label="State"
-      />
+      <div>
+        <FormItem
+          type="text"
+          id="state"
+          onChange={onPatientChange}
+          label="State"
+        />
+      </div>
       <div className="errors">{errors.state}</div>
-      <FormItem
-        type="text"
-        id="postal"
-        onChange={onPatientChange}
-        label="Zip Code"
-      />
+      <div>
+        <FormItem
+          type="text"
+          id="postal"
+          onChange={onPatientChange}
+          label="Zip Code"
+        />
+      </div>
       <div className="errors">{errors.postal}</div>
-      <FormItem type="text" id="age" onChange={onPatientChange} label="Age" />
+      <div>
+        <FormItem type="text" id="age" onChange={onPatientChange} label="Age" />
+      </div>
       <div className="errors">{errors.age}</div>
-      <FormItem
-        type="text"
-        id="height"
-        onChange={onPatientChange}
-        label="Height"
-      />
+      <div>
+        <FormItem
+          type="text"
+          id="height"
+          onChange={onPatientChange}
+          label="Height"
+        />
+      </div>
       <div className="errors">{errors.height}</div>
-      <FormItem
-        type="text"
-        id="weight"
-        onChange={onPatientChange}
-        label="Weight"
-      /> */}
+      <div>
+        <FormItem
+          type="text"
+          id="weight"
+          onChange={onPatientChange}
+          label="Weight"
+        />
+      </div>
       <div className="errors">{errors.weight}</div>
+      <div>
+        <FormItem
+          type="text"
+          id="insurance"
+          onChange={onPatientChange}
+          label="Insurance"
+        />
+        <div className="errors">{errors.insurance}</div>
+      </div>
+      <div>
+        <FormItem
+          type="text"
+          id="gender"
+          onChange={onPatientChange}
+          label="Gender"
+        />
+      </div>
+      <div className="errors">{errors.gender}</div>
       <button onClick={handlePatient} type="submit">
         Create
       </button>

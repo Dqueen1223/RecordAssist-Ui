@@ -67,7 +67,7 @@ export default function RoomTypeFormValidator(encounterData) {
       /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/
     )
   ) {
-    errors.date = 'Date must match format YYYY-MM-DD  (ex. 2020-01-01),';
+    errors.date = 'Date must match format YYYY-MM-DD  (ex. 2020-01-01)';
   }
   return errors;
 }

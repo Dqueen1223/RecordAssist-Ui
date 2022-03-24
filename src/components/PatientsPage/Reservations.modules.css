@@ -61,6 +61,15 @@ tbody {
 }
 .errors{
   color: red;
+  padding: 6px, 4px,6px,4px;
+}
+.conflictError{
+  position: absolute;
+  color: red;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  text-size-adjust: small;
 }
 #Reservationsbutton{
   font-size: 50px;
@@ -89,4 +98,13 @@ tbody {
 .tableCells{
     padding: 12px 18px 12px 18px;
     text-align: center;
+}
+.patientsDetails{
+  left: 1em;
+  top: 5em;
+  position: relative;
+  padding: 5px 10px 5px 10px;
+}
+.editPatient{
+  width: 15%;
 }

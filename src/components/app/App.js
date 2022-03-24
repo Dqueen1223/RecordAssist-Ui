@@ -37,7 +37,7 @@ const App = () => (
         path="/patients/create"
         render={() => <CreatePatientPage />}
       />
-      <Route path="/patients/:id">
+      <Route path="/patients/details/:id">
         <PatientDetailsPage />
       </Route>
       <Route path="/room-types/edit/:id">
