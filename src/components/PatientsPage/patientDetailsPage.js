@@ -66,10 +66,8 @@ const PatientDetailsPage = () => {
         </p>
       )}
       <div>
-        <Link to="/patients/details/:id/encounters/create">
-          <button type="button">
-            Create Encounter
-          </button>
+        <Link to={`/patients/encounters/create/${id}`}>
+          <button type="button">Create Encounter</button>
         </Link>
         {edit && (
           <>

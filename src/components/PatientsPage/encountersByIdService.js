@@ -18,11 +18,9 @@ export default async function fetchEncountersByPatientId(
   await HttpHelper(`${Constants.PATIENTS_ENDPOINT}/${Id}${Constants.ENCOUNTERS_ENDPOINT}`, 'GET')
     .then((response) => {
       if (response.ok) {
-        console.log(response.status);
         return response.json();
       }
       if (response.status === 404) {
-        console.log(response.status);
         setNotFoundError(true);
         throw new Error(response.statusText);
       } else if (response.status !== 200) {

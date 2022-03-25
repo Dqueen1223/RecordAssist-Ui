@@ -35,7 +35,6 @@ const PatientsPage = () => {
           <tr>
             <th />
             <th />
-            <th />
             <th>Name</th>
             <th>Age</th>
             <th>Gender</th>

@@ -14,6 +14,7 @@ import CreateRoomTypePage from '../room-types/createRoom-typesPage';
 import NotFoundPage from '../notFound';
 import HomePage from '../Home/HomePage';
 import CreatePatientPage from '../PatientsPage/createPatientPage';
+import CreateEncountersPage from '../room-types/createEncountersPage';
 
 toast.configure();
 /**
@@ -39,6 +40,10 @@ const App = () => (
       />
       <Route path="/patients/details/:id">
         <PatientDetailsPage />
+      </Route>
+      {/* /patients/details/${id}/encounters/create */}
+      <Route path="/patients/encounters/create/:id">
+        <CreateEncountersPage />
       </Route>
       <Route path="/room-types/edit/:id">
         <EditRoomTypesPage />

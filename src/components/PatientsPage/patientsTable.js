@@ -21,13 +21,6 @@ const PatientsTable = ({ patient }) => {
           )}
         </td>
         <td className="tableCells">
-          <Link to={`Patients/edit/${patient.id}`}>
-            <button type="button" className="Edit">
-              Edit Patient
-            </button>
-          </Link>
-        </td>
-        <td className="tableCells">
           {apiError && (
             <p className="errors" data-testid="errors">
               {Constants.API_ERROR}

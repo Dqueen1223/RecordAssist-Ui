@@ -4,7 +4,7 @@
  * @param {*} encounterData
  * @returns errors
  */
-export default function RoomTypeFormValidator(encounterData) {
+export default function EncounterFormValidator(encounterData) {
   const errors = {};
   const isEmpty = (encounterInfo) => {
     if (
@@ -36,31 +36,34 @@ export default function RoomTypeFormValidator(encounterData) {
     errors.billingCode = 'BillingCode must match format of xxx.xxx.xxx-xx (ex. 123.456.789-12)';
   }
   if (isEmpty(encounterData.icd10)) {
-    errors.icd10 = 'idc10 is required';
+    errors.icd10 = 'Idc10 is required';
   } else if (!encounterData.icd10.match(/[a-zA-Z]{1}\d{2}$/)) {
-    errors.icd10 = ' idc10 must match format of LDD (ex. A12)';
+    errors.icd10 = ' Idc10 must match format of LDD (ex. A12)';
   }
   if (isEmpty(encounterData.totalCost)) {
     errors.totalCost = 'Total cost is required';
-  } else if (Number.isNaN(encounterData.totalCost)) {
+  } else if (!Number.isNaN(encounterData.totalCost)) {
     errors.totalCost = 'Total cost must be a number';
   } if (isEmpty(encounterData.copay)) {
-    errors.copay = 'copay is required';
-  } else if (Number.isNaN(encounterData.copay)) {
-    errors.copay = 'copay must be a number';
+    errors.copay = 'Copay is required';
+  } else if (!Number.isNaN(encounterData.copay)) {
+    errors.copay = 'Copay must be a number';
   } if (isEmpty(encounterData.chiefComplaint)) {
-    errors.chiefComplaint = 'chief Complaint is required';
+    errors.chiefComplaint = 'Chief Complaint is required';
   }
-  if (Number.isNaN(encounterData.pulse)) {
+  if (!isEmpty(encounterData.pulse) && !encounterData.pulse.match(/^\d*$/)) {
     errors.pulse = 'Pulse must be a number';
   }
-  if (Number.isNaN(encounterData.systolic)) {
+  if (encounterData.systolic && !encounterData.systolic.match(/^\d*$/)) {
     errors.systolic = 'Systolic pressure must be a number';
   }
-  if (Number.isNaN(encounterData.diastolic)) {
+  if (
+    !isEmpty(encounterData.diastolic)
+    && !encounterData.diastolic.match(/^\d*$/)
+  ) {
     errors.diastolic = 'Diastolic pressure must be a number';
   }
-  if (encounterData.date) {
+  if (isEmpty(encounterData.date)) {
     errors.date = 'Date is required';
   } else if (
     !encounterData.date.match(
