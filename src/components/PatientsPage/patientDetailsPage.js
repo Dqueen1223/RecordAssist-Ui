@@ -274,6 +274,7 @@ const PatientDetailsPage = () => {
         )}
         <div>
           <tr>
+            <th />
             <th>Encounter Id</th>
             <th>Visit code</th>
             <th>Provider</th>

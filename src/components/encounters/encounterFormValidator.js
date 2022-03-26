@@ -21,7 +21,7 @@ export default function EncounterFormValidator(encounterData) {
     errors.visitCode = 'Visit Code is required';
   } else if (
     !encounterData.visitCode.match(
-      /[a-zA-Z]{1}\d{1}[a-zA-Z]{1}\s\d{1}[a-zA-Z]{1}\d{1}$/
+      /^[a-zA-Z]{1}\d{1}[a-zA-Z]{1}\s\d{1}[a-zA-Z]{1}\d{1}$/
     )
   ) {
     errors.visitCode = 'Visit Code Format must match LDL DLD (ex. A1S 2D3)';
@@ -32,21 +32,21 @@ export default function EncounterFormValidator(encounterData) {
   }
   if (isEmpty(encounterData.billingCode)) {
     errors.billingCode = 'BillingCode is required';
-  } else if (!encounterData.billingCode.match(/\d{3}\.\d{3}\.\d{3}-\d{2}$/)) {
+  } else if (!encounterData.billingCode.match(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)) {
     errors.billingCode = 'BillingCode must match format of xxx.xxx.xxx-xx (ex. 123.456.789-12)';
   }
   if (isEmpty(encounterData.icd10)) {
     errors.icd10 = 'Idc10 is required';
-  } else if (!encounterData.icd10.match(/[a-zA-Z]{1}\d{2}$/)) {
+  } else if (!encounterData.icd10.match(/^[a-zA-Z]{1}\d{2}$/)) {
     errors.icd10 = ' Idc10 must match format of LDD (ex. A12)';
   }
   if (isEmpty(encounterData.totalCost)) {
     errors.totalCost = 'Total cost is required';
-  } else if (!Number.isNaN(encounterData.totalCost)) {
+  } else if (!/^[0-9]*?.\d{2}$/.test(encounterData.totalCost)) {
     errors.totalCost = 'Total cost must be a number';
   } if (isEmpty(encounterData.copay)) {
     errors.copay = 'Copay is required';
-  } else if (!Number.isNaN(encounterData.copay)) {
+  } else if (!(/^\d*$/).test(encounterData.copay)) {
     errors.copay = 'Copay must be a number';
   } if (isEmpty(encounterData.chiefComplaint)) {
     errors.chiefComplaint = 'Chief Complaint is required';

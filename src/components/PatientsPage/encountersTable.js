@@ -1,6 +1,7 @@
 import React from 'react';
 import './Reservations.modules.css';
 
+import { Link } from 'react-router-dom';
 import Constants from '../../utils/constants';
 
 const EncountersTable = ({
@@ -18,7 +19,12 @@ const EncountersTable = ({
           There are no encounter associated with this patient
         </p>
       )}
-      <td className="tableCells">{`${encounter.patientId}`}</td>
+      <td className="tableCells">
+        <Link to={`/patients/encounters/details/${encounter.id}`}>
+          <button type="button">Encounter details</button>
+        </Link>
+      </td>
+      <td className="tableCells">{`${encounter.id}`}</td>
       <td className="tableCells">{encounter.visitCode}</td>
       <td className="tableCells">{encounter.provider}</td>
       <td className="tablCells">{date}</td>

@@ -10,11 +10,21 @@ import RoomTypesTable from './room-typesTable';
 jest.mock('./roomService');
 let container = null;
 
-const validRoomType = {
+const valid = {
+  billingCode: '123.456.789-00',
+  chiefComplaint: 'new complaint',
+  copay: 0,
+  date: '2020-08-04T00:00:00',
+  diastolic: null,
+  icd10: 'Z99',
   id: 1,
-  name: 'King',
-  rate: 123,
-  description: 'Very comfortable'
+  notes: 'new encounter Whoadwdwed',
+  patientId: 1,
+  provider: 'New Hospital',
+  pulse: null,
+  systolic: null,
+  totalCost: 343.11,
+  visitCode: 'N3W 3C3'
 };
 
 describe('RoomTypesPage', () => {

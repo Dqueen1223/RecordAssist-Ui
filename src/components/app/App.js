@@ -8,13 +8,14 @@ import PatientsPage from '../PatientsPage/PatientsPage';
 // import CreateReservationPage from '../PatientsPage/createReservationPage';
 import Header from '../header/Header';
 import PatientDetailsPage from '../PatientsPage/patientDetailsPage';
-import EditRoomTypesPage from '../room-types/editRoom-typesPage';
-import RoomTypesPage from '../room-types/roomTypesPage';
-import CreateRoomTypePage from '../room-types/createRoom-typesPage';
+import EditRoomTypesPage from '../encounters/editRoom-typesPage';
+import RoomTypesPage from '../encounters/roomTypesPage';
+import CreateRoomTypePage from '../encounters/createRoom-typesPage';
 import NotFoundPage from '../notFound';
 import HomePage from '../Home/HomePage';
 import CreatePatientPage from '../PatientsPage/createPatientPage';
-import CreateEncountersPage from '../room-types/createEncountersPage';
+import CreateEncountersPage from '../encounters/createEncountersPage';
+import EncounterDetailsPage from '../encounters/encounterDetailsPage';
 
 toast.configure();
 /**
@@ -41,7 +42,9 @@ const App = () => (
       <Route path="/patients/details/:id">
         <PatientDetailsPage />
       </Route>
-      {/* /patients/details/${id}/encounters/create */}
+      <Route path="/patients/encounters/details/:id">
+        <EncounterDetailsPage />
+      </Route>
       <Route path="/patients/encounters/create/:id">
         <CreateEncountersPage />
       </Route>

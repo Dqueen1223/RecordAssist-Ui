@@ -8,12 +8,12 @@ import { Link } from 'react-router-dom';
  */
 const Header = () => (
   <div className="header">
-    <header id="header">Hotel Bookings</header>
-    <Link to="/room-types">
-      <p>Room Types</p>
+    <header id="header">Super Health Inc. </header>
+    <Link to="/">
+      <p>Home page</p>
     </Link>
-    <Link to="/reservations">
-      <p>Reservations</p>
+    <Link to="/patients">
+      <p>Patients</p>
     </Link>
   </div>
 );

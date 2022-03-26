@@ -1,6 +1,6 @@
-# Hotel Bookings
+# Super Health Inc.
 
-This is a starter project for a Hotel bookings that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a starter project for a Super Health Inc. that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Install Prerequisites
 
@@ -27,10 +27,10 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ## Dependencies
-* Hotel Bookings api must be running.
+* Super Health Inc api must be running.
 
 ## Testing
-* You can run tests with coverage via `npm run test:coverage`
+* You can run tests with coverage via `npm run test`
 
 ## Linting
-* To lint this project run `npm run eslint`
+* To lint this project run `npm run lint`

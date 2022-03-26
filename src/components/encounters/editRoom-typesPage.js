@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import FormItem from '../form/FormItem';
-import FormItemTextArea from '../form/FormItemTextArea';
-import makeRoomType from './createEncounterService';
-import RoomTypeFormValidator from './encountersFormValidator';
+import updateRoomType from './editRoomTypeUpdateService';
+import RoomTypeFormValidator from './encounterFormValidator';
+import fetchRoomTypeById from '../PatientsPage/encountersByIdService';
+import '../PatientsPage/Reservations.modules.css';
 import Constants from '../../utils/constants';
 
 /**
- * @name CreateRoomTypePage
- * @description displays CreateRoomType page content
+ * @name EditRoomTypesPage
+ * @description displays EditRoomTypes page content
  * @return component
  */
-const CreateRoomTypePage = () => {
+const EditRoomTypesPage = () => {
   const history = useHistory();
-
-  const [checked, setChecked] = useState(false);
+  const { id } = useParams();
+  const [roomTypeData, setRoomTypeData] = useState([]);
+  const [roomType, setRoomType] = useState({});
   const [apiError, setApiError] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [checked, setChecked] = useState(false);
 
+  useEffect(() => {
+    fetchRoomTypeById(setRoomType, id, setApiError);
+  }, [id]);
+
+  // handleCheck needs to return preset active value
   const handleCheck = () => {
     if (checked === true) {
       setChecked(false);
@@ -24,23 +33,25 @@ const CreateRoomTypePage = () => {
       setChecked(true);
     }
   };
-  const [roomTypeData, setRoomTypeData] = useState([]);
-
-  const [errors, setErrors] = useState({});
 
   const handleRoomType = async () => {
     roomTypeData.active = checked.toString();
     if (Object.keys(RoomTypeFormValidator(roomTypeData)).length === 0) {
-      if ((await makeRoomType(roomTypeData, setApiError)) === 'valid') {
+      if ((await updateRoomType(roomTypeData, id, setApiError)) === 'valid') {
         history.push('/room-types');
       }
     }
     setErrors(RoomTypeFormValidator(roomTypeData));
   };
-
   const onRoomTypeChange = (e) => {
     setRoomTypeData({ ...roomTypeData, [e.target.id]: e.target.value });
   };
+  if (roomTypeData.length === 0) {
+    roomTypeData.name = roomType.name;
+    roomTypeData.description = roomType.description;
+    roomTypeData.rate = roomType.rate;
+    roomTypeData.active = roomType.active;
+  }
   return (
     <div className="createRoomInput">
       {apiError && (
@@ -50,19 +61,22 @@ const CreateRoomTypePage = () => {
       )}
       <FormItem
         type="text"
+        value={roomTypeData.name}
         id="name"
         onChange={onRoomTypeChange}
         label="Room Type Name"
       />
       <div className="errors">{errors.name}</div>
-      <FormItemTextArea
+      <FormItem
         type="textarea"
+        value={roomTypeData.description}
         id="description"
         onChange={onRoomTypeChange}
         label="Description"
       />
       <FormItem
         type="number"
+        value={roomTypeData.rate}
         id="rate"
         onChange={onRoomTypeChange}
         label="Rate"
@@ -79,9 +93,10 @@ const CreateRoomTypePage = () => {
         />
       </div>
       <button onClick={handleRoomType} type="submit">
-        Create
+        Update
       </button>
     </div>
   );
 };
-export default CreateRoomTypePage;
+
+export default EditRoomTypesPage;

@@ -1,29 +1,28 @@
 import React, { useState } from 'react';
 import FormItem from '../form/FormItem';
 import createEncounter from './createEncounterService';
-import EncounterFormValidator from './encountersFormValidator';
+import EncounterFormValidator from './encounterFormValidator';
 import Constants from '../../utils/constants';
 
 /**
  * @name CreateEncountersPage
- * @description displays CreateReservation page content
+ * @description displays CreateEncountersPage page content
  * @return component
  */
 const CreateEncountersPage = () => {
-//   const { id } = useParams();
-  const [patientData, setPatientData] = useState([]);
+  const [encounterData, setEncounterData] = useState([]);
   const [errors, setErrors] = useState([]);
   const [apiError, setApiError] = useState(false);
 
   const handleEncounter = async () => {
-    if (Object.keys(EncounterFormValidator(patientData)).length === 0) {
-      await createEncounter(patientData, setApiError);
+    if (Object.keys(EncounterFormValidator(encounterData)).length === 0) {
+      await createEncounter(encounterData, setApiError);
     }
-    setErrors(EncounterFormValidator(patientData));
+    setErrors(EncounterFormValidator(encounterData));
   };
 
   const onEncounterChange = (e) => {
-    setPatientData({ ...patientData, [e.target.id]: e.target.value });
+    setEncounterData({ ...encounterData, [e.target.id]: e.target.value });
   };
   return (
     <div className="createPatientInput">
