@@ -5,7 +5,7 @@ import EncounterFormValidator from './encounterFormValidator';
 import Constants from '../../utils/constants';
 import '../PatientsPage/Reservations.modules.css';
 import fetchEncountersByPatientId from '../PatientsPage/encountersByIdService';
-import updateEncounter from './editRoomTypeUpdateService';
+import updateEncounter from './encounterUpdateService';
 import EncounterDetails from '../form/Formdetails';
 
 /**
