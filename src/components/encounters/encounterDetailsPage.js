@@ -6,6 +6,7 @@ import Constants from '../../utils/constants';
 import '../PatientsPage/Reservations.modules.css';
 import fetchEncountersByPatientId from '../PatientsPage/encountersByIdService';
 import updateEncounter from './editRoomTypeUpdateService';
+import EncounterDetails from '../form/Formdetails';
 
 /**
  * @name EncounterDetailsPage
@@ -28,7 +29,15 @@ const EncounterDetailsPage = () => {
       setNotFoundError
     );
   }, [id]);
-
+  const cancelEdit = () => {
+    setEdit(false);
+    fetchEncountersByPatientId(
+      setEncounterData,
+      id,
+      setApiError,
+      setNotFoundError
+    );
+  };
   const handleSubmitEdit = async () => {
     if (Object.keys(EncounterFormValidator(encounterData)).length === 0) {
       await updateEncounter(encounterData, id, setApiError);
@@ -54,7 +63,7 @@ const EncounterDetailsPage = () => {
         {edit && (
           <>
             <div>
-              <button type="button" onClick={() => setEdit(false)}>
+              <button type="button" onClick={() => cancelEdit()}>
                 Cancel edit
               </button>
             </div>
@@ -71,16 +80,17 @@ const EncounterDetailsPage = () => {
               <div className="errors">{errors.notes}</div>
               <div>
                 <FormItem
-                  type="visitCode"
+                  type="text"
                   id="visitCode"
                   value={encounterData.visitCode}
+                  onChange={onPatientChange}
                   label="visit Code"
                 />
               </div>
               <div className="errors">{errors.visitCode}</div>
               <div>
                 <FormItem
-                  type="provider"
+                  type="text"
                   id="provider"
                   value={encounterData.provider}
                   onChange={onPatientChange}
@@ -112,7 +122,7 @@ const EncounterDetailsPage = () => {
                 <FormItem
                   type="text"
                   id="totalCost"
-                  value={encounterData.totalCost}
+                  value={encounterData.pulse}
                   onChange={onPatientChange}
                   label="Total cost"
                 />
@@ -171,7 +181,7 @@ const EncounterDetailsPage = () => {
                 <FormItem
                   type="text"
                   id="date"
-                  value={encounterData.date.substring(0, 10)}
+                  value={encounterData.date}
                   onChange={onPatientChange}
                   label="Date"
                 />
@@ -191,59 +201,7 @@ const EncounterDetailsPage = () => {
               </button>
             </div>
             <div>
-              <p>
-                Id:
-                {encounterData.id}
-              </p>
-              <p>
-                Notes:
-                {encounterData.notes}
-              </p>
-              <p>
-                VisitCode:
-                {encounterData.visitCode}
-              </p>
-              <p>
-                Provider:
-                {encounterData.provider}
-              </p>
-              <p>
-                Billing Code:
-                {encounterData.billingCode}
-              </p>
-              <p>
-                Icd10:
-                {encounterData.icd10}
-              </p>
-              <p>
-                Total Cost
-                {encounterData.totalCost}
-              </p>
-
-              <p>
-                Copay:
-                {encounterData.copay}
-              </p>
-              <p>
-                Chief Complaint:
-                {encounterData.chiefComplaint}
-              </p>
-              <p>
-                Pulse:
-                {encounterData.pulse}
-              </p>
-              <p>
-                Systolic pressure:
-                {encounterData.systolic}
-              </p>
-              <p>
-                Diastolic pressure:
-                {encounterData.diastolic}
-              </p>
-              <p>
-                Date:
-                {encounterData.date}
-              </p>
+              <EncounterDetails encounterData={encounterData} />
             </div>
           </>
         )}

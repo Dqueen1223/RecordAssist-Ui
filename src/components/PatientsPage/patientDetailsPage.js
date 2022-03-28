@@ -7,7 +7,7 @@ import fetchPatientById from './patientByIdService';
 import Constants from '../../utils/constants';
 import './Reservations.modules.css';
 import EncountersTable from './encountersTable';
-import fetchEncountersByPatientId from './encountersByIdService';
+import fetchEncounterByPatientId from './encountersByPatientIdService';
 
 /**
  * @name PatientDetailsPage
@@ -16,7 +16,7 @@ import fetchEncountersByPatientId from './encountersByIdService';
  */
 const PatientDetailsPage = () => {
   const { id } = useParams();
-  const [patient, setPatient] = useState({});
+  // const [patientData, setPatient] = useState({});
   const [apiError, setApiError] = useState(false);
   const [edit, setEdit] = useState(false);
   const [errors, setErrors] = useState([]);
@@ -25,39 +25,25 @@ const PatientDetailsPage = () => {
   const [notFoundError, setNotFoundError] = useState(false);
 
   useEffect(() => {
-    fetchPatientById(setPatient, id, setApiError);
-    fetchEncountersByPatientId(
-      setEncounters,
-      id,
-      setApiError,
-      setNotFoundError
-    );
+    fetchPatientById(setPatientData, id, setApiError);
+    fetchEncounterByPatientId(setEncounters, id, setApiError, setNotFoundError);
   }, [id]);
 
   const handleSubmitEdit = async () => {
     if (Object.keys(PatientsFormValidator(patientData)).length === 0) {
-      await updatePatient(patientData, setApiError);
+      if (await updatePatient(patientData, setApiError) === 'valid') {
+        setEdit(false);
+      }
     }
     setErrors(PatientsFormValidator(patientData));
+  };
+  const cancelEdit = () => {
+    setEdit(false);
+    fetchPatientById(setPatientData, id, setApiError);
   };
   const onPatientChange = (e) => {
     setPatientData({ ...patientData, [e.target.id]: e.target.value });
   };
-  if (patientData.length === 0) {
-    patientData.firstName = patient.firstName;
-    patientData.lastName = patient.lastName;
-    patientData.ssn = patient.ssn;
-    patientData.email = patient.email;
-    patientData.street = patient.street;
-    patientData.city = patient.city;
-    patientData.state = patient.state;
-    patientData.postal = patient.postal;
-    patientData.age = patient.age;
-    patientData.height = patient.height;
-    patientData.weight = patient.weight;
-    patientData.insurance = patient.insurance;
-    patientData.gender = patient.gender;
-  }
   return (
     <div className="patientsDetails">
       {apiError && (
@@ -72,7 +58,7 @@ const PatientDetailsPage = () => {
         {edit && (
           <>
             <div>
-              <button type="button" onClick={() => setEdit(false)}>
+              <button type="button" onClick={() => cancelEdit()}>
                 Cancel edit
               </button>
             </div>
@@ -100,6 +86,7 @@ const PatientDetailsPage = () => {
                   type="ssn"
                   id="ssn"
                   value={patientData.ssn}
+                  onChange={onPatientChange}
                   label="ssn"
                 />
               </div>
@@ -214,60 +201,60 @@ const PatientDetailsPage = () => {
           <>
             <div>
               <button type="button" onClick={() => setEdit(true)}>
-                Edit
+                Edit Patient
               </button>
             </div>
             <div>
               <p>
                 Name:
-                {patient.lastName}
+                {patientData.lastName}
                 ,
                 {' '}
-                {patient.firstName}
+                {patientData.firstName}
               </p>
               <p>
                 Ssn:
                 {' '}
-                {patient.ssn}
+                {patientData.ssn}
               </p>
               <p>
                 Address:
                 {' '}
-                {patient.street}
+                {patientData.street}
                 ,
-                {patient.city}
-                ,
-                {' '}
-                {patient.state}
+                {patientData.city}
                 ,
                 {' '}
-                {patient.postal}
+                {patientData.state}
+                ,
+                {' '}
+                {patientData.postal}
               </p>
 
               <p>
                 Age:
                 {' '}
-                {patient.age}
+                {patientData.age}
               </p>
               <p>
                 Height:
                 {' '}
-                {patient.height}
+                {patientData.height}
               </p>
               <p>
                 Weight:
                 {' '}
-                {patient.weight}
+                {patientData.weight}
               </p>
               <p>
                 Insurance:
                 {' '}
-                {patient.insurance}
+                {patientData.insurance}
               </p>
               <p>
                 Gender:
                 {' '}
-                {patient.gender}
+                {patientData.gender}
               </p>
             </div>
           </>

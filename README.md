@@ -30,7 +30,7 @@ You will also see any lint errors in the console.
 * Super Health Inc api must be running.
 
 ## Testing
-* You can run tests with coverage via `npm run test`
+* You can run tests with coverage via `npm run test a`
 
 ## Linting
 * To lint this project run `npm run lint`
