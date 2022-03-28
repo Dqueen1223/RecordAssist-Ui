@@ -1,6 +1,14 @@
 import HttpHelper from '../../utils/HttpHelper';
 import Constants from '../../utils/constants';
 
+/**
+ *
+ * @name createPatient
+ * @description Utilizes HttpHelper to make a get request to an API
+ * @param {*} patient to create
+ * @param {*} setApiError sets error if response other than 200 is returned
+ * @returns sets state for patient if 200 response, else sets state for apiError
+ */
 export default async function createPatient(
   patient, setApiError
 ) {

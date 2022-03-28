@@ -6,7 +6,9 @@ import Constants from '../../utils/constants';
  * @name fetchEncounterByPatientId
  * @description Utilizes HttpHelper to make a get request to an API
  * @param {*} setEncounters sets state for encounters
- * @param {*} setApiError sets error if response other than 200 is returned
+ * @param {*} patient Id to besearched for
+ * @param {*} setApiError sets error if response other than 200 or 404 is returned
+ * @param {*} setNotFoundError set error if there is a 404
  * @returns sets state for encounters if 200 response, else sets state for apiError
  */
 export default async function fetchEncounterByPatientId(

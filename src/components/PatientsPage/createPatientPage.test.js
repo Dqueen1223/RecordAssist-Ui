@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import user from '@testing-library/user-event';
 import { Container } from 'react-bootstrap';
 import CreatePatientPage from './createPatientPage';
+import createPatient from './createPatientService';
 
 jest.mock('./createPatientService');
 let container = null;
@@ -23,12 +24,12 @@ describe('CreatePatient', () => {
     container = null;
   });
   it('Will Validate that the user can type in a given field', () => {
-    createEncounter.mockImplementation((patient, setApiError) => {
+    createPatient.mockImplementation((patient, setApiError) => {
       setApiError(true);
     });
     render(
       <Router>
-        <CreateEncountersPage />
+        <CreatePatientPage />
       </Router>,
       container
     );

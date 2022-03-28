@@ -6,7 +6,8 @@ import Constants from '../../utils/constants';
  * @name DeletePatient
  * @description Utilizes HttpHelper to make a get request to an API
  * @param {*} Patient to be deleted
- * @param {*} setApiError sets error if response other than 200 is returned
+ * @param {*} setApiError sets error if response other than 200 or 409 is returned
+ * @param {*} setConflictError sets error if the patient has associated encounters
  * @returns sets state for products if 200 response, else sets state for apiError
  */
 export default async function DeletePatient(patient, setApiError, setConflictError) {

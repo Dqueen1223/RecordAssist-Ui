@@ -6,16 +6,18 @@ import Constants from '../../utils/constants';
  * @name fetchEncounterByEncounterId
  * @description Utilizes HttpHelper to make a get request to an API
  * @param {*} setEncounters sets state for encounters
- * @param {*} setApiError sets error if response other than 200 is returned
+ * @param {*} encounterId to fetch
+ * @param {*} setApiError sets error if response other than 200 or 404 is returned
+ * @param {*} setNotFoundError set error if there is a 404
  * @returns sets state for encounters if 200 response, else sets state for apiError
  */
 export default async function fetchEncounterByEncounterId(
   setEncounters,
-  Id,
+  encounterId,
   setApiError,
   setNotFoundError
 ) {
-  await HttpHelper(`${Constants.ENCOUNTERS_ENDPOINT}/${Id}`, 'GET')
+  await HttpHelper(`${Constants.ENCOUNTERS_ENDPOINT}/${encounterId}`, 'GET')
     .then((response) => {
       if (response.ok) {
         return response.json();

@@ -24,7 +24,7 @@ describe('CreateEncounter', () => {
     container = null;
   });
   it('Will Validate that the user can type in a given field', () => {
-    createEncounter.mockImplementation((patient, setApiError) => {
+    createEncounter.mockImplementation((encounterData, patientid, setApiError) => {
       setApiError(true);
     });
     render(

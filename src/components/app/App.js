@@ -8,9 +8,6 @@ import PatientsPage from '../PatientsPage/PatientsPage';
 // import CreateReservationPage from '../PatientsPage/createReservationPage';
 import Header from '../header/Header';
 import PatientDetailsPage from '../PatientsPage/patientDetailsPage';
-import EditRoomTypesPage from '../encounters/editRoom-typesPage';
-import RoomTypesPage from '../encounters/roomTypesPage';
-import CreateRoomTypePage from '../encounters/createRoom-typesPage';
 import NotFoundPage from '../notFound';
 import HomePage from '../Home/HomePage';
 import CreatePatientPage from '../PatientsPage/createPatientPage';
@@ -28,12 +25,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" render={() => <HomePage />} />
       <Route exact path="/patients" render={() => <PatientsPage />} />
-      <Route
-        exact
-        path="/room-types/create"
-        render={() => <CreateRoomTypePage />}
-      />
-      <Route exact path="/room-types" render={() => <RoomTypesPage />} />
+
       <Route
         exact
         path="/patients/create"
@@ -48,12 +40,8 @@ const App = () => (
       <Route path="/patients/encounters/create/:id">
         <CreateEncountersPage />
       </Route>
-      <Route path="/room-types/edit/:id">
-        <EditRoomTypesPage />
-      </Route>
       <Route path="*" render={NotFoundPage} />
     </Switch>
   </BrowserRouter>
 );
-
 export default App;
