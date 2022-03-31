@@ -7,6 +7,7 @@ import Constants from '../../utils/constants';
 const PatientsTable = ({ patient }) => {
   const [apiError, setApiError] = useState(false);
   const [conflictError, setConflictError] = useState(false);
+
   return (
     <>
       <tr>
