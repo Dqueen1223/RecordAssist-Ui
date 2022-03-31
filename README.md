@@ -29,8 +29,18 @@ You will also see any lint errors in the console.
 ## Dependencies
 * Super Health Inc api must be running.
 
+## External Dependencies
+* React must be installed with link provided
+https://docs.microsoft.com/en-us/windows/dev-environment/javascript/react-on-windows
+* ESLint must also be installed to run linting 
+https://eslint.org/docs/user-guide/getting-started
+
+## Usage
+* This is used to view, create, edit and delete any patients needed, as well as create, view, and edit encounters for an associated patient
+
 ## Testing
+* testing covers validation, details + create pages
 * You can run tests with coverage via `npm run test a`
 
 ## Linting
-* To lint this project run `npm run lint`
+* To lint this project using ESLint  run `npm run lint`
