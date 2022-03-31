@@ -38,17 +38,17 @@ export default function PatientsFormValidator(patientData) {
   }
   if (isEmpty(patientData.age)) {
     errors.age = 'Must have an age';
-  } else if (!patientData.age.match(/^\d*$/)) {
+  } else if (!(/^\d*$/).test(patientData.age)) {
     errors.age = 'Patient age must be a number';
   }
   if (isEmpty(patientData.height)) {
     errors.height = 'Must have a height';
-  } else if (!patientData.height.match(/^\d*$/)) {
+  } else if (!(/^\d*$/).test(patientData.height)) {
     errors.height = 'Patient height must be a number';
   }
   if (isEmpty(patientData.weight)) {
     errors.weight = 'Must have a weight';
-  } else if (!patientData.weight.match(/^\d*$/)) {
+  } else if (!(/^\d*$/).test(patientData.weight)) {
     errors.weight = 'Patient weight must be a number';
   }
   if (isEmpty(patientData.state)) {

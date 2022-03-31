@@ -46,7 +46,7 @@ export default function EncounterFormValidator(encounterData) {
     errors.totalCost = 'Total cost must be a number';
   } if (isEmpty(encounterData.copay)) {
     errors.copay = 'Copay is required';
-  } else if (!(/^\d*$/).test(encounterData.copay)) {
+  } else if (!/^[0-9]*?.\d{2}$/.test(encounterData.totalCost)) {
     errors.copay = 'Copay must be a number';
   } if (isEmpty(encounterData.chiefComplaint)) {
     errors.chiefComplaint = 'Chief Complaint is required';

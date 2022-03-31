@@ -3,9 +3,9 @@ import { unmountComponentAtNode } from 'react-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import EncounterDetailsPage from './encounterDetailsPage';
-import fetchEncounterByPatientId from '../PatientsPage/encountersByPatientIdService';
+import fetchEncounterByPatientId from './encounterByPatientIdService';
 
-jest.mock('../PatientsPage/encountersByPatientIdService');
+jest.mock('./encounterByPatientIdService');
 let container = null;
 
 const valid = {

@@ -47,6 +47,9 @@ const EncounterDetailsPage = () => {
   const onPatientChange = (e) => {
     setEncounterData({ ...encounterData, [e.target.id]: e.target.value });
   };
+  if (encounterData.date) {
+    encounterData.date = encounterData.date.substring(0, 10);
+  }
   return (
     <div className="patientsDetails">
       {apiError && (

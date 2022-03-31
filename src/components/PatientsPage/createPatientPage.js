@@ -13,10 +13,11 @@ const CreatePatientPage = () => {
   const [patientData, setPatientData] = useState([]);
   const [errors, setErrors] = useState([]);
   const [apiError, setApiError] = useState(false);
+  const [conflictError, setConflictError] = useState(false);
 
   const handlePatient = async () => {
     if (Object.keys(PatientsFormValidator(patientData)).length === 0) {
-      await createPatient(patientData, setApiError);
+      await createPatient(patientData, setApiError, setConflictError);
     }
     setErrors(PatientsFormValidator(patientData));
   };
@@ -29,6 +30,11 @@ const CreatePatientPage = () => {
       {apiError && (
         <p className="errors" data-testid="errors">
           {Constants.API_ERROR}
+        </p>
+      )}
+      {conflictError && (
+        <p className="errors" data-testid="errors">
+          This email is already taken.
         </p>
       )}
       <FormItem

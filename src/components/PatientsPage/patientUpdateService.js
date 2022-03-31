@@ -8,16 +8,17 @@ import Constants from '../../utils/constants';
  * @param {*} setApiError sets error if response other than 200 is returned
  * @returns update for patients if 200 response, else throws an apiError
  */
-export default async function updatePatient(patient, patientId, setApiError) {
+export default async function updatePatient(patient, patientId, setApiError, setConflictError) {
   let checkValid = 'invalid';
   await HttpHelper(`${Constants.PATIENTS_ENDPOINT}/${patientId}`, 'PUT', {
+    id: patientId,
     firstName: patient.firstName,
-    lastName: patient.lastNmae,
+    lastName: patient.lastName,
     ssn: patient.ssn,
     email: patient.email,
     age: patient.age,
     height: patient.height,
-    insurance: patient.Insurance,
+    insurance: patient.insurance,
     gender: patient.gender,
     street: patient.street,
     city: patient.city,
@@ -29,10 +30,13 @@ export default async function updatePatient(patient, patientId, setApiError) {
         checkValid = 'valid';
         return response.json();
       }
-      throw new Error(Constants.PATIENTS_ENDPOINT);
-    })
-    .catch(() => {
-      setApiError(true);
+      if (response.status === 409) {
+        setConflictError(true);
+        throw new Error(response.statusText);
+      } else {
+        setApiError(true);
+      }
+      throw new Error(response.statusText);
     });
   return checkValid;
 }

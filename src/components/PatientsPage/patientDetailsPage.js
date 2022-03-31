@@ -7,7 +7,7 @@ import fetchPatientById from './patientByIdService';
 import Constants from '../../utils/constants';
 import './Reservations.modules.css';
 import EncountersTable from './encountersTable';
-import fetchEncounterByPatientId from './encountersByPatientIdService';
+import fetchEncounterByPatientId from '../encounters/encounterByPatientIdService';
 
 /**
  * @name PatientDetailsPage
@@ -16,13 +16,13 @@ import fetchEncounterByPatientId from './encountersByPatientIdService';
  */
 const PatientDetailsPage = () => {
   const { id } = useParams();
-  // const [patientData, setPatient] = useState({});
   const [apiError, setApiError] = useState(false);
   const [edit, setEdit] = useState(false);
   const [errors, setErrors] = useState([]);
   const [patientData, setPatientData] = useState([]);
   const [encounters, setEncounters] = useState([]);
   const [notFoundError, setNotFoundError] = useState(false);
+  const [conflictError, setConflictError] = useState(false);
 
   useEffect(() => {
     fetchPatientById(setPatientData, id, setApiError);
@@ -31,8 +31,9 @@ const PatientDetailsPage = () => {
 
   const handleSubmitEdit = async () => {
     if (Object.keys(PatientsFormValidator(patientData)).length === 0) {
-      if (await updatePatient(patientData, setApiError) === 'valid') {
+      if (await updatePatient(patientData, id, setApiError, setConflictError) === 'valid') {
         setEdit(false);
+        fetchPatientById(setPatientData, id, setApiError);
       }
     }
     setErrors(PatientsFormValidator(patientData));
@@ -49,6 +50,11 @@ const PatientDetailsPage = () => {
       {apiError && (
         <p className="errors" data-testid="errors">
           {Constants.API_ERROR}
+        </p>
+      )}
+      {conflictError && (
+        <p className="errors" data-testid="errors">
+          This email is already taken.
         </p>
       )}
       <div>

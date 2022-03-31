@@ -10,7 +10,7 @@ import Constants from '../../utils/constants';
  * @returns sets state for patient if 200 response, else sets state for apiError
  */
 export default async function createPatient(
-  patient, setApiError
+  patient, setApiError, setConflictError
 ) {
   await HttpHelper(Constants.PATIENTS_ENDPOINT, 'POST', {
     firstName: patient.firstName,
@@ -29,14 +29,14 @@ export default async function createPatient(
   })
     .then((response) => {
       if (response.ok) {
-        // checkValid = 'valid';
-        response.json();
-      } else {
-        throw new Error(response.statusText);
+        return response.json();
       }
-    })
-    .catch(() => {
-      setApiError(true);
+      if (response.status === 409) {
+        setConflictError(true);
+        throw new Error(response.statusText);
+      } else {
+        setApiError(true);
+      }
+      throw new Error(response.statusText);
     });
-  // return checkValid;
 }
