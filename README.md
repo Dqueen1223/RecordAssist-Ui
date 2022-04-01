@@ -40,7 +40,7 @@ https://eslint.org/docs/user-guide/getting-started
 
 ## Testing
 * testing covers validation, details + create pages
-* You can run tests with coverage via `npm run test a`
+* You can run tests with coverage via `npm run test a` 
 
 ## Linting
 * To lint this project using ESLint  run `npm run lint`
