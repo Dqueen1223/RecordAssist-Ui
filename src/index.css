@@ -8,16 +8,12 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #eeeeee;
+  background-color: #abccf0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-#header{
-  color: black;
-  font-size: large;
 }
 .footer {
   align-items: center;
@@ -31,22 +27,14 @@ code {
 }
 
 .header {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  margin-bottom: 10px;
-  align-items: center;
-  color: #E1E2E2;
-  display: grid;
-  grid-row: 50px;
-  text-align: center;
-  flex-direction: column;
-  height: 70px;
-  justify-content:center;
-  width: 100%; ;
+  display: flex;
+  justify-content: space-between;
+  background-color: #23272a;
+  padding: 25px;
 }
 
 #root{
+  background-color: #abccf0;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,4 +49,22 @@ code {
   height:50px;
   text-align: center;
   width:100px;
+}
+#patientImg{
+  align-self: center;
+  width: 100%;
+}
+
+#home{
+  padding: 25px, 25px, 25px, 25px;
+  color: #5865f2;
+}
+#patient{
+  padding: 25px, 25px, 25px, 25px;
+  color: #5865f2;
+}
+#title{
+  padding: 25px, 25px, 25px, 25px;
+  color: white;
+  font-size: large;
 }

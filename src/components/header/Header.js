@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { FaHome, FaUserCircle } from 'react-icons/fa';
 /**
  * @name Header
  * @description Displays the navigation header
@@ -8,12 +8,12 @@ import { Link } from 'react-router-dom';
  */
 const Header = () => (
   <div className="header">
-    <header id="header">Super Health Inc. </header>
     <Link to="/">
-      <p>Home page</p>
+      <FaHome size={70} alt="home" id="home" title="Home" />
     </Link>
+    <header id="title">Super Health Inc. </header>
     <Link to="/patients">
-      <p>Patients</p>
+      <FaUserCircle size={70} alt="patients" id="patient" title="Patients" />
     </Link>
   </div>
 );
