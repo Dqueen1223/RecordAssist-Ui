@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Reservations.modules.css';
 import { Link } from 'react-router-dom';
+import { FaBookMedical, FaTrash } from 'react-icons/fa';
 import DeletePatient from './patientDeleteService';
 import Constants from '../../utils/constants';
 
@@ -13,7 +14,7 @@ const PatientsTable = ({ patient }) => {
       <tr>
         <td className="tableCells">
           <Link to={`/patients/details/${patient.id}`}>
-            <button type="button">Patient Details</button>
+            <FaBookMedical id="detailsButton" size={70} title={`${patient.lastName}, ${patient.firstName}'s details`} />
           </Link>
           {conflictError && (
             <p className="conflictError" data-testid="conflictError">
@@ -34,7 +35,7 @@ const PatientsTable = ({ patient }) => {
               DeletePatient(patient, setApiError, setConflictError);
             }}
           >
-            Delete a Patient
+            <FaTrash id="deleteButton" size={70} title={`Delete ${patient.lastName}, ${patient.firstName}'s information`} />
           </button>
         </td>
         <td className="tableCells">{`${patient.lastName}, ${patient.firstName}`}</td>

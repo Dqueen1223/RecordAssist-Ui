@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { FaPencilAlt, FaBan } from 'react-icons/fa';
 import FormItem from '../form/FormItem';
 import EncounterFormValidator from './encounterFormValidator';
 import Constants from '../../utils/constants';
@@ -66,8 +67,8 @@ const EncounterDetailsPage = () => {
         {edit && (
           <>
             <div>
-              <button type="button" onClick={() => cancelEdit()}>
-                Cancel edit
+              <button type="button" id="editEncounterButton" onClick={() => cancelEdit()}>
+                <FaBan size={70} title="Cancel Edit" id="editEncounter" />
               </button>
             </div>
             <div className="editPatient">
@@ -190,7 +191,7 @@ const EncounterDetailsPage = () => {
                 />
                 <div className="errors">{errors.date}</div>
               </div>
-              <button type="submit" onClick={() => handleSubmitEdit()}>
+              <button type="submit" className="submit" onClick={() => handleSubmitEdit()}>
                 Update encounter
               </button>
             </div>
@@ -199,8 +200,8 @@ const EncounterDetailsPage = () => {
         {!edit && (
           <>
             <div>
-              <button type="button" onClick={() => setEdit(true)}>
-                Edit encounter
+              <button type="button" id="editEncounterButton" onClick={() => setEdit(true)}>
+                <FaPencilAlt size={70} title="Edit Encounter" id="editEncounter" />
               </button>
             </div>
             <div>

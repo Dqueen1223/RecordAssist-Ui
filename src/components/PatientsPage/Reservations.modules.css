@@ -3,13 +3,14 @@ table {
     border-color: #1d2228;
     border-collapse: collapse;
     width: 90vw;
-    height: 40vh;
+    height: 35vh;
     margin-left: auto;
     margin-right: auto;    
 }
 
 thead, th {
-background-color: #22e2fb;
+background-color: #5350ee;
+color: rgb(245, 244, 244);
 max-width: 90vw;
 max-height: 40vh;
 position: sticky;
@@ -19,9 +20,9 @@ white-space: nowrap;
 }
 
 td {
-    background-color: aliceblue;
+    background-color: rgb(221, 217, 243);
     border-style: solid;
-    border-width: 0.5px;
+    border-width: 1.5px;
     border-collapse: collapse;
     text-align: center;
     white-space: nowrap;
@@ -36,7 +37,6 @@ tbody {
 
 .createPatientInput{
   position: relative;
-  top: 150px;
   padding: 5px 10px 5px 10px;
   width: 15%;
 }
@@ -46,16 +46,7 @@ tbody {
     padding: 5px, 5px, 5px, 5px;
     top: 115px;
   }
-#Reservations{
-  font-size: 50px;
-  text-align: center;
-  position: absolute;
-  top: 250px;
-  right: 375px;
-  width: 50%;
-  padding: 10px;
-  color: blue;
-}
+
 .errors{
   color: red;
   padding: 6px, 4px,6px,4px;
@@ -67,16 +58,7 @@ tbody {
   margin-right: auto;
   width: 200px;
   text-size-adjust: small;
-}
-#Reservationsbutton{
-  font-size: 50px;
-  text-align: center;
-  position: relative;
-  left: 25px;
-  width: 15%;
-  padding: 10px;
-  color: blue;
-}
+} 
 
 #reservationsTable{
   position: relative;
@@ -98,10 +80,70 @@ tbody {
 }
 .patientsDetails{
   left: 1em;
-  top: 5em;
+  margin-bottom: 250px;
   position: relative;
   padding: 5px 10px 5px 10px;
 }
 .editPatient{
   width: 15%;
+}
+#detailsButton{
+  color: #4e5152;
+}
+#deleteButton{
+  background: none;
+  color: #4e5152;
+}
+.Delete{
+  background: none;
+  background-color: none;
+  border: none;
+  cursor: pointer;
+}
+h1 {
+  display: block;
+  width: 300px;
+  font-size: 2.17em;
+  font-weight: bold;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+#editPatientButton{
+  background: none;
+  flex-direction: row;
+  border: none;
+  color: #3e4ad4;
+  cursor: pointer;
+}
+#editPatient{
+  margin-top: 15px;
+  margin-left: 10px;
+}
+#cancelEditButton{
+  background: none;
+  border: none;
+  color: #3e4ad4;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+#editEncounterButton{
+  background: none;
+  flex-direction: row;
+  border: none;
+  color: #3e4ad4;
+  cursor: pointer;
+}
+#editEncounter{
+  margin-right: 25px;
+}
+#cancelEditButton{
+  background: none;
+  border: none;
+  color: #3e4ad4;
+  margin-left: 6px;
+  cursor: pointer;
 }

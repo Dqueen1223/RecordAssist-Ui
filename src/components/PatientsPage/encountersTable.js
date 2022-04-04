@@ -1,6 +1,6 @@
 import React from 'react';
 import './Reservations.modules.css';
-
+import { FaBookMedical } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Constants from '../../utils/constants';
 
@@ -21,7 +21,7 @@ const EncountersTable = ({
       )}
       <td className="tableCells">
         <Link to={`/patients/encounters/details/${encounter.id}`}>
-          <button type="button">Encounter details</button>
+          <FaBookMedical id="detailsButton" size={70} title={`Encounter #${encounter.id} details`} />
         </Link>
       </td>
       <td className="tableCells">{`${encounter.id}`}</td>

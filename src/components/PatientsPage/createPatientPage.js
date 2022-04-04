@@ -37,114 +37,117 @@ const CreatePatientPage = () => {
           This email is already taken.
         </p>
       )}
-      <FormItem
-        type="text"
-        id="firstName"
-        onChange={onPatientChange}
-        label="FirstName"
-      />
-      <div className="errors">{errors.firstName}</div>
-      <div>
+      <div className="form">
+        <h1> Add Patient</h1>
         <FormItem
           type="text"
-          id="lastName"
+          id="firstName"
           onChange={onPatientChange}
-          label="LastName"
+          label="First Name"
         />
+        <div className="errors">{errors.firstName}</div>
+        <div>
+          <FormItem
+            type="text"
+            id="lastName"
+            onChange={onPatientChange}
+            label="Last Name"
+          />
+        </div>
+        <div className="errors">{errors.lastName}</div>
+        <div>
+          <FormItem type="ssn" id="ssn" onChange={onPatientChange} label="SSN" />
+        </div>
+        <div className="errors">{errors.ssn}</div>
+        <div>
+          <FormItem
+            type="email"
+            id="email"
+            onChange={onPatientChange}
+            label="Email"
+          />
+        </div>
+        <div className="errors">{errors.email}</div>
+        <div>
+          <FormItem
+            type="text"
+            id="street"
+            onChange={onPatientChange}
+            label="Street"
+          />
+        </div>
+        <div className="errors">{errors.street}</div>
+        <div>
+          <FormItem
+            type="text"
+            id="city"
+            onChange={onPatientChange}
+            label="City"
+          />
+        </div>
+        <div className="errors">{errors.city}</div>
+        <div>
+          <FormItem
+            type="text"
+            id="state"
+            onChange={onPatientChange}
+            label="State"
+          />
+        </div>
+        <div className="errors">{errors.state}</div>
+        <div>
+          <FormItem
+            type="text"
+            id="postal"
+            onChange={onPatientChange}
+            label="Zip Code"
+          />
+        </div>
+        <div className="errors">{errors.postal}</div>
+        <div>
+          <FormItem type="text" id="age" onChange={onPatientChange} label="Age" />
+        </div>
+        <div className="errors">{errors.age}</div>
+        <div>
+          <FormItem
+            type="text"
+            id="height"
+            onChange={onPatientChange}
+            label="Height"
+          />
+        </div>
+        <div className="errors">{errors.height}</div>
+        <div>
+          <FormItem
+            type="text"
+            id="weight"
+            onChange={onPatientChange}
+            label="Weight"
+          />
+        </div>
+        <div className="errors">{errors.weight}</div>
+        <div>
+          <FormItem
+            type="text"
+            id="insurance"
+            onChange={onPatientChange}
+            label="Insurance"
+          />
+          <div className="errors">{errors.insurance}</div>
+        </div>
+        <div>
+          <FormItem
+            type="text"
+            id="gender"
+            onChange={onPatientChange}
+            label="Gender"
+          />
+        </div>
+        <div className="errors">{errors.gender}</div>
+        <button onClick={handlePatient} type="submit" className="submit">
+          Add Patient
+        </button>
       </div>
-      <div className="errors">{errors.lastName}</div>
-      <div>
-        <FormItem type="ssn" id="ssn" onChange={onPatientChange} label="ssn" />
-      </div>
-      <div className="errors">{errors.ssn}</div>
-      <div>
-        <FormItem
-          type="email"
-          id="email"
-          onChange={onPatientChange}
-          label="Email"
-        />
-      </div>
-      <div className="errors">{errors.email}</div>
-      <div>
-        <FormItem
-          type="text"
-          id="street"
-          onChange={onPatientChange}
-          label="Street"
-        />
-      </div>
-      <div className="errors">{errors.street}</div>
-      <div>
-        <FormItem
-          type="text"
-          id="city"
-          onChange={onPatientChange}
-          label="City"
-        />
-      </div>
-      <div className="errors">{errors.city}</div>
-      <div>
-        <FormItem
-          type="text"
-          id="state"
-          onChange={onPatientChange}
-          label="State"
-        />
-      </div>
-      <div className="errors">{errors.state}</div>
-      <div>
-        <FormItem
-          type="text"
-          id="postal"
-          onChange={onPatientChange}
-          label="Zip Code"
-        />
-      </div>
-      <div className="errors">{errors.postal}</div>
-      <div>
-        <FormItem type="text" id="age" onChange={onPatientChange} label="Age" />
-      </div>
-      <div className="errors">{errors.age}</div>
-      <div>
-        <FormItem
-          type="text"
-          id="height"
-          onChange={onPatientChange}
-          label="Height"
-        />
-      </div>
-      <div className="errors">{errors.height}</div>
-      <div>
-        <FormItem
-          type="text"
-          id="weight"
-          onChange={onPatientChange}
-          label="Weight"
-        />
-      </div>
-      <div className="errors">{errors.weight}</div>
-      <div>
-        <FormItem
-          type="text"
-          id="insurance"
-          onChange={onPatientChange}
-          label="Insurance"
-        />
-        <div className="errors">{errors.insurance}</div>
-      </div>
-      <div>
-        <FormItem
-          type="text"
-          id="gender"
-          onChange={onPatientChange}
-          label="Gender"
-        />
-      </div>
-      <div className="errors">{errors.gender}</div>
-      <button onClick={handlePatient} type="submit">
-        Create
-      </button>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import './Reservations.modules.css';
 import { Link } from 'react-router-dom';
+import { FaFeatherAlt } from 'react-icons/fa';
 import React, { useState, useEffect } from 'react';
 import fetchPatients from './patientsService';
 import PatientsTable from './patientsTable';
@@ -19,37 +20,37 @@ const PatientsPage = () => {
   }, []);
 
   return (
-    <div className="table">
-      {apiError && (
+    <div>
+      <Link to="patients/create">
+        <FaFeatherAlt size={70} title="Add New Patient" id="addPatient" />
+      </Link>
+      <div className="table">
+        {apiError && (
         <p className="errors" data-testid="errors">
           {Constants.API_ERROR}
         </p>
-      )}
-      <Link to="patients/create">
-        <button type="button" id="Reservationsbutton">
-          Create
-        </button>
-      </Link>
-      <div>
-        <table className="resTable">
-          <tr>
-            <th />
-            <th />
-            <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
-          </tr>
-          {apiError && (
-          <p className="errors" data-testid="errors">
-            {Constants.API_ERROR}
-          </p>
-          )}
-          {patients.map((patient) => (
-            <PatientsTable
-              patient={patient}
-            />
-          ))}
-        </table>
+        )}
+        <div>
+          <table className="resTable">
+            <tr>
+              <th>Patient Details</th>
+              <th>Delete Patient</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+            </tr>
+            {apiError && (
+            <p className="errors" data-testid="errors">
+              {Constants.API_ERROR}
+            </p>
+            )}
+            {patients.map((patient) => (
+              <PatientsTable
+                patient={patient}
+              />
+            ))}
+          </table>
+        </div>
       </div>
     </div>
   );

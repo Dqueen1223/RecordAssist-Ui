@@ -8,7 +8,7 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #abccf0;
+  background-color: #aab6f8;
 }
 
 code {
@@ -27,14 +27,18 @@ code {
 }
 
 .header {
+  width: 90%;
   display: flex;
   justify-content: space-between;
-  background-color: #23272a;
-  padding: 25px;
+  background-color: #23282a;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 #root{
-  background-color: #abccf0;
+  background-color: #aab6f8;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
@@ -52,7 +56,7 @@ code {
 }
 #patientImg{
   align-self: center;
-  width: 100%;
+  width: 35%;
 }
 
 #home{
@@ -68,3 +72,33 @@ code {
   color: white;
   font-size: large;
 }
+#addPatient{
+  margin-bottom: 50px;
+  flex-direction: row;
+  margin-left: 25px;
+  padding: 25px, 25px, 25px, 25px;
+  color: #3e4ad4;
+}
+#addEncounter{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  flex-direction: row;
+  padding: 25px, 25px, 25px, 25px;
+  color: #3e4ad4;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.submit{
+  background: #3b3b3b;
+  border-radius: 20px;
+  color: #EEEEEE;
+  cursor: pointer;
+  height: 3em;
+  justify-self: center;
+  width: 15em;
+}
+

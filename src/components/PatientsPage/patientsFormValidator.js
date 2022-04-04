@@ -13,10 +13,10 @@ export default function PatientsFormValidator(patientData) {
     return false;
   };
   if (isEmpty(patientData.firstName)) {
-    errors.firstName = 'Must have a firstName';
+    errors.firstName = 'Must have a first name';
   }
   if (isEmpty(patientData.lastName)) {
-    errors.lastName = 'Must have a lastName';
+    errors.lastName = 'Must have a last name';
   }
   if (isEmpty(patientData.street)) {
     errors.street = 'Must have a street';
@@ -28,13 +28,13 @@ export default function PatientsFormValidator(patientData) {
     errors.insurance = 'Must have insurance';
   }
   if (isEmpty(patientData.email)) {
-    errors.email = 'The email field is required';
+    errors.email = 'The Email field is required';
   } else if (
     !/[a-z0-9]+([_a-z0-9.-]*[a-z0-9]+)?@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]+$)/iy.test(
       patientData.email
     )
   ) {
-    errors.email = 'Must be a valid email (ex.test@test.com)';
+    errors.email = 'Must be a valid Email (ex.test@test.com)';
   }
   if (isEmpty(patientData.age)) {
     errors.age = 'Must have an age';
@@ -78,7 +78,7 @@ export default function PatientsFormValidator(patientData) {
     }
   }
   if (isEmpty(patientData.insurance)) {
-    errors.insurance = 'Must have Insurance';
+    errors.insurance = 'Must have insurance';
   }
   return errors;
 }
