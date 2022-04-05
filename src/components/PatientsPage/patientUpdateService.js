@@ -18,6 +18,7 @@ export default async function updatePatient(patient, patientId, setApiError, set
     email: patient.email,
     age: patient.age,
     height: patient.height,
+    weight: patient.weight,
     insurance: patient.insurance,
     gender: patient.gender,
     street: patient.street,

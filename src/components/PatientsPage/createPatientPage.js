@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import FormItem from '../form/FormItem';
 import createPatient from './createPatientService';
 import PatientsFormValidator from './patientsFormValidator';
@@ -10,6 +12,7 @@ import Constants from '../../utils/constants';
  * @return component
  */
 const CreatePatientPage = () => {
+  const history = useHistory();
   const [patientData, setPatientData] = useState([]);
   const [errors, setErrors] = useState([]);
   const [apiError, setApiError] = useState(false);
@@ -17,7 +20,10 @@ const CreatePatientPage = () => {
 
   const handlePatient = async () => {
     if (Object.keys(PatientsFormValidator(patientData)).length === 0) {
-      await createPatient(patientData, setApiError, setConflictError);
+      if (await createPatient(patientData, setApiError, setConflictError)) {
+        toast.success(`${patientData.lastName}, ${patientData.firstName} has been created`);
+        history.push('/patients');
+      }
     }
     setErrors(PatientsFormValidator(patientData));
   };
@@ -30,11 +36,6 @@ const CreatePatientPage = () => {
       {apiError && (
         <p className="errors" data-testid="errors">
           {Constants.API_ERROR}
-        </p>
-      )}
-      {conflictError && (
-        <p className="errors" data-testid="errors">
-          This email is already taken.
         </p>
       )}
       <div className="form">
@@ -68,6 +69,11 @@ const CreatePatientPage = () => {
           />
         </div>
         <div className="errors">{errors.email}</div>
+        {conflictError && (
+        <p className="errors" data-testid="errors">
+          This email is already taken.
+        </p>
+        )}
         <div>
           <FormItem
             type="text"

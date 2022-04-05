@@ -2,6 +2,7 @@ import './Reservations.modules.css';
 import { Link } from 'react-router-dom';
 import { FaFeatherAlt } from 'react-icons/fa';
 import React, { useState, useEffect } from 'react';
+import DeletePatient from './patientDeleteService';
 import fetchPatients from './patientsService';
 import PatientsTable from './patientsTable';
 import Constants from '../../utils/constants';
@@ -14,10 +15,17 @@ import Constants from '../../utils/constants';
 const PatientsPage = () => {
   const [patients, setPatients] = useState([]);
   const [apiError, setApiError] = useState(false);
+  const [deletedPatient, setDeletedPatient] = useState(patients);
 
   useEffect(() => {
     fetchPatients(setPatients, setApiError);
-  }, []);
+  }, [deletedPatient]);
+
+  const handleDelete = async (patient) => {
+    if (await DeletePatient(patient, setApiError) === 'valid') {
+      setDeletedPatient(patient);
+    }
+  };
 
   return (
     <div>
@@ -47,6 +55,7 @@ const PatientsPage = () => {
             {patients.map((patient) => (
               <PatientsTable
                 patient={patient}
+                handleDelete={handleDelete}
               />
             ))}
           </table>

@@ -53,7 +53,7 @@ export default function PatientsFormValidator(patientData) {
   }
   if (isEmpty(patientData.state)) {
     errors.state = 'Must select a state';
-  } else if (patientData.state.match(/^[a-z]{2}$/) || patientData.state.match(/^[A-Z]{2}$/)) {
+  } else if (!patientData.state.toUpperCase().match(/^[A-Z]{2}$/)) {
     errors.state = 'State must have a valid two letter state code (ex. MD)';
   }
   if (isEmpty(patientData.ssn)) {

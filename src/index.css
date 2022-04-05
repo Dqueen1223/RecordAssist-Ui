@@ -55,8 +55,11 @@ code {
   width:100px;
 }
 #patientImg{
-  align-self: center;
-  width: 35%;
+  /* align-self: center; */
+  margin-left:50%;
+  margin-bottom: 28%;
+  width: 50%;
+  /* height: 815px; */
 }
 
 #home{
@@ -70,7 +73,7 @@ code {
 #title{
   padding: 25px, 25px, 25px, 25px;
   color: white;
-  font-size: large;
+  font-size: 300%;
 }
 #addPatient{
   margin-bottom: 50px;

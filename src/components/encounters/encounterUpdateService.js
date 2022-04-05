@@ -9,7 +9,7 @@ import Constants from '../../utils/constants';
  * @returns update for encounters if 200 response, else throws an apiError
  */
 export default async function updateEncounter(encounter, encounterId, setApiError) {
-  // let checkValid = 'invalid';
+  let checkValid = 'invalid';
   await HttpHelper(
     `${Constants.PATIENTS_ENDPOINT}/${encounter.patientId}${Constants.ENCOUNTERS_ENDPOINT}/${encounterId}`,
     'PUT',
@@ -32,7 +32,7 @@ export default async function updateEncounter(encounter, encounterId, setApiErro
   )
     .then((response) => {
       if (response.ok) {
-        // checkValid = 'valid';
+        checkValid = 'valid';
         return response.json();
       }
       throw new Error(Constants.API_ERROR);
@@ -40,5 +40,5 @@ export default async function updateEncounter(encounter, encounterId, setApiErro
     .catch(() => {
       setApiError(true);
     });
-  // return checkValid;
+  return checkValid;
 }

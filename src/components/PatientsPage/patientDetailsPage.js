@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { FaAddressBook, FaPencilAlt, FaBan } from 'react-icons/fa';
 import FormItem from '../form/FormItem';
 import PatientsFormValidator from './patientsFormValidator';
@@ -32,7 +33,9 @@ const PatientDetailsPage = () => {
 
   const handleSubmitEdit = async () => {
     if (Object.keys(PatientsFormValidator(patientData)).length === 0) {
+      patientData.state = patientData.state.toUpperCase();
       if (await updatePatient(patientData, id, setApiError, setConflictError) === 'valid') {
+        toast.success(` ${patientData.lastName}, ${patientData.firstName} has been successfully edited`);
         setEdit(false);
         fetchPatientById(setPatientData, id, setApiError);
       }
@@ -51,11 +54,6 @@ const PatientDetailsPage = () => {
       {apiError && (
         <p className="errors" data-testid="errors">
           {Constants.API_ERROR}
-        </p>
-      )}
-      {conflictError && (
-        <p className="errors" data-testid="errors">
-          This email is already taken.
         </p>
       )}
       {edit && (
@@ -107,6 +105,11 @@ const PatientDetailsPage = () => {
             />
           </div>
           <div className="errors">{errors.email}</div>
+          {conflictError && (
+          <p className="errors" data-testid="errors">
+            This email is already taken.
+          </p>
+          )}
           <div>
             <FormItem
               type="text"

@@ -1,11 +1,8 @@
 import React from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {
-  BrowserRouter, Route, Switch
-} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PatientsPage from '../PatientsPage/PatientsPage';
-// import CreateReservationPage from '../PatientsPage/createReservationPage';
 import Header from '../header/Header';
 import PatientDetailsPage from '../PatientsPage/patientDetailsPage';
 import NotFoundPage from '../notFound';
@@ -22,6 +19,13 @@ toast.configure();
 const App = () => (
   <BrowserRouter>
     <Header />
+    <div className="headerContainer">
+      <ToastContainer
+        autoClose={8000}
+        position={toast.POSITION.TOP_CENTER}
+        pauseOnHover
+      />
+    </div>
     <Switch>
       <Route exact path="/" render={() => <HomePage />} />
       <Route exact path="/patients" render={() => <PatientsPage />} />

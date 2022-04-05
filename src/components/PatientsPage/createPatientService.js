@@ -12,6 +12,7 @@ import Constants from '../../utils/constants';
 export default async function createPatient(
   patient, setApiError, setConflictError
 ) {
+  let checkValid = 'invalid';
   await HttpHelper(Constants.PATIENTS_ENDPOINT, 'POST', {
     firstName: patient.firstName,
     lastName: patient.lastName,
@@ -29,6 +30,7 @@ export default async function createPatient(
   })
     .then((response) => {
       if (response.ok) {
+        checkValid = 'valid';
         return response.json();
       }
       if (response.status === 409) {
@@ -39,4 +41,5 @@ export default async function createPatient(
       }
       throw new Error(response.statusText);
     });
+  return checkValid;
 }

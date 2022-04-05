@@ -11,7 +11,7 @@ const Header = () => (
     <Link to="/">
       <FaHome size={70} alt="home" id="home" title="Home" />
     </Link>
-    <header id="title">Super Health Inc. </header>
+    <header id="title">Dr. Record Assist </header>
     <Link to="/patients">
       <FaUserCircle size={70} alt="patients" id="patient" title="Patients" />
     </Link>

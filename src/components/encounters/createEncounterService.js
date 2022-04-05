@@ -10,7 +10,9 @@ import Constants from '../../utils/constants';
  * @returns sets state for encounter if 200 response, else sets state for apiError
  */
 export default async function createEncounter(encounterData, patientId, setApiError) {
+  let checkValid = 'invalid';
   await HttpHelper(`${Constants.PATIENTS_ENDPOINT}/${patientId}${Constants.ENCOUNTERS_ENDPOINT}`, 'POST', {
+    patientId,
     notes: encounterData.notes,
     visitCode: encounterData.visitCode,
     provider: encounterData.provider,
@@ -27,6 +29,7 @@ export default async function createEncounter(encounterData, patientId, setApiEr
     .then((response) => {
       if (response.ok) {
         response.json();
+        checkValid = 'valid';
       } else {
         throw new Error(response.statusText);
       }
@@ -34,4 +37,5 @@ export default async function createEncounter(encounterData, patientId, setApiEr
     .catch(() => {
       setApiError(true);
     });
+  return checkValid;
 }

@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import HttpHelper from '../../utils/HttpHelper';
 import Constants from '../../utils/constants';
 
@@ -10,20 +11,24 @@ import Constants from '../../utils/constants';
  * @param {*} setConflictError sets error if the patient has associated encounters
  * @returns sets state for products if 200 response, else sets state for apiError
  */
-export default async function DeletePatient(patient, setApiError, setConflictError) {
+export default async function DeletePatient(patient, setApiError) {
+  let checkValid = 'invalid';
   await HttpHelper(
     `${Constants.PATIENTS_ENDPOINT}/${patient.id}`,
     'DELETE'
   ).then((response) => {
     if (response.ok) {
-      return response.json();
+      checkValid = 'valid';
+      toast.success(`${patient.lastName}, ${patient.firstName} has been deleted `);
+      return checkValid;
     }
     if (response.status === 409) {
-      setConflictError(true);
+      toast.error(`${patient.lastName}, ${patient.firstName} has encounters and cannot be deleted`);
       throw new Error(response.statusText);
     } else {
       setApiError(true);
     }
     throw new Error(response.statusText);
   });
+  return checkValid;
 }

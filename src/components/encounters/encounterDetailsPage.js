@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { FaPencilAlt, FaBan } from 'react-icons/fa';
 import FormItem from '../form/FormItem';
 import EncounterFormValidator from './encounterFormValidator';
@@ -41,7 +42,10 @@ const EncounterDetailsPage = () => {
   };
   const handleSubmitEdit = async () => {
     if (Object.keys(EncounterFormValidator(encounterData)).length === 0) {
-      await updateEncounter(encounterData, id, setApiError);
+      if (await updateEncounter(encounterData, id, setApiError) === 'valid') {
+        toast.success(`Encounter with id:${encounterData.id} Has Been Added`);
+        cancelEdit();
+      }
     }
     setErrors(EncounterFormValidator(encounterData));
   };

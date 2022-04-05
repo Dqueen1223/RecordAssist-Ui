@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
 import FormItem from '../form/FormItem';
 import createEncounter from './createEncounterService';
 import EncounterFormValidator from './encounterFormValidator';
@@ -10,13 +12,16 @@ import Constants from '../../utils/constants';
  * @return component
  */
 const CreateEncountersPage = () => {
+  const { id } = useParams();
   const [encounterData, setEncounterData] = useState([]);
   const [errors, setErrors] = useState([]);
   const [apiError, setApiError] = useState(false);
 
   const handleEncounter = async () => {
     if (Object.keys(EncounterFormValidator(encounterData)).length === 0) {
-      await createEncounter(encounterData, setApiError);
+      if (await createEncounter(encounterData, id, setApiError) === 'valid') {
+        toast.success('New Encounter Has Been Added');
+      }
     }
     setErrors(EncounterFormValidator(encounterData));
   };
