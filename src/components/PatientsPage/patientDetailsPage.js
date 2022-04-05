@@ -235,6 +235,7 @@ const PatientDetailsPage = () => {
                 {' '}
                 {patientData.street}
                 ,
+                {' '}
                 {patientData.city}
                 ,
                 {' '}
@@ -271,22 +272,28 @@ const PatientDetailsPage = () => {
               </p>
             </div>
             <div>
-              <tr>
-                <th>Encounter Details</th>
-                <th>Encounter Id</th>
-                <th>Visit code</th>
-                <th>Provider</th>
-                <th>Date</th>
-              </tr>
-              {encounters.map((encounter) => (
-                <EncountersTable
-                  id={id}
-                  encounter={encounter}
-                  notFoundError={notFoundError}
-                  apiError={apiError}
-                  date={encounter.date.slice(0, 10)}
-                />
-              ))}
+              <table>
+                <thead>
+                  <tr>
+                    <th>Encounter Details</th>
+                    <th>Encounter Id</th>
+                    <th>Visit code</th>
+                    <th>Provider</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody className="tBody">
+                  {encounters.map((encounter) => (
+                    <EncountersTable
+                      id={id}
+                      encounter={encounter}
+                      notFoundError={notFoundError}
+                      apiError={apiError}
+                      date={encounter.date.slice(0, 10)}
+                    />
+                  ))}
+                </tbody>
+              </table>
             </div>
           </>
         )}

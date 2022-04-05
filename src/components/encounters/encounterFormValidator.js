@@ -51,15 +51,15 @@ export default function EncounterFormValidator(encounterData) {
   } if (isEmpty(encounterData.chiefComplaint)) {
     errors.chiefComplaint = 'Chief Complaint is required';
   }
-  if (!isEmpty(encounterData.pulse) && !encounterData.pulse.match(/^\d*$/)) {
+  if (!isEmpty(encounterData.pulse) && !(/^\d*$/).test(encounterData.pulse)) {
     errors.pulse = 'Pulse must be a number';
   }
-  if (encounterData.systolic && !encounterData.systolic.match(/^\d*$/)) {
+  if (encounterData.systolic && !(/^\d*$/).test(encounterData.systolic)) {
     errors.systolic = 'Systolic pressure must be a number';
   }
   if (
     !isEmpty(encounterData.diastolic)
-    && !encounterData.diastolic.match(/^\d*$/)
+    && !(/^\d*$/).test(encounterData.diastolic)
   ) {
     errors.diastolic = 'Diastolic pressure must be a number';
   }

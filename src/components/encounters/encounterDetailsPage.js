@@ -126,7 +126,7 @@ const EncounterDetailsPage = () => {
                 <FormItem
                   type="text"
                   id="totalCost"
-                  value={encounterData.pulse}
+                  value={encounterData.totalCost}
                   onChange={onPatientChange}
                   label="Total cost"
                 />

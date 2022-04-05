@@ -21,7 +21,7 @@ const EncountersTable = ({
       )}
       <td className="tableCells">
         <Link to={`/patients/encounters/details/${encounter.id}`}>
-          <FaBookMedical id="detailsButton" size={70} title={`Encounter #${encounter.id} details`} />
+          <FaBookMedical id="detailsButton" size={70} title={`Encounter #${encounter.id} Details`} />
         </Link>
       </td>
       <td className="tableCells">{`${encounter.id}`}</td>
