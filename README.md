@@ -46,6 +46,6 @@ You will also see any lint errors in the console.
 Table layout for each patient
 <image src="patientInfo.PNG">
 View and edit patient details and their encounters
-<image srg="patientDetails.PNG">
+<image src="patientDetails.PNG">
 Form validation example
 <image src="formValidation.PNG">
