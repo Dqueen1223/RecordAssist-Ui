@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import FormItem from '../form/FormItem';
 import createEncounter from './createEncounterService';
 import EncounterFormValidator from './encounterFormValidator';
@@ -12,6 +12,7 @@ import Constants from '../../utils/constants';
  * @return component
  */
 const CreateEncountersPage = () => {
+  const history = useHistory();
   const { id } = useParams();
   const [encounterData, setEncounterData] = useState([]);
   const [errors, setErrors] = useState([]);
@@ -21,7 +22,10 @@ const CreateEncountersPage = () => {
     if (Object.keys(EncounterFormValidator(encounterData)).length === 0) {
       if (await createEncounter(encounterData, id, setApiError) === 'valid') {
         toast.success('New Encounter Has Been Added');
+        history.push('/patients');
       }
+    } else {
+      toast.error('There are invalid fields, please enter valid info');
     }
     setErrors(EncounterFormValidator(encounterData));
   };

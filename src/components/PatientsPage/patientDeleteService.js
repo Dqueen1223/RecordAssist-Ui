@@ -20,15 +20,13 @@ export default async function DeletePatient(patient, setApiError) {
     if (response.ok) {
       checkValid = 'valid';
       toast.success(`${patient.lastName}, ${patient.firstName} has been deleted `);
-      return checkValid;
     }
     if (response.status === 409) {
       toast.error(`${patient.lastName}, ${patient.firstName} has encounters and cannot be deleted`);
-      throw new Error(response.statusText);
-    } else {
+    } else if (!response.ok) {
       setApiError(true);
     }
-    throw new Error(response.statusText);
+    return checkValid;
   });
   return checkValid;
 }

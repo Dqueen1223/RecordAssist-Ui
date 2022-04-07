@@ -20,11 +20,17 @@ const CreatePatientPage = () => {
 
   const handlePatient = async () => {
     if (Object.keys(PatientsFormValidator(patientData)).length === 0) {
+      patientData.state = patientData.state.toUpperCase();
       if (await createPatient(patientData, setApiError, setConflictError)) {
         toast.success(`${patientData.lastName}, ${patientData.firstName} has been created`);
         history.push('/patients');
+      } else {
+        toast.error('Something went wrong');
       }
+    } else {
+      toast.error('There are invalid fields, please enter valid info');
     }
+    conflictError(false);
     setErrors(PatientsFormValidator(patientData));
   };
 
@@ -142,12 +148,17 @@ const CreatePatientPage = () => {
           <div className="errors">{errors.insurance}</div>
         </div>
         <div>
-          <FormItem
-            type="text"
-            id="gender"
-            onChange={onPatientChange}
-            label="Gender"
-          />
+          <label htmlFor="gender">
+            Gender
+            <div>
+              <select id="gender" onChange={onPatientChange} className="gender">
+                <option value={patientData.gender}>{patientData.gender}</option>
+                {patientData.gender !== 'Female' && <option value="Female">Female</option>}
+                {patientData.gender !== 'Male' && <option value="Male">Male</option>}
+                {patientData.gender !== 'Other' && <option value="Other">Other</option>}
+              </select>
+            </div>
+          </label>
         </div>
         <div className="errors">{errors.gender}</div>
         <button onClick={handlePatient} type="submit" className="submit">

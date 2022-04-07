@@ -46,6 +46,8 @@ const EncounterDetailsPage = () => {
         toast.success(`Encounter with id:${encounterData.id} Has Been Added`);
         cancelEdit();
       }
+    } else {
+      toast.error('There are invalid fields, please enter valid info');
     }
     setErrors(EncounterFormValidator(encounterData));
   };

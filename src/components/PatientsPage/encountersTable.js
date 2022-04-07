@@ -2,18 +2,12 @@ import React from 'react';
 import './Reservations.modules.css';
 import { FaBookMedical } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import Constants from '../../utils/constants';
 
 const EncountersTable = ({
-  apiError, notFoundError, encounter, date
+  notFoundError, encounter, date
 }) => (
   <>
     <tr>
-      {apiError && (
-        <p className="errors" data-testid="errors">
-          {Constants.API_ERROR}
-        </p>
-      )}
       {notFoundError && (
         <p className="errors" data-testid="errors">
           There are no encounter associated with this patient

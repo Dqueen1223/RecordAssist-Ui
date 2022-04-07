@@ -38,6 +38,7 @@ const PatientsPage = () => {
           {Constants.API_ERROR}
         </p>
         )}
+        {patients.length !== 0 && (
         <div>
           <table className="resTable">
             <tr>
@@ -47,11 +48,6 @@ const PatientsPage = () => {
               <th>Age</th>
               <th>Gender</th>
             </tr>
-            {apiError && (
-            <p className="errors" data-testid="errors">
-              {Constants.API_ERROR}
-            </p>
-            )}
             {patients.map((patient) => (
               <PatientsTable
                 patient={patient}
@@ -60,6 +56,14 @@ const PatientsPage = () => {
             ))}
           </table>
         </div>
+        )}
+        {patients.length === 0 && (
+        <div>
+          <p>
+            There are currently no patients click the feather in the top right to add a patient.
+          </p>
+        </div>
+        )}
       </div>
     </div>
   );

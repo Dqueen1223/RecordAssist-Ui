@@ -32,13 +32,16 @@ const PatientDetailsPage = () => {
   }, [id]);
 
   const handleSubmitEdit = async () => {
-    if (Object.keys(PatientsFormValidator(patientData)).length === 0) {
+    setConflictError(false);
+    if (Object.keys(PatientsFormValidator(patientData, conflictError)).length === 0) {
       patientData.state = patientData.state.toUpperCase();
       if (await updatePatient(patientData, id, setApiError, setConflictError) === 'valid') {
         toast.success(` ${patientData.lastName}, ${patientData.firstName} has been successfully edited`);
         setEdit(false);
         fetchPatientById(setPatientData, id, setApiError);
       }
+    } else {
+      toast.error('There are invalid fields, please enter valid info');
     }
     setErrors(PatientsFormValidator(patientData));
   };
@@ -50,7 +53,7 @@ const PatientDetailsPage = () => {
     setPatientData({ ...patientData, [e.target.id]: e.target.value });
   };
   return (
-    <div>
+    <div className="detailsPage">
       {apiError && (
         <p className="errors" data-testid="errors">
           {Constants.API_ERROR}
@@ -191,13 +194,17 @@ const PatientDetailsPage = () => {
             <div className="errors">{errors.insurance}</div>
           </div>
           <div>
-            <FormItem
-              type="text"
-              id="gender"
-              value={patientData.gender}
-              onChange={onPatientChange}
-              label="Gender"
-            />
+            <label htmlFor="gender">
+              Gender
+              <div>
+                <select id="gender" onChange={onPatientChange} className="gender">
+                  <option value={patientData.gender}>{patientData.gender}</option>
+                  {patientData.gender !== 'Female' && <option value="Female">Female</option>}
+                  {patientData.gender !== 'Male' && <option value="Male">Male</option>}
+                  {patientData.gender !== 'Other' && <option value="Other">Other</option>}
+                </select>
+              </div>
+            </label>
           </div>
           <div className="errors">{errors.gender}</div>
           <button type="submit" className="submit" onClick={() => handleSubmitEdit()}>
@@ -206,75 +213,76 @@ const PatientDetailsPage = () => {
         </div>
       </>
       )}
-      <div className="patientsDetails">
-        {!edit && (
-          <>
-            <div>
-              <Link to={`/patients/encounters/create/${id}`}>
-                <FaAddressBook size={70} title="Add New Encounter" id="addEncounter" />
-              </Link>
-            </div>
-            <div>
-              <button type="button" onClick={() => setEdit(true)} id="editPatientButton">
-                <FaPencilAlt size={70} title="Edit patient" id="editPatient" />
-              </button>
-            </div>
-            <div>
-              <p>
-                Name:
-                {' '}
-                {patientData.lastName}
-                ,
-                {' '}
-                {patientData.firstName}
-              </p>
-              <p>
-                Ssn:
-                {' '}
-                {patientData.ssn}
-              </p>
-              <p>
-                Address:
-                {' '}
-                {patientData.street}
-                ,
-                {' '}
-                {patientData.city}
-                ,
-                {' '}
-                {patientData.state}
-                ,
-                {' '}
-                {patientData.postal}
-              </p>
+      {!edit && (
+      <>
+        <div className="patientsDetails">
+          <div>
+            <Link to={`/patients/encounters/create/${id}`}>
+              <FaAddressBook size={70} title="Add New Encounter" id="addEncounter" />
+            </Link>
+          </div>
+          <div>
+            <button type="button" onClick={() => setEdit(true)} id="editPatientButton">
+              <FaPencilAlt size={70} title="Edit patient" id="editPatient" />
+            </button>
+          </div>
+          <div>
+            <p>
+              Name:
+              {' '}
+              {patientData.lastName}
+              ,
+              {' '}
+              {patientData.firstName}
+            </p>
+            <p>
+              Ssn:
+              {' '}
+              {patientData.ssn}
+            </p>
+            <p>
+              Address:
+              {' '}
+              {patientData.street}
+              ,
+              {' '}
+              {patientData.city}
+              ,
+              {' '}
+              {patientData.state}
+              ,
+              {' '}
+              {patientData.postal}
+            </p>
 
-              <p>
-                Age:
-                {' '}
-                {patientData.age}
-              </p>
-              <p>
-                Height:
-                {' '}
-                {patientData.height}
-              </p>
-              <p>
-                Weight:
-                {' '}
-                {patientData.weight}
-              </p>
-              <p>
-                Insurance:
-                {' '}
-                {patientData.insurance}
-              </p>
-              <p>
-                Gender:
-                {' '}
-                {patientData.gender}
-              </p>
-            </div>
-            <div>
+            <p>
+              Age:
+              {' '}
+              {patientData.age}
+            </p>
+            <p>
+              Height:
+              {' '}
+              {patientData.height}
+            </p>
+            <p>
+              Weight:
+              {' '}
+              {patientData.weight}
+            </p>
+            <p>
+              Insurance:
+              {' '}
+              {patientData.insurance}
+            </p>
+            <p>
+              Gender:
+              {' '}
+              {patientData.gender}
+            </p>
+          </div>
+          <div>
+            {encounters.length !== 0 && (
               <table>
                 <thead>
                   <tr>
@@ -291,16 +299,25 @@ const PatientDetailsPage = () => {
                       id={id}
                       encounter={encounter}
                       notFoundError={notFoundError}
-                      apiError={apiError}
                       date={encounter.date.slice(0, 10)}
                     />
                   ))}
                 </tbody>
               </table>
+            )}
+            {encounters.length === 0 && (
+            <div id="noEncounters">
+              <h2>
+                This Patient Has Zero Encounters, Click The Book In The In The Top
+                Left To Add An Encounter
+              </h2>
             </div>
-          </>
-        )}
-      </div>
+            )}
+
+          </div>
+        </div>
+      </>
+      )}
     </div>
   );
 };

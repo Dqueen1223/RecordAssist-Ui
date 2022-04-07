@@ -80,9 +80,10 @@ tbody {
 }
 .patientsDetails{
   left: 1em;
-  margin-bottom: 250px;
+  height: 700px;
+  width: 1000px;
   position: relative;
-  padding: 5px 10px 5px 10px;
+  padding: 25px 15px 15px 15px;
 }
 .editPatient{
   width: 15%;
@@ -104,6 +105,18 @@ h1 {
   display: block;
   width: 300px;
   font-size: 2.17em;
+  font-weight: bold;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+h2 {
+  color:crimson;
+  display: block;
+  width: 1500px;
+  font-size: 2em;
   font-weight: bold;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -162,4 +175,16 @@ h1 {
   height: 35vh;
   overflow: scroll;
   padding: 10vh, 10vw;
+}
+.detailsPage{
+  width: 1000px;
+  padding-left: 20px;
+  height: 1000px;
+}
+.gender{
+      margin-top: 0.5em;
+      width: 15em;
+      padding: 0.5em;
+      box-sizing: border-box;
+      margin-bottom: 25px;
 }

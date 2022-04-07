@@ -9,10 +9,10 @@ import Constants from '../../utils/constants';
  * @param {*} setApiError sets error if response other than 200 is returned
  * @returns sets state for encounter if 200 response, else sets state for apiError
  */
-export default async function createEncounter(encounterData, patientId, setApiError) {
+export default async function createEncounter(encounterData, id, setApiError) {
   let checkValid = 'invalid';
-  await HttpHelper(`${Constants.PATIENTS_ENDPOINT}/${patientId}${Constants.ENCOUNTERS_ENDPOINT}`, 'POST', {
-    patientId,
+  await HttpHelper(`${Constants.PATIENTS_ENDPOINT}/${id}${Constants.ENCOUNTERS_ENDPOINT}`, 'POST', {
+    patientId: id,
     notes: encounterData.notes,
     visitCode: encounterData.visitCode,
     provider: encounterData.provider,

@@ -55,13 +55,22 @@ code {
   width:100px;
 }
 #patientImg{
-  /* align-self: center; */
-  margin-left:50%;
-  margin-bottom: 28%;
-  width: 50%;
-  /* height: 815px; */
+  width: 35%;
+  float: right;
+  padding-left: 50px;
 }
-
+#homeText{
+  padding: 50px;
+  font-size: 2.2em;
+  font-weight: bold;
+}
+#patientImgDiv{
+  display: flex;
+  margin-bottom: auto;
+  margin-right: auto;
+  align-items: top;
+  justify-content: end;
+}
 #home{
   padding: 25px, 25px, 25px, 25px;
   color: #5865f2;
@@ -104,4 +113,6 @@ code {
   justify-self: center;
   width: 15em;
 }
-
+#doctorImg{
+  width: 100%;
+}

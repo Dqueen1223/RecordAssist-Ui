@@ -1,5 +1,7 @@
+import { toast } from 'react-toastify';
 import HttpHelper from '../../utils/HttpHelper';
 import Constants from '../../utils/constants';
+
 /**
  * @name updatePatient
  * @description Utilizes HttpHelper to make a PUT request to an API
@@ -26,6 +28,7 @@ export default async function updatePatient(patient, patientId, setApiError, set
     state: patient.state,
     postal: patient.postal
   })
+    // eslint-disable-next-line consistent-return
     .then((response) => {
       if (response.ok) {
         checkValid = 'valid';
@@ -33,11 +36,10 @@ export default async function updatePatient(patient, patientId, setApiError, set
       }
       if (response.status === 409) {
         setConflictError(true);
-        throw new Error(response.statusText);
+        toast.error('There are invalid fields, please enter valid info');
       } else {
         setApiError(true);
       }
-      throw new Error(response.statusText);
     });
   return checkValid;
 }
