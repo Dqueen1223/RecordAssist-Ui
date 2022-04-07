@@ -1,6 +1,9 @@
-# Super Health Inc.
+## Website Preview
+<image src="homePage.PNG">
 
-This is a starter project for a Super Health Inc. that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Record Assist
+
+This is a starter project for Record Assist that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Install Prerequisites
 
@@ -40,6 +43,3 @@ You will also see any lint errors in the console.
 ## Testing
 * testing covers validation, details + create pages
 * You can run tests with coverage via `npm run test a` 
-
-## Linting
-* To lint this project using ESLint  run `npm run lint`
