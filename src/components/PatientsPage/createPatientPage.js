@@ -30,7 +30,7 @@ const CreatePatientPage = () => {
     } else {
       toast.error('There are invalid fields, please enter valid info');
     }
-    conflictError(false);
+    setConflictError(false);
     setErrors(PatientsFormValidator(patientData));
   };
 

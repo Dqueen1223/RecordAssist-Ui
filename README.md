@@ -1,4 +1,5 @@
 ## Website Preview
+(More images at the bottom)
 <image src="homePage.PNG">
 
 # Record Assist
@@ -12,10 +13,6 @@ This is a starter project for Record Assist that was bootstrapped with [Create R
 NVM is a utility to help you quickly install and switch between Node versions. With NVM, there is no need to manually install and uninstall versions.
 
 Follow the Installation Steps for [NVM on GitHub](https://github.com/coreybutler/nvm-windows).
-
-## External Dependencies
-* React must be installed with link provided
-https://docs.microsoft.com/en-us/windows/dev-environment/javascript/react-on-windows
 
 ## Getting Started
 
@@ -34,6 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+
 ## Dependencies
 * RecordAssist api must be running.
 
@@ -43,3 +41,11 @@ You will also see any lint errors in the console.
 ## Testing
 * testing covers validation, details + create pages
 * You can run tests with coverage via `npm run test a` 
+
+## Additional preview
+Table layout for each patient
+<image src="patientInfo.PNG">
+View and edit patient details and their encounters
+<image srg="patientDetails.PNG">
+Form validation example
+<image src="formValidation.PNG">
