@@ -15,6 +15,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+h1 {
+  display: block;
+  width: 300px;
+  font-size: 2.17em;
+  font-weight: bold;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+h2 {
+  color:crimson;
+  display: block;
+  width: 1500px;
+  font-size: 2em;
+  font-weight: bold;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+h3{
+  color: rgb(62, 4, 133);
+  display: block;
+  width: 100%;
+  font-size: 50px;
+  font-weight: bold;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
 .footer {
   align-items: center;
   color: #E1E2E2;
@@ -57,11 +92,31 @@ code {
 #patientImg{
   width: 35%;
   float: right;
-  padding-left: 50px;
+  justify-content: end;
+}
+#headerText{
+  padding: 1%;
+  text-align: center;
+  font-size: 2.2em;
+  font-weight: bold;
 }
 #homeText{
-  padding: 50px;
-  font-size: 2.2em;
+  padding: 1%;
+  padding-left: 1em;
+  text-align: left;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+#contactText{
+  padding: 1%;
+  padding-left: 5em;
+  padding-top: 16em;
+  text-align: right;
+  width: 50%;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-bottom: none;
+  font-size: 20px;
   font-weight: bold;
 }
 #patientImgDiv{
@@ -83,6 +138,17 @@ code {
   padding: 25px, 25px, 25px, 25px;
   color: white;
   font-size: 300%;
+}
+#pageInfo{
+  text-align: center;
+  padding-right: 6%;
+  font-size: 50px;
+}
+.pageHeader{
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 #addPatient{
   margin-bottom: 50px;

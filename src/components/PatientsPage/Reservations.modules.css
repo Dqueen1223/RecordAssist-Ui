@@ -101,29 +101,6 @@ tbody {
   border: none;
   cursor: pointer;
 }
-h1 {
-  display: block;
-  width: 300px;
-  font-size: 2.17em;
-  font-weight: bold;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-}
-h2 {
-  color:crimson;
-  display: block;
-  width: 1500px;
-  font-size: 2em;
-  font-weight: bold;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-}
 #editPatientButton{
   background: none;
   flex-direction: row;
@@ -152,6 +129,13 @@ h2 {
 }
 #editEncounter{
   margin-right: 25px;
+}
+#encounterInfo{
+  display: flex;
+  margin-left: 50px;
+  padding-left: 85px;
+  align-items: center;
+  justify-content: center;
 }
 #cancelEditButton{
   background: none;

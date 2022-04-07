@@ -69,6 +69,9 @@ const PatientDetailsPage = () => {
             <FaBan size={70} title="Cancel Editing" id="cancelEdit" />
           </button>
         </div>
+        <div>
+          <h3>Edit Patient</h3>
+        </div>
         <div className="editPatient">
           <FormItem
             type="text"
@@ -215,16 +218,25 @@ const PatientDetailsPage = () => {
       )}
       {!edit && (
       <>
-        <div className="patientsDetails">
+        <div className="patientsDetails ">
           <div>
-            <Link to={`/patients/encounters/create/${id}`}>
-              <FaAddressBook size={70} title="Add New Encounter" id="addEncounter" />
-            </Link>
-          </div>
-          <div>
-            <button type="button" onClick={() => setEdit(true)} id="editPatientButton">
-              <FaPencilAlt size={70} title="Edit patient" id="editPatient" />
-            </button>
+            <div>
+              <Link to={`/patients/encounters/create/${id}`}>
+                <FaAddressBook size={70} title="Add New Encounter" id="addEncounter" />
+              </Link>
+            </div>
+            <div>
+              <button type="button" onClick={() => setEdit(true)} id="editPatientButton">
+                <FaPencilAlt size={70} title="Edit patient" id="editPatient" />
+              </button>
+              <div>
+                <h3>
+                  {patientData.lastName}
+                  &apos;s
+                  info
+                </h3>
+              </div>
+            </div>
           </div>
           <div>
             <p>

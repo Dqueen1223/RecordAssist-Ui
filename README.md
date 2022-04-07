@@ -10,11 +10,16 @@ NVM is a utility to help you quickly install and switch between Node versions. W
 
 Follow the Installation Steps for [NVM on GitHub](https://github.com/coreybutler/nvm-windows).
 
+## External Dependencies
+* React must be installed with link provided
+https://docs.microsoft.com/en-us/windows/dev-environment/javascript/react-on-windows
+
 ## Getting Started
 
 1. Clone this project locally.
 1. CD into the root folder
 1. Run `npm install` in the root folder to install dependencies.
+1. If #3 doesnt work try `npm install --legacy peer deps`
 
 This command installs a package, and any packages that it depends on.
 
@@ -27,13 +32,7 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ## Dependencies
-* Super Health Inc api must be running.
-
-## External Dependencies
-* React must be installed with link provided
-https://docs.microsoft.com/en-us/windows/dev-environment/javascript/react-on-windows
-* ESLint must also be installed to run linting 
-https://eslint.org/docs/user-guide/getting-started
+* RecordAssist api must be running.
 
 ## Usage
 * This is used to view, create, edit and delete any patients needed, as well as create, view, and edit encounters for an associated patient

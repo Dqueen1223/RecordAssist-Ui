@@ -19,12 +19,6 @@ export default function EncounterFormValidator(encounterData) {
   if (isEmpty(encounterData.visitCode)
   ) {
     errors.visitCode = 'Visit Code is required';
-  } else if (
-    !encounterData.visitCode.match(
-      /^[a-zA-Z]{1}\d{1}[a-zA-Z]{1}\s\d{1}[a-zA-Z]{1}\d{1}$/
-    )
-  ) {
-    errors.visitCode = 'Visit Code Format must match LDL DLD (ex. A1S 2D3)';
   }
   if (isEmpty(encounterData.provider)
   ) {
@@ -32,8 +26,6 @@ export default function EncounterFormValidator(encounterData) {
   }
   if (isEmpty(encounterData.billingCode)) {
     errors.billingCode = 'BillingCode is required';
-  } else if (!encounterData.billingCode.match(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)) {
-    errors.billingCode = 'BillingCode must match format of xxx.xxx.xxx-xx (ex. 123.456.789-12)';
   }
   if (isEmpty(encounterData.icd10)) {
     errors.icd10 = 'Idc10 is required';

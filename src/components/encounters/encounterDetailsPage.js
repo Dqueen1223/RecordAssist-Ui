@@ -77,6 +77,9 @@ const EncounterDetailsPage = () => {
                 <FaBan size={70} title="Cancel Edit" id="editEncounter" />
               </button>
             </div>
+            <div>
+              <h3>Edit Encounter</h3>
+            </div>
             <div className="editPatient">
               <div>
                 <FormItem
@@ -205,10 +208,13 @@ const EncounterDetailsPage = () => {
         )}
         {!edit && (
           <>
-            <div>
+            <div className="pageHeader">
               <button type="button" id="editEncounterButton" onClick={() => setEdit(true)}>
                 <FaPencilAlt size={70} title="Edit Encounter" id="editEncounter" />
               </button>
+              <div>
+                <h3 id="encounterInfo">Encounter info</h3>
+              </div>
             </div>
             <div>
               <EncounterDetails encounterData={encounterData} />

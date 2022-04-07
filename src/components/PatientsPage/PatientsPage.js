@@ -29,9 +29,12 @@ const PatientsPage = () => {
 
   return (
     <div>
-      <Link to="patients/create">
-        <FaFeatherAlt size={70} title="Add New Patient" id="addPatient" />
-      </Link>
+      <div className="pageHeader">
+        <Link to="patients/create">
+          <FaFeatherAlt size={70} title="Add New Patient" id="addPatient" />
+        </Link>
+        <h3 id="pageInfo">Patients info</h3>
+      </div>
       <div className="table">
         {apiError && (
         <p className="errors" data-testid="errors">
