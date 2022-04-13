@@ -151,10 +151,9 @@ h3{
   justify-content: space-between;
 }
 #addPatient{
-  margin-bottom: 50px;
-  flex-direction: row;
-  margin-left: 25px;
-  padding: 25px, 25px, 25px, 25px;
+  display: flex;
+  margin-top: 50px;
+  margin-left: 50px;
   color: #3e4ad4;
 }
 #addEncounter{
